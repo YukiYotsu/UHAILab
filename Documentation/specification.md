@@ -4,6 +4,8 @@ Last modified: *14.01.2025*
 My name is Yuki Yotsumoto. I belong to **Bachelor of Science in Computer Science** (CS) as an exchange student from Japan. All the project's documentation are written in **English markdown** (.md) language.
 
 ## Programming language used in this project
+<img src="https://qiita-user-contents.imgix.net/https%3A%2F%2Fimg.shields.io%2Fbadge%2F-Python-F2C63C.svg%3Flogo%3Dpython%26style%3Dfor-the-badge?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=c17144ccc12f9c19e9dbba2eec5c7980">  
+
 I would like to code with **Python** language in this project this time because it should be easy for many computer engineers to understand, given its easy grammar rule [1] and its popularity.
 
 I would like to mention other language which I am good at to the extent that I can peer review projects. In addition to Python, I can do in **C** as well.
