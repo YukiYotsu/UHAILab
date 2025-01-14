@@ -26,9 +26,6 @@ UHAILab/
 
 ## Trouble Shooting
 
-## Lapras Card
-<!--START_SECTION:lapras-card-->
-<!--END_SECTION:lapras-card-->
 ## Reference
 When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
 [1] https://qiita.com/shun198/items/c983c713452c041ef787  
