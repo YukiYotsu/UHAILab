@@ -32,7 +32,7 @@ I would like to apply several techniques to main two purposes: code analysis too
 
 ---
 #### **Code analysis tool**
-I will make both the process logic and the class structure of the target program visible with flowchart
+I will make both the process logic and the class structure of the target program visible with flowchart.
 
 I will apply **Knuth-Morris-Pratt algorithm** (KMP) [3] to find specific string in whole text.  
 
