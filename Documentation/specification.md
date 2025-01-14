@@ -6,7 +6,7 @@ My name is Yuki Yotsumoto. I belong to **Bachelor of Science in Computer Science
 ## Programming language used in this project
 I would like to code with **Python** language in this project this time because it should be easy for many computer engineers to understand, given its easy grammar rule [1] and its popularity.
 
-And as mentioned on the page of the course's details on other documentation, I would like to mention other language which I am good at to the extent that I can peer review projects. In addition to Python, I can do in **C** as well.
+I would like to mention other language which I am good at to the extent that I can peer review projects. In addition to Python, I can do in **C** as well.
 
 ## What problem am I solving?
 I focus on program analysis problem to help programmers study a structure of program and clarify errors in code.　In short, this project is on code analysis tool and spell checker (when there is mistake on spell of program).
@@ -44,6 +44,9 @@ I will apply **Damerau-Levensthein distance** to compare the distance. The vocab
 
 ---
 Preferably, I will visualize the flow of variables and which route is selected in conditioal branching.
+
+## What inputs does my program take, and how are they used?
+My program takes user's program to analyze. And also, it accepts input from the mouse and keyboard, and these operations are used to select applications for the target program, operate the program itself, and view analysis results.
 
 ## References
 [1] Python Software Foundation, https://docs.python.org/3/reference/grammar.html  
