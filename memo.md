@@ -2,7 +2,7 @@
 for the AI Lab course at the University of Helsinki in 2025
 
 # Introduction
-This is the page for storing some tips for myself.
+This is the page just for storing some tips for myself.
 This is *not* the documentation for grading.
 
 # Connecting with local computers
