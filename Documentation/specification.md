@@ -9,7 +9,7 @@ I would like to code with **Python** language in this project this time because 
 I would like to mention other language which I am good at to the extent that I can peer review projects. In addition to Python, I can do in **C** as well.
 
 ## What problem am I solving?
-I focus on program analysis problem to help programmers study a structure of program and clarify errors in code.　In short, this project is on code analysis tool and spell checker (when there is mistake on spell of program).
+I focus on program analysis problem to help programmers study a structure of program and clarify errors in code. In short, this project is on code analysis tool and spell checker (when there is mistake on spell of program).
 
 I would like to name this project **GRASP**, meaning to permit users to grasp what program does.
 I define GRASP as the term standing for 
