@@ -9,7 +9,7 @@ I would like to code with **Python** language in this project this time because 
 And as mentioned on the page of the course's details on other documentation, I would like to mention other language which I am good at to the extent that I can peer review projects. In addition to Python, I can do in **C** as well.
 
 ## What problem am I solving?
-I focus on program analysis problem to help programmers study a structure of program and clarify errors in code.
+I focus on program analysis problem to help programmers study a structure of program and clarify errors in code.　In short, this project is on code analysis tool and spell checker (when there is mistake on spell of program).
 
 I would like to name this project **GRASP**, meaning to permit users to grasp what program does.
 I define GRASP as the term standing for 
@@ -25,7 +25,28 @@ For example,
 
 Therefore, I focus on the fact that it's difficult for programming beginner to clarify the cause of some errors in program. 
 
+## What algorithms and data structures am I implementing?
+I would like to apply several techniques to main two purposes: code analysis tool and spell checker.  
+
+---
+#### **Code analysis tool**
+I will make both the process logic and the class structure of the target program visible with flowchart
+
+I will apply **Knuth-Morris-Pratt algorithm** (KMP) [3] to find specific string in whole text.  
+
+---
+
+#### **Spell checker**
+As mentioned in the course page of ideas for project topics, 
+> A spell checker can be implemented by comparing the distance from an input string that is NOT in a dictionary to others that are.  
+
+I will apply **Damerau-Levensthein distance** to compare the distance. The vocabulary can be stored in a **Trie** (prefix tree) data structure.
+
+---
+Preferably, I will visualize the flow of variables and which route is selected in conditioal branching.
+
 ## References
 [1] Python Software Foundation, https://docs.python.org/3/reference/grammar.html  
-[2] Benjamin Livshits section 7.3 "Static Techniques for Security," Stanford doctoral thesis, 2006., https://dl.acm.org/doi/10.5555/1269235
-
+[2] Benjamin Livshits section 7.3 "Static Techniques for Security," Stanford doctoral thesis, 2006., https://dl.acm.org/doi/10.5555/1269235  
+[3] Knuth, Donald; Morris, James H.; Pratt, Vaughan (1977). "Fast pattern matching in strings".
+https://doi.org/10.1137/0206024
