@@ -1,13 +1,15 @@
-# README
-This is the README markdown for the AI Lab course at the University of Helsinki in 2025.
+# 👋 Moi!
+I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the University of Helsinki 🇫🇮 in 2025.
 
 *Last modified: 15.01.2025*
 
-## List of used main technique  
-<img src="https://qiita-user-contents.imgix.net/https%3A%2F%2Fimg.shields.io%2Fbadge%2F-Python-F2C63C.svg%3Flogo%3Dpython%26style%3Dfor-the-badge?ixlib=rb-4.0.0&auto=format&gif-q=60&q=75&s=c17144ccc12f9c19e9dbba2eec5c7980">
+## List of used main technique   
+<img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>
 
 
 ## Directory structure  
+All the documents are stored in the same directory named "Documentation".
+
 UHAILab/  
 &emsp;┣━━━━ README.md (this file)  
 &emsp;┣━━━━ Documentation/  
@@ -23,3 +25,12 @@ UHAILab/
 &emsp;┃&emsp;┗━━━━ week6report.md 
 
 ## Trouble Shooting
+
+## Lapras Card
+<!--START_SECTION:lapras-card-->
+<p ><a href="https://lapras.com/public/YukiYotsu" target="_blank" rel="noopener noreferrer"><img alt="shun198's scores on LAPRAS are as follows: Engineering: 3.73 out of 5.0, Business: 3.48 out of 5.0, Influence: 3.02 out of 5.0." src="https://lapras-card-generator.vercel.app/api/svg?e=3.73&b=3.48&i=3.02&b1=%23020E27&b2=%230E5593&i1=%23030E21&i2=%231688BF&l=en" width="400" ></a></p>
+<!--END_SECTION:lapras-card-->
+## Reference
+When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
+[1] https://qiita.com/shun198/items/c983c713452c041ef787  
+[2] https://github.com/shun198
