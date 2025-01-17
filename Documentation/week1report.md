@@ -2,6 +2,8 @@
 I'm Yuki Yotsumoto. This is the 1st weekly report.
 
 ## Weekly outcome and advancements
+The time required this week was 15 hours.
+
 I have written the project specification, which defines the theme of my project. I have set code analysis tool as my original theme because I am deeply interested in Education for computer engineers and the way to support programmers. In addition, I defined the structure of my project directory (shown on README.md).
 
 Next, I could have follow detailed course schedule as of now. I have decided on a topic and programming language. When it comes to next week's schedule, I have to find out what/how to do unit test of my code before designing UI. This is because honestly, I do not think I fully understand what "unit tests" means. After that, I have to start to implement the UI and the core functionality.
