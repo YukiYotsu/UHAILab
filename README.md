@@ -18,17 +18,17 @@ UHAILab/
 &emsp;┣━┳━━ Tests/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┗━━━━ test_prime.py    
-&emsp;┣━┳━━ Documentation/  
-&emsp; &emsp;┣━━━━ implementation.md  
-&emsp; &emsp;┣━━━━ specification.md  
-&emsp; &emsp;┣━━━━ userguide.md  
-&emsp; &emsp;┣━━━━ testing_report.md  
-&emsp; &emsp;┣━━━━ week1report.md  
-&emsp; &emsp;┣━━━━ week2report.md  
-&emsp; &emsp;┣━━━━ week3report.md  
-&emsp; &emsp;┣━━━━ week4report.md  
-&emsp; &emsp;┣━━━━ week5report.md  
-&emsp; &emsp;┗━━━━ week6report.md 
+&emsp;┗━┳━━ Documentation/  
+&emsp;&emsp;&emsp;┣━━━━ implementation.md  
+&emsp;&emsp;&emsp;┣━━━━ specification.md  
+&emsp;&emsp;&emsp;┣━━━━ userguide.md  
+&emsp;&emsp;&emsp;┣━━━━ testing_report.md  
+&emsp;&emsp;&emsp;┣━━━━ week1report.md  
+&emsp;&emsp;&emsp;┣━━━━ week2report.md  
+&emsp;&emsp;&emsp;┣━━━━ week3report.md  
+&emsp;&emsp;&emsp;┣━━━━ week4report.md  
+&emsp;&emsp;&emsp;┣━━━━ week5report.md  
+&emsp;&emsp;&emsp;┗━━━━ week6report.md 
 
 ## Trouble Shooting
 #### Where and What is the function named "connectiontest"?
