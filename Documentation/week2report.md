@@ -2,7 +2,7 @@
 I'm Yuki Yotsumoto. This is the 2nd weekly report.
 
 ## Weekly outcome and advancements  
-The time required this week was 20 hours. It took about 10 hours to understand Poetry and unittest. I made the demo programs of main project called GRASP and the directory for tests (unittest). I referred to Mr. Kenneth Reitz's recommendation [1].
+The time required this week was 20 hours. It took about 10 hours to understand Poetry and unittest. I made the demo programs of main project called GRASP and the directory for tests (unittest). I referred to Mr. Kenneth Reitz's recommendation [1]. In addition, I installed Pylint successfully, which seems quite useful to check the flaws in my project.
 
 I learned what is docstring, which tells what my classes and methods do. And also, I understood how to write docstring appropriately along PEP 257.
 
