@@ -7,11 +7,17 @@ I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the Uni
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>
 
 ## Directory structure  
-All the documents are stored in the same directory named "Documentation".
+All the documents are stored in the same directory named "Documentation".  
+All the files should not be changed for stable implementing.
 
 UHAILab/  
 &emsp;┣━━━━ README.md (this file)  
-&emsp;┣━━━━ Documentation/  
+&emsp;┣━┳━━ GRASP/  
+&emsp;┃&emsp;┣━━━━ __init__.py  
+&emsp;┃&emsp;┣━━━━ __main__.py  
+&emsp;┣━┳━━ Tests/  
+&emsp;┃&emsp;┣━━━━ __init__.py  
+&emsp;┣━┳━━ Documentation/  
 &emsp;┃&emsp;┣━━━━ implementation.md  
 &emsp;┃&emsp;┣━━━━ specification.md  
 &emsp;┃&emsp;┣━━━━ userguide.md  
