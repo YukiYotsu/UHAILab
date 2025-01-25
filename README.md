@@ -19,18 +19,20 @@ UHAILab/
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┗━━━━ test_prime.py    
 &emsp;┣━┳━━ Documentation/  
-&emsp;┃&emsp;┣━━━━ implementation.md  
-&emsp;┃&emsp;┣━━━━ specification.md  
-&emsp;┃&emsp;┣━━━━ userguide.md  
-&emsp;┃&emsp;┣━━━━ testing_report.md  
-&emsp;┃&emsp;┣━━━━ week1report.md  
-&emsp;┃&emsp;┣━━━━ week2report.md  
-&emsp;┃&emsp;┣━━━━ week3report.md  
-&emsp;┃&emsp;┣━━━━ week4report.md  
-&emsp;┃&emsp;┣━━━━ week5report.md  
-&emsp;┃&emsp;┗━━━━ week6report.md 
+&emsp; &emsp;┣━━━━ implementation.md  
+&emsp; &emsp;┣━━━━ specification.md  
+&emsp; &emsp;┣━━━━ userguide.md  
+&emsp; &emsp;┣━━━━ testing_report.md  
+&emsp; &emsp;┣━━━━ week1report.md  
+&emsp; &emsp;┣━━━━ week2report.md  
+&emsp; &emsp;┣━━━━ week3report.md  
+&emsp; &emsp;┣━━━━ week4report.md  
+&emsp; &emsp;┣━━━━ week5report.md  
+&emsp; &emsp;┗━━━━ week6report.md 
 
 ## Trouble Shooting
+#### Where and What is the function named "connectiontest"?
+It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".
 
 ## Reference
 When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
