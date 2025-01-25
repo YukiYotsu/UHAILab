@@ -24,3 +24,4 @@ And I installed Poetry with no problem to handle automated tests and test covera
 [2] Algorithms and Artificail Intelligence Training, https://algolabra-hy.github.io/poetry-fi  
 
 ## Prospect -- what's next  
+Hopefully, I could have started to design the structure of my project. I would like to search for the way to design UI. I'm thinking Tkinter which belongs Python UI library and CustomTkinter, which looks more modern.
