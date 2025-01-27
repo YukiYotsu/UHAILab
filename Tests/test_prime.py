@@ -8,7 +8,10 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from GRASP import __main__ as target_main # retrieve the path of the target for the test
 
 class TestFunc(unittest.TestCase):
-    """
+    """ Implement basic test.
+
+    Keyword arguments:
+        unittest.TestCase: All classes extending unittest.TestCase are recognized as test case.
 
     """
     def test_func(self):
