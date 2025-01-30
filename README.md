@@ -36,5 +36,7 @@ It is used only for confirming the stable connection between files placed at som
 
 ## Reference
 When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
+And I think of the structure of this project, I refer to sari-bee's repository which seems to have been made in the same course.  
 [1] https://qiita.com/shun198/items/c983c713452c041ef787  
-[2] https://github.com/shun198
+[2] https://github.com/shun198  
+[3] https://github.com/sari-bee/tieteellinen_laskin?tab=readme-ov-file  
