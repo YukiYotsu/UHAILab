@@ -62,14 +62,66 @@ def damerau_levenshtein_distance(s1, s2):
     
     return d[len(s1)][len(s2)]
 
-def get_closest_word(word, trie, vocabulary):
+def unrestricted_damerau_levenshtein_distance(s1, s2):
     """
+    """
+    len_s1, len_s2 = len(s1), len(s2)
+    INF = len_s1 + len_s2 # large number instead of infinity
+    
+    d = [[0] * (len_s2 + 2) for _ in range(len_s1 + 2)]
+    last_row = {}
+    
+    for char in set(s1 + s2):
+        last_row[char] = 0
+    
+    for i in range(len_s1 + 1):
+        d[i + 1][0] = INF
+        d[i + 1][1] = i
+    
+    for j in range(len_s2 + 1):
+        d[0][j + 1] = INF
+        d[1][j + 1] = j
+    
+    for i in range(1, len_s1 + 1):
+        last_match_column = 0
+        for j in range(1, len_s2 + 1):
+            cost = 0 if s1[i - 1] == s2[j - 1] else 1
+            d[i + 1][j + 1] = min(
+                d[i][j + 1] + 1,  # deletion/削除
+                d[i + 1][j] + 1,  # insertion/挿入
+                d[i][j] + cost    # substitution/置換
+            )
+            # transportation/転置
+            last_matching_row = last_row.get(s2[j - 1], 0)
+            last_matching_col = last_match_column
+            if last_matching_row > 0 and last_matching_col > 0:
+                d[i + 1][j + 1] = min(
+                    d[i + 1][j + 1], d[last_matching_row][last_matching_col] + (i - last_matching_row - 1) + 1 + (j - last_matching_col - 1)
+                )
+            if cost == 0:
+                last_match_column = j
+        
+        last_row[s1[i - 1]] = i
+    
+    return d[len_s1 + 1][len_s2 + 1]
+
+def get_closest_word(word, trie, vocabulary):
+    """ Return the closest word in str-form
+
+    This function uses unlimited_damerau_levenshtein_distance.  
+    Keyword Arguments:
+        word:
+        trie:
+        vocabulary:
+    
+    Returns:
+        closest_word: the str-form closest word
     """
     min_distance = float('inf')
     closest_word = None
     
     for vocab_word in vocabulary:
-        distance = damerau_levenshtein_distance(word, vocab_word)
+        distance = unrestricted_damerau_levenshtein_distance(word, vocab_word)
         if distance < min_distance:
             min_distance = distance
             closest_word = vocab_word
