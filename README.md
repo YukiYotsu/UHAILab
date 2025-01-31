@@ -12,6 +12,7 @@ All the files should not be changed for stable implementing.
 
 UHAILab/  
 &emsp;┣━━━━ README.md (this file)  
+&emsp;┣━━━━ ver1.Programming_vocabulary.csv  
 &emsp;┣━┳━━ GRASP/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┗━━━━ ```__main__.py```  
@@ -31,8 +32,10 @@ UHAILab/
 &emsp;&emsp;&emsp;┗━━━━ week6report.md 
 
 ## Trouble Shooting
-#### Where and What is the function named "connectiontest"?
-It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".
+#### Where and What is the function named "connectiontest"?  
+It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".  
+#### What is 'Programming_vocabulary.csv'?  
+It is used as the sample vocabulary to compare target words with rightly-spelled words.  
 
 ## Reference
 When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
