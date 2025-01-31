@@ -2,6 +2,11 @@ import subprocess
 import os
 from pathlib import Path
 import collections
+import csv
+import itertools
+
+grandparent_directory = Path(__file__).resolve().parent.parent
+VOCABULARY_FILE_Path = os.path.join(grandparent_directory,'ver1_Programming_vocabulary.csv')
 
 class TrieNode:
     """
@@ -71,10 +76,31 @@ def get_closest_word(word, trie, vocabulary):
     
     return closest_word
 
+def read_file_as_list(filePath = None):
+    """ Make the list of words (vocabulary)
+
+    Keyword Arguments:
+        filePath: the path of the file to read
+
+    Returns:
+        The list of vocabulary read from CSV file or TXT file
+    """
+    if filePath[-4:] == '.txt': # for TXT file
+        with open(filePath, 'r') as f:
+            text_data = [line.strip() for line in f]
+        return text_data
+    
+    elif filePath[-4:] == '.csv': # for CSV file
+        with open(filePath, 'r') as f:
+            csv_data =  [line for line in csv.reader(f)]
+            return list(itertools.chain.from_iterable(csv_data))
+    else:
+        return None
+
 def main():
     """
     """
-    vocabulary = ["class", "def", "python", "main", "return", "import", "from", "break"]
+    vocabulary = read_file_as_list(VOCABULARY_FILE_Path)
     trie = Trie()
     for word in vocabulary:
         trie.insert(word)
