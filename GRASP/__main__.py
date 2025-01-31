@@ -7,13 +7,14 @@ class TrieNode:
     """
     """
     def __init__(self):
+        """
+        """
         self.children = collections.defaultdict(TrieNode)
         self.is_end_of_word = False
 
 class Trie:
     """
     """
-
     def __init__(self):
         """
         """
@@ -40,48 +41,46 @@ class Trie:
 def damerau_levenshtein_distance(s1, s2):
     """
     """
-    d = [[i + j if i * j == 0 else 0 
-          for j in range(len(s2) + 1)] for i in range(len(s1) + 1)]
+    d = [[i+j if i * j == 0 else 0 for j in range(len(s2) + 1)] for i in range(len(s1) + 1)]
     
     for i in range(1, len(s1) + 1):
         for j in range(1, len(s2) + 1):
             cost = 0 if s1[i-1] == s2[j-1] else 1
             d[i][j] = min(
-                d[i-1][j] + 1, #deletion/削除
-                d[i][j-1] + 1, #insertion/挿入
-                d[i-1][j-1] + cost #replacement/置換
+                d[i-1][j] + 1,    # deletion/削除
+                d[i][j-1] + 1,    # insertion/挿入
+                d[i-1][j-1] + cost  # substitution/置換
             )
-
+            
             if i > 1 and j > 1 and s1[i-1] == s2[j-2] and s1[i-2] == s2[j-1]:
-                d[i][j] = min(d[i][j], d[i - 2][j - 2] + 1) #変換
-        
-        return d[len(s1)][len(s2)]
+                d[i][j] = min(d[i][j], d[i - 2][j - 2] + 1)  # transposition/隣り合う文字の交換
+    
+    return d[len(s1)][len(s2)]
 
 def get_closest_word(word, trie, vocabulary):
     """
     """
     min_distance = float('inf')
     closest_word = None
-
+    
     for vocab_word in vocabulary:
         distance = damerau_levenshtein_distance(word, vocab_word)
         if distance < min_distance:
             min_distance = distance
             closest_word = vocab_word
-        
+    
     return closest_word
 
 def main():
     """
     """
-    current_directory = Path(__file__).resolve().parent
     vocabulary = ["class", "def", "python", "main", "return", "import", "from", "break"]
     trie = Trie()
     for word in vocabulary:
         trie.insert(word)
     
     while True:
-        word = input("Enter a word (or type 'exit' to quit):")
+        word = input("Enter a word (or type 'exit' to quit): ")
         if word == "exit":
             break
         
