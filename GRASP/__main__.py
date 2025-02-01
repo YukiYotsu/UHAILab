@@ -168,19 +168,6 @@ def main():
             suggestion = get_closest_word(word, trie, vocabulary)
             print(f"'{word}' is not in the vocabulary. Did you mean '{suggestion}'?")
 
-def connectiontest(arg1: int, arg2: int):
-    """ Test stable relations between some files in different python programs
-
-    Keyword arguments:
-        arg1 (int): The number of candidate number decided by the programmer
-        arg2 (int): The other number of candidate number decided by the programmer
-
-    Returns:
-        int: The sum of arg1 and arg2
-    """
-    
-    return arg1 + arg2
-
 if __name__ == "__main__":
     # this is implemented only when this python file is selected directly.
     main()

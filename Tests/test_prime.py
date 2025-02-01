@@ -7,25 +7,60 @@ from pathlib import Path
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from GRASP import __main__ as target_main # retrieve the path of the target for the test
 
-class TestFunc(unittest.TestCase):
+class TestDamerauLevenshtein(unittest.TestCase):
     """ Implement basic test.
 
     Keyword arguments:
         unittest.TestCase: All classes extending unittest.TestCase are recognized as test case.
 
     """
-    def test_func(self):
+    def test_same_strings(self):
         """ Implement test.
         
         Keyword Arguments:
         """
-        current_directory = Path(__file__).resolve().parent
-        
-        value1 = 1
-        value2 = 2
-        expected = 3
-        actual = target_main.connectiontest(value1, value2) # this is used only to test relations between some files
-        self.assertEqual(expected, actual)
+        self.assertEqual(target_main.unrestricted_damerau_levenshtein_distance("hello", "hello"),0)
 
+    def test_single_insertion(self):
+        """ Implement test.
+        
+        Keyword Arguments:
+        """
+        self.assertEqual(target_main.unrestricted_damerau_levenshtein_distance("helo", "hello"), 1)
+
+    def test_single_deletion(self):
+        """ Implement test.
+        
+        Keyword Arguments:
+        """
+        self.assertEqual(target_main.unrestricted_damerau_levenshtein_distance("hello", "helo"), 1)
+
+    def test_single_substitution(self):
+        """ Implement test.
+        
+        Keyword Arguments:
+        """
+        self.assertEqual(target_main.unrestricted_damerau_levenshtein_distance("hello", "jello"), 1)
+
+    def test_single_transposition(self):
+        """ Implement test.
+        
+        Keyword Arguments:
+        """
+        self.assertEqual(target_main.unrestricted_damerau_levenshtein_distance("hlelo", "hello"), 1)
+
+    def test_multiple_operations(self):
+        """ Implement test.
+        
+        Keyword Arguments:
+        """
+        self.assertEqual(target_main.unrestricted_damerau_levenshtein_distance("kitten", "sitting"), 3)
+
+    def test_long_strings(self):
+        """ Implement test.
+        
+        Keyword Arguments:
+        """
+        self.assertEqual(target_main.unrestricted_damerau_levenshtein_distance("abcdefghij", "acbdefjhig"), 4)
 if __name__ == "__main__":
     unittest.main()
