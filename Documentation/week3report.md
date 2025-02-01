@@ -24,3 +24,4 @@ Wrote HTML report to htmlcov/index.html
 - I grasp we will do peer-review. All I have to do is just making poetry.lock file in my repository for other students?  
 
 ## Prospect -- what's next  
+I will make UI and I have to think of **how to select the targets spell-checked**, I will apply Knuth-Morris-Pratt algorithm (KMP) to find specific string in whole text. This will help me create flowcharts.  
