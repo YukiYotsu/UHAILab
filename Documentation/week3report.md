@@ -1,6 +1,6 @@
 # Weekly Report (Week 3)  
 I'm Yuki Yotsumoto. This is the 3rd weekly report.
-I newly created the branch to test my coverage.
+**I newly created the branch to test my coverage.**
 
 ## Weekly outcome and advancements  
 The time required this week was 15 hours. I made the program which does spell check with Damerau-leveshtein distance. I made the vocabulary which has been named "Programming_vocabulary.csv" to use as correctly-spelled words by myself*.  
