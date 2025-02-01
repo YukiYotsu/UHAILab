@@ -4,6 +4,18 @@ I'm Yuki Yotsumoto. This is the 3rd weekly report.
 
 ## Weekly outcome and advancements  
 The time required this week was 15 hours. I made the program which does spell check with Damerau-leveshtein distance. I made the vocabulary which has been named "Programming_vocabulary.csv" to use as correctly-spelled words by myself*.  
+When I did coverage test, I can have generated html file which reported coverage rates.  
+When I did, I should have did like this:  
+```
+coverage run --append test_prime.py
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK
+takumi@takuminoMacBook-Pro Tests % coverage html
+Wrote HTML report to htmlcov/index.html
+```  
 
 
 ## Unclear or problematic things  
