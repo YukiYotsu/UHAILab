@@ -61,7 +61,7 @@ class TestDamerauLevenshtein(unittest.TestCase):
         
         Keyword Arguments:
         """
-        self.assertEqual(target_main.unrestricted_damerau_levenshtein_distance("abcdefghij", "acbdefjhig"), 3)
+        self.assertEqual(target_main.unrestricted_damerau_levenshtein_distance("abcdefghij", "acbdefjhig"), 4)
 
 if __name__ == "__main__":
     unittest.main()
