@@ -4,7 +4,92 @@ I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the Uni
 *Last modified: 30.01.2025*
 
 ## List of used main technique   
-<img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>
+<img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
+
+## How to start my App  
+The newer Poetry should be maintained by Homebrew. So you cannot use:
+```
+poetry shell
+
+The command "shell" does not exist.
+```  
+After cloning my repository on your machine, launch Poetry at the root directory of the installed project.
+To implement this, you have to install Poetry in advance.
+Finish the initialization of the project by running the command:  
+```
+poetry install
+```  
+When executing the command, you might ve lead to the following notification:  
+```  
+Installing the current project: poetry-testi (0.1.0)
+The current project could not be installed: [Errno 2] No such file or directory: '~/poetry-testi/README.md'
+If you do not want to install the current project use --no-root
+```  
+This is because Poetry is also trying to install (some) existing projects here.  
+When you want to install only project dependencies, use this:  
+```  
+poetry install --no-root
+```  
+```  
+brew install python-tk
+```  
+You will get the answer like the following one:  
+```
+==> Auto-updating Homebrew...
+Adjust how often this is run with HOMEBREW_AUTO_UPDATE_SECS or disable with
+HOMEBREW_NO_AUTO_UPDATE. Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+==> Auto-updated Homebrew!
+Updated 2 taps (homebrew/core and homebrew/cask).
+==> New Formulae
+acme.sh                     sdl3
+.
+.
+.
+==> Downloading https://ghcr.io/v2/homebrew/core/tcl-t
+Already downloaded: /Users/takumi/Library/Caches/Homebrew/downloads/be646597f3d79273593a6a054e9ad1fcc722de45fe4be5464b2a5275f8b7303b--tcl-tk-9.0.1-1.bottle_manifest.json
+==> Pouring tcl-tk--9.0.1.arm64_sequoia.bottle.1.tar.g
+🍺  /opt/homebrew/Cellar/tcl-tk/9.0.1: 3,150 files, 38MB
+==> Installing python-tk@3.13
+==> Pouring python-tk@3.13--3.13.1.arm64_sequoia.bottl
+🍺  /opt/homebrew/Cellar/python-tk@3.13/3.13.1: 6 files, 160.5KB
+==> Running `brew cleanup python-tk@3.13`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+```  
+**Move** to the directory named 'GRASP' with ```cd ``` command and **Start** the application with the command:  
+```  
+poetry run python __main__.py
+```  
+The new window (my project's App) appears.  
+#### How to implement coverage
+To update (generate lock file):  
+```  
+poetry add requests
+```  
+If you have not installed coverage, use the command:  
+```  
+poetry add --dev coverage
+```  
+**Move** to 'tests' directory and **Execute** coverage test:  
+```  
+poetry run coverage run test_prime.py
+```  
+And then, you will get the report using:  
+```  
+poetry run coverage report
+```  
+For example;  
+```  
+takumi@takuminoMacBook-Pro Tests % poetry run coverage
+ report
+Name                                                       Stmts   Miss  Cover
+------------------------------------------------------------------------------
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/__init__.py       0      0   100%
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         110     67    39%
+test_prime.py                                                 24      0   100%
+------------------------------------------------------------------------------
+TOTAL                                                        134     67    50%
+```  
 
 ## Directory structure  
 All the documents are stored in the same directory named "Documentation".  
@@ -36,6 +121,16 @@ UHAILab/
 It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".  
 #### What is 'Programming_vocabulary.csv'?  
 It is used as the sample vocabulary to compare target words with rightly-spelled words.  
+#### In the case where you want to use shell **mandatorily**.  
+I have not tried this, but just in case.  
+First, install plugin:  
+```
+poetry self add poetry-plugin-shell
+```
+But you might receieve error. If so, the cause should be 'The ```shell``` command was moved to a plugin: ```poetry-plugin-shell```, Poetry official page said [4].  
+You can install poetry with *pip* to solve this error, you should not use pip though according to the course page.
+> Varoitus: pip
+Olet saattanut asentaa Pythonin tarvitsemia riippuvuuksia pip-komennolla. Älä käytä pipiä tällä kurssilla sillä jos teet niin, teet 99.9% todennäköisyydellä jotain väärin.  
 
 ## Reference
 When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
@@ -43,3 +138,4 @@ And I think of the structure of this project, I refer to sari-bee's repository[3
 [1] https://qiita.com/shun198/items/c983c713452c041ef787  
 [2] https://github.com/shun198  
 [3] https://github.com/sari-bee/tieteellinen_laskin?tab=readme-ov-file  
+[4] https://python-poetry.org/docs/cli/#script-project  
