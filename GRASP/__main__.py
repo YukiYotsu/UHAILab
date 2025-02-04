@@ -40,4 +40,5 @@ def main():
     ui.spell_check_ui(dictionary)
 
 if __name__ == "__main__":
+    # this is implemented only when this python file is selected directly.
     main()
