@@ -145,7 +145,7 @@ or
 ```
 open -a "Google Chrome" Instruction.html
 ```  
-~~#### Where and What is the function named "connectiontest"?  
+~~**Where and What is the function named "connectiontest"?**  
 It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".~~  
 
 ## Reference
