@@ -61,7 +61,7 @@ Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
 poetry run python __main__.py
 ```  
 The new window (my project's App) appears.  
-#### How to implement coverage
+### How to implement coverage
 To update (generate lock file):  
 ```  
 poetry add requests
