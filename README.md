@@ -1,7 +1,7 @@
 # 👋 Moi!
 I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the University of Helsinki 🇫🇮 in 2025.
 
-*Last modified: 30.01.2025*
+*Last modified: 04.02.2025*
 
 ## List of used main technique   
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
