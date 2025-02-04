@@ -20,7 +20,7 @@ test_prime.py                                                 24      0   100%
 TOTAL                                                        120     51    58%
 ```  
 I made ```ui.py``` to generate GUI on a user's display and modulize some .py files into ```__main__.py```, ```core.py```, and ```ui.py```. ```core.py``` has core functions like KMP method and Damerau-levenshtein distance to implement **spell-check**. And I put (on the directory) ```ver1_Programming_vocabulary.csv```, which has been made by myself, referring to some official Python-terms' page https://docs.python.org/ja/3.13/library/functions.html.  
-15 hours required to proceed the project this week.  
+Approximately 15 hours required to proceed the project this week.  
 
 ## Unclear or problematic things  
 - Do you know the way to get specific CSV file (or TXT file) which has vocabulary (espacially related to programming terms, for example 'inf', 'class', and 'return')?  
