@@ -33,7 +33,13 @@ def read_file_as_list(filePath = None):
         return None
     
 def main():
-    """
+    """ Set dictionary and execute UI setting
+
+    Args:
+        Nothing
+        
+    Returns:
+        Nothing
     """
     dictionary = read_file_as_list(VOCABULARY_FILE_Path)
 

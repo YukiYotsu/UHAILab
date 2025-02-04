@@ -5,24 +5,51 @@ import re
 import collections
 
 class TrieNode:
-    """
+    """ Represents nodes of Trie
+
+    Each of nodes has 'children' and 'is_end_of_word'
+    Keyword Arguments:
+        children: storing children nodes
+        is_end_of_word: a flag which shows us if it is the end of word
     """
     def __init__(self):
-        """
+        """ A constructer of class TrieNode
+        
+        Args:
+            Nothing
+        
+        Returns:
+            Nothing
         """
         self.children = collections.defaultdict(TrieNode)
         self.is_end_of_word = False
 
 class Trie:
-    """
+    """ Represents data construction
+
+    Keyword Arguments:
+        root: a root node of Trie
     """
     def __init__(self):
-        """
+        """ Initialize a root node
+        
+        A constructer of class Trie
+        Args:
+            Nothing
+        
+        Returns:
+            Nothing
         """
         self.root = TrieNode()
     
     def insert(self, word):
-        """
+        """ Insert a word into Trie
+
+        Keyword Arguments:
+            word: a word to be inserted
+        
+        Returns:
+            Nothing
         """
         node = self.root
         for char in word:
@@ -30,7 +57,14 @@ class Trie:
         node.is_end_of_word = True
     
     def search(self, word):
-        """
+        """ Search a word and see whether the specific word exists or not
+
+        Keyword Arguments:
+            word: a word to be searched
+        
+        Returns:
+            node.is_end_of_word: bool type;
+                return 'True' if the word exists.
         """
         node = self.root
         for char in word:
@@ -40,7 +74,13 @@ class Trie:
         return node.is_end_of_word
 
 def damerau_levenshtein_distance(s1, s2):
-    """
+    """ Compute restricted Damerau Levenshtein distance
+
+    Keyword Arguments:
+        s1, s2: strings where the distance is computed
+    
+    Returns:
+        d: array which distances' data has put 
     """
     d = [[i+j if i * j == 0 else 0 for j in range(len(s2) + 1)] for i in range(len(s1) + 1)]
     
@@ -59,7 +99,14 @@ def damerau_levenshtein_distance(s1, s2):
     return d[len(s1)][len(s2)]
 
 def unrestricted_damerau_levenshtein_distance(s1, s2):
-    """
+    """ Compute unrestricted Damerau Levenshtein distance
+
+    This is treated as a true distance in general.
+    Keyword Arguments:
+        s1, s2: strings where the distance is computed
+    
+    Returns:
+        d: array which distances' data has put 
     """
     len_s1, len_s2 = len(s1), len(s2)
     INF = len_s1 + len_s2 # large number instead of infinity
@@ -102,7 +149,13 @@ def unrestricted_damerau_levenshtein_distance(s1, s2):
     return d[len_s1 + 1][len_s2 + 1]
 
 def compute_lps(pattern):
-    """
+    """ Calculate LPS (Longest proper Prefix Suffix)
+
+    Keyword Arguments:
+        pattern: specific strings which are tested to see whether they matches
+
+    Returns:
+        lps: array which represents a match between prefix and suffix
     """
     lps = [0] * len(pattern)
     length = 0
@@ -148,6 +201,7 @@ def get_closest_word(word, vocabulary):
     """ Return the closest word in str-form
 
     This function uses unlimited_damerau_levenshtein_distance.  
+
     Keyword Arguments:
         word:
         trie:
@@ -168,7 +222,14 @@ def get_closest_word(word, vocabulary):
     return closest_word
 
 def spell_check_code(code, dictionary):
-    """
+    """ Check the code is correctly spelled or not
+
+    Keyword Arguments:
+        code:
+        dictionary: vocaburaly (words) which checked target code refers to
+
+    Returns:
+        suggestions: suggestions for correrctly-spelled words after checked
     """
     identifiers = extract_identifiers(code)
     trie = Trie()
