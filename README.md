@@ -120,8 +120,6 @@ UHAILab/
 &emsp;&emsp;&emsp;┗━━━━ week6report.md 
 
 ## Trouble Shooting
-#### Where and What is the function named "connectiontest"?  
-It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".  
 #### What is 'Programming_vocabulary.csv'?  
 It is used as the sample vocabulary to compare target words with rightly-spelled words.  
 #### In the case where you want to use shell **mandatorily**.  
@@ -146,7 +144,9 @@ open -a Safari Instruction.html
 or  
 ```
 open -a "Google Chrome" Instruction.html
-```
+```  
+~~#### Where and What is the function named "connectiontest"?  
+It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".~~  
 
 ## Reference
 When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
