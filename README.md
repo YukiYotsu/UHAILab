@@ -131,6 +131,19 @@ But you might receieve error. If so, the cause should be 'The ```shell``` comman
 You can install poetry with *pip* to solve this error, you should not use pip though according to the course page.
 > Varoitus: pip
 Olet saattanut asentaa Pythonin tarvitsemia riippuvuuksia pip-komennolla. Älä käytä pipiä tällä kurssilla sillä jos teet niin, teet 99.9% todennäköisyydellä jotain väärin.  
+#### How to visit my Instruction Video  
+Use the command to move to an appropriate directory:  
+```  
+cd ./Documentation
+```  
+Then, use ```open``` command to open HTML file and visit instruction video page. The commands vary, depending of intended webbrowser.
+```
+open -a Safari Instruction.html
+```
+or  
+```
+open -a "Google Chrome" Instruction.html
+```
 
 ## Reference
 When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
