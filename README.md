@@ -13,7 +13,7 @@ poetry shell
 
 The command "shell" does not exist.
 ```  
-After cloning my repository on your machine, launch Poetry at the root directory of the installed project.
+After **cloning** my repository on your machine, **launch** Poetry at the root directory of the installed project.
 To implement this, you have to install Poetry in advance.
 Finish the initialization of the project by running the command:  
 ```
@@ -25,11 +25,11 @@ Installing the current project: poetry-testi (0.1.0)
 The current project could not be installed: [Errno 2] No such file or directory: '~/poetry-testi/README.md'
 If you do not want to install the current project use --no-root
 ```  
-This is because Poetry is also trying to install (some) existing projects here.  
-When you want to install only project dependencies, use this:  
+This is because Poetry is also trying to install (some) existing projects here. When you want to install only project dependencies, use this:  
 ```  
 poetry install --no-root
 ```  
+My application uses 'tkinter' library which help the project **generate GUI**. So execute the command below to use my project:  
 ```  
 brew install python-tk
 ```  
