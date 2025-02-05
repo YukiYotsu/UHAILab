@@ -51,7 +51,7 @@ Package operations: 3 installs, 0 updates, 0 removals
 Writing lock file
 ``` 
 This is finally completion of installing. How to use this? It is explained on [the page](https://customtkinter.tomschimansky.com/tutorial/).  
-### How to use 'tkinter' which is a GUI library for my project.  
+### How to use '*tkinter*' which is a GUI library for my project.  
 My application uses 'tkinter' library which help the project generate GUI. So execute the command below to use my project:  
 ```
 brew install python-tk
