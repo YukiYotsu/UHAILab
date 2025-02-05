@@ -127,6 +127,7 @@ You can install poetry with *pip* to solve this error, you should not use pip th
 > Varoitus: pip
 Olet saattanut asentaa Pythonin tarvitsemia riippuvuuksia pip-komennolla. Älä käytä pipiä tällä kurssilla sillä jos teet niin, teet 99.9% todennäköisyydellä jotain väärin.  
 #### How to use 'tkinter' which is a *former* GUI library for my project.  
+**NOTE! '*Tkinter*' used to generate UI**  
 My application used to import 'tkinter' library which help the project **generate GUI**. So execute the command below to use my project:
 ```
 brew install python-tk
