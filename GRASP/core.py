@@ -247,8 +247,8 @@ def spell_check_code(code, dictionary):
         dictionary: vocaburaly (words) which checked target code refers to
 
     Returns:
-        suggestions: suggestions for correrctly-spelled words after checked
-        unique_expressions: dict-type;
+        suggestions (dict) : suggestions for correrctly-spelled words after checked
+        unique_expressions (list) :
             this stores expressions regarded a unique word
     """
     identifiers = extract_identifiers(code)
