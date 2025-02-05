@@ -1,7 +1,7 @@
 # 👋 Moi!
 I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the University of Helsinki 🇫🇮 in 2025.
 
-*Last modified: 30.01.2025*
+*Last modified: 05.02.2025*
 
 ## List of used main technique   
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
@@ -100,6 +100,8 @@ UHAILab/
 &emsp;┣━━━━ ver1.Programming_vocabulary.csv  
 &emsp;┣━┳━━ GRASP/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
+&emsp;┃&emsp;┣━━━━ core.py  
+&emsp;┃&emsp;┣━━━━ ui.py  
 &emsp;┃&emsp;┗━━━━ ```__main__.py```  
 &emsp;┣━┳━━ Tests/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
@@ -117,8 +119,6 @@ UHAILab/
 &emsp;&emsp;&emsp;┗━━━━ week6report.md 
 
 ## Trouble Shooting
-#### Where and What is the function named "connectiontest"?  
-It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".  
 #### What is 'Programming_vocabulary.csv'?  
 It is used as the sample vocabulary to compare target words with rightly-spelled words.  
 #### In the case where you want to use shell **mandatorily**.  
@@ -131,6 +131,21 @@ But you might receieve error. If so, the cause should be 'The ```shell``` comman
 You can install poetry with *pip* to solve this error, you should not use pip though according to the course page.
 > Varoitus: pip
 Olet saattanut asentaa Pythonin tarvitsemia riippuvuuksia pip-komennolla. Älä käytä pipiä tällä kurssilla sillä jos teet niin, teet 99.9% todennäköisyydellä jotain väärin.  
+#### How to visit my Instruction Video  
+Use the command to move to an appropriate directory:  
+```  
+cd ./Documentation
+```  
+Then, use ```open``` command to open HTML file and visit instruction video page. The commands vary, depending of intended webbrowser.
+```
+open -a Safari Instruction.html
+```
+or  
+```
+open -a "Google Chrome" Instruction.html
+```  
+~~**Where and What is the function named "connectiontest"?**  
+It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".~~  
 
 ## Reference
 When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
