@@ -13,7 +13,7 @@ def spell_check_ui(dictionary):
     """
     root = customtkinter.CTk()
     root.title("GRASP")
-    root.geometry("600x600")
+    root.geometry("600x1000")
     customtkinter.set_appearance_mode("dark")
     customtkinter.set_default_color_theme("blue")
 
@@ -30,13 +30,26 @@ def spell_check_ui(dictionary):
 
     # area for candidates of correctly-spelled
     customtkinter.CTkLabel(root, text="🔍 Spelling Suggestions:", anchor="w").pack(pady=(10, 0))
-    result_label = customtkinter.CTkLabel(root, text="", justify="left", wraplength=500)
-    result_label.pack(pady=5)
+    result_frame = customtkinter.CTkFrame(root)
+    result_frame.pack(pady=5, padx=10, fill="both", expand=True)
+    result_box = customtkinter.CTkTextbox(result_frame, height = 100, width = 480, wrap  = "word", state = "disabled")
+    result_box.pack(side="left", fill="both", expand=True)
+
+    result_scrollbar = customtkinter.CTkScrollbar(result_frame, command=result_box.yview)
+    result_scrollbar.pack(side="right", fill="y")
+    result_box.configure(yscrollcommand=result_scrollbar.set)
 
     # area for unique expressions
     customtkinter.CTkLabel(root, text="🐧 Unique Expressions:", anchor="w").pack(pady=(10, 0))
-    unique_box = customtkinter.CTkTextbox(root, height=100, width=500, wrap="word", state="disabled")
-    unique_box.pack(pady=5, padx=10)
+    unique_frame = customtkinter.CTkFrame(root)
+    unique_frame.pack(pady=5, padx=10, fill="both", expand=True)
+
+    unique_box = customtkinter.CTkTextbox(unique_frame, height=100, width=480, wrap="word", state="disabled")
+    unique_box.pack(side="left", fill="both", expand=True)
+
+    unique_scrollbar = customtkinter.CTkScrollbar(unique_frame, command=unique_box.yview)
+    unique_scrollbar.pack(side="right", fill="y")
+    unique_box.configure(yscrollcommand=unique_scrollbar.set)
 
     root.mainloop()
 
@@ -56,7 +69,7 @@ def open_file(text_area):
             text_area.delete("1.0", customtkinter.END)
             text_area.insert(customtkinter.END, file.read())
 
-def check_spelling(text_area, result_label, unique_box, dictionary):
+def check_spelling(text_area, result_box, unique_box, dictionary):
     """ Do spell-check and Show the results
 
     Keyword Arguments:
@@ -66,11 +79,15 @@ def check_spelling(text_area, result_label, unique_box, dictionary):
         Nothing
     """
     code = text_area.get("1.0", customtkinter.END)
-    suggestions, unique_expressions = spell_check_code(code, dictionary)
+    clean_code = remove_comments_and_docstrings(code)
+    suggestions, unique_expressions = spell_check_code(clean_code, dictionary)
 
     # show misspelled candidates
     result_text = "\n".join(f"'{word}' → '{suggestion}'" for word, suggestion in suggestions.items())
-    result_label.configure(text=result_text if result_text else "✅ No spelling errors found.")
+    result_box.configure(state="normal")
+    result_box.delete("1.0", customtkinter.END)
+    result_box.insert(customtkinter.END, result_text if result_text else "✅ No spelling errors found.")
+    result_box.configure(state="disabled")
 
     # show unique expressions
     unique_text = "\n".join(f"'{word}'" for word in unique_expressions)
@@ -78,3 +95,11 @@ def check_spelling(text_area, result_label, unique_box, dictionary):
     unique_box.delete("1.0", customtkinter.END)
     unique_box.insert(customtkinter.END, unique_text if unique_text else "🚀 No unique expressions found.")
     unique_box.configure(state="disabled")
+
+def remove_comments_and_docstrings(code):
+    """ Remove docstring and comments from the given Python code
+    """
+    import re
+    code = re.sub(r'("""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\')', '', code)
+    code = re.sub(r'#.*', '', code)
+    return code
