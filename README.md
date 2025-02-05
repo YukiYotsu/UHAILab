@@ -19,7 +19,7 @@ Finish the initialization of the project by running the command:
 ```
 poetry install
 ```  
-When executing the command, you might be lead to the following notification:  
+When executing the command, you might be led to the following notification:  
 ```  
 Installing the current project: poetry-testi (0.1.0)
 The current project could not be installed: [Errno 2] No such file or directory: '~/poetry-testi/README.md'
