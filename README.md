@@ -122,6 +122,7 @@ UHAILab/
 ## Trouble Shooting
 #### What is 'Programming_vocabulary.csv'?  
 It is used as the sample vocabulary to compare target words with rightly-spelled words.  
+The ver.1 one is made by myself, referring to the official terms page of Python.  
 #### In the case where you want to use shell **mandatorily**.  
 I have not tried this, but just in case.  
 First, install plugin:  
