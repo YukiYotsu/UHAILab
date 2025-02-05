@@ -7,6 +7,7 @@ I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the Uni
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
 
 ## How to start my App  
+### How to do setting  
 The newer Poetry should be maintained by Homebrew. So you cannot use:
 ```
 poetry shell
@@ -29,7 +30,7 @@ This is because Poetry is also trying to install (some) existing projects here. 
 ```  
 poetry install --no-root
 ```  
-### How to install customtkinter in Poetry?
+### How to install *customtkinter* in Poetry?  
 My App uses 'CustomTkinter' library which is made based on UI-library 'Tkinter', which helps the project **generate UI**. So execute the command below to use my project (after moving to the root directory):
 `poetry add --dev customtkinter` 
 
