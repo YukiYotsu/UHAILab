@@ -1,6 +1,4 @@
 import customtkinter
-import tkinter as tk
-from tkinter import filedialog
 from GRASP.core import spell_check_code
 
 def spell_check_ui(dictionary):
