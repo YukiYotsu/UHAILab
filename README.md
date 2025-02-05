@@ -7,7 +7,6 @@ I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the Uni
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
 
 ## How to start my App  
----
 ### How to do setting  
 The newer Poetry should be maintained by Homebrew. So you cannot use:
 ```
@@ -58,6 +57,7 @@ This is finally completion of installing. How to use this? It is explained on [t
 poetry run python __main__.py
 ```  
 The new window (my project's App) appears.  
+---
 ### How to implement coverage
 To update (generate lock file):  
 ```  
@@ -118,7 +118,6 @@ UHAILab/
 ## Trouble Shooting
 #### What is 'Programming_vocabulary.csv'?  
 It is used as the sample vocabulary to compare target words with rightly-spelled words.  
----
 #### In the case where you want to use shell **mandatorily**.  
 I have not tried this, but just in case.  
 First, install plugin:  
@@ -129,7 +128,7 @@ But you might receieve error. If so, the cause should be 'The ```shell``` comman
 You can install poetry with *pip* to solve this error, you should not use pip though according to the course page.
 > Varoitus: pip
 Olet saattanut asentaa Pythonin tarvitsemia riippuvuuksia pip-komennolla. Älä käytä pipiä tällä kurssilla sillä jos teet niin, teet 99.9% todennäköisyydellä jotain väärin. 
---- 
+---
 #### How to use 'tkinter' which is a *former* GUI library for my project.  
 **NOTE! '*Tkinter*' used to generate UI**  
 My application used to import 'tkinter' library which help the project **generate GUI**. So execute the command below to use my project:
