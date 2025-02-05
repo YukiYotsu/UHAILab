@@ -17,7 +17,6 @@ UHAILab/
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┗━━━━ test_prime.py    
 &emsp;┗━┳━━ Documentation/  
-&emsp;&emsp;&emsp;┣━━━━ Instruction.html  
 &emsp;&emsp;&emsp;┣━━━━ implementation.md  
 &emsp;&emsp;&emsp;┣━━━━ specification.md  
 &emsp;&emsp;&emsp;┣━━━━ userguide.md  
