@@ -174,7 +174,14 @@ def compute_lps(pattern):
     return lps
 
 def kmp_search(pattern, text):
-    """
+    """ Search a string in given texts with KMP algorithm
+
+    Keyword Arguments:
+        pattern: specific strings which are tested to see whether they matches
+        text: strings (words) to search in
+    
+    Returns:
+        matches: certain position where pattern is found
     """
     lps = compute_lps(pattern)
     i, j = 0, 0
@@ -193,20 +200,27 @@ def kmp_search(pattern, text):
     return matches
 
 def extract_identifiers(code):
-    """
+    """ Extract specific expressions and return
+
+    Keyword Arguments:
+        code: specific expressions / phrases to search
+    
+    Returns:
+        phrases found in text, code, or sentence
     """
     return set(re.findall(r'\b[A-Za-z_][A-Za-z0-9_]*\b', code))
 
-def get_closest_word(word, vocabulary):
+def get_closest_word(word, vocabulary, threshold = 5):
     """ Return the closest word in str-form
 
     This function uses unlimited_damerau_levenshtein_distance.  
 
     Keyword Arguments:
-        word:
-        trie:
-        vocabulary:
-    
+        word: candidate word to check how / if the word matches
+        vocabulary: in other words, dictionary which has correctly-spelled words.
+        threshold: distance threshold, which makes the program not consider a word misspelled 
+                    if it exceeds the threshold
+        
     Returns:
         closest_word: the str-form closest word
     """
@@ -219,17 +233,23 @@ def get_closest_word(word, vocabulary):
             min_distance = distance
             closest_word = vocab_word
     
+    # Here, exclude a word which exceeds threshold.
+    if min_distance >= threshold:
+        return 'UNIQUE expression'
+    
     return closest_word
 
 def spell_check_code(code, dictionary):
     """ Check the code is correctly spelled or not
 
     Keyword Arguments:
-        code:
+        code: specific expressions / phrases to search
         dictionary: vocaburaly (words) which checked target code refers to
 
     Returns:
         suggestions: suggestions for correrctly-spelled words after checked
+        unique_expressions: dict-type;
+            this stores expressions regarded a unique word
     """
     identifiers = extract_identifiers(code)
     trie = Trie()
@@ -237,9 +257,14 @@ def spell_check_code(code, dictionary):
         trie.insert(word)
     
     suggestions = {}
+    unique_expressions = []
+
     for identifier in identifiers:
         if not trie.search(identifier):
             suggestion = get_closest_word(identifier, dictionary)
-            suggestions[identifier] = suggestion
+            if suggestion == 'UNIQUE expression':
+                unique_expressions.append(identifier)
+            else:
+                suggestions[identifier] = suggestion
     
-    return suggestions
+    return suggestions, unique_expressions
