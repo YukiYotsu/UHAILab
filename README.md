@@ -31,7 +31,7 @@ This is because Poetry is also trying to install (some) existing projects here. 
 poetry install --no-root
 ```  
 ### How to install *customtkinter* in Poetry?  
-My App uses 'CustomTkinter' library which is made based on UI-library 'Tkinter', which helps the project **generate UI**. So execute the command below to use my project (after moving to the root directory):
+My App uses 'CustomTkinter' library which is made based on UI-library 'Tkinter', which helps the project **generate UI**. So execute the command below to use my project (after moving to the root directory):  
 `poetry add --dev customtkinter` 
 
 And you will get the notification:
