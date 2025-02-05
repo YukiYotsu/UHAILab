@@ -29,33 +29,27 @@ This is because Poetry is also trying to install (some) existing projects here. 
 ```  
 poetry install --no-root
 ```  
-My application uses 'tkinter' library which help the project **generate GUI**. So execute the command below to use my project:  
-```  
-brew install python-tk
-```  
-You will get the answer like the following one:  
+### How to install customtkinter in Poetry?
+My App uses 'CustomTkinter' library which is made based on UI-library 'Tkinter', which helps the project **generate UI**. So execute the command below to use my project (after moving to the root directory):
+`poetry add --dev customtkinter` 
+
+And you will get the notification:
 ```
-==> Auto-updating Homebrew...
-Adjust how often this is run with HOMEBREW_AUTO_UPDATE_SECS or disable with
-HOMEBREW_NO_AUTO_UPDATE. Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
-==> Auto-updated Homebrew!
-Updated 2 taps (homebrew/core and homebrew/cask).
-==> New Formulae
-acme.sh                     sdl3
-.
-.
-.
-==> Downloading https://ghcr.io/v2/homebrew/core/tcl-t
-Already downloaded: /Users/takumi/Library/Caches/Homebrew/downloads/be646597f3d79273593a6a054e9ad1fcc722de45fe4be5464b2a5275f8b7303b--tcl-tk-9.0.1-1.bottle_manifest.json
-==> Pouring tcl-tk--9.0.1.arm64_sequoia.bottle.1.tar.g
-🍺  /opt/homebrew/Cellar/tcl-tk/9.0.1: 3,150 files, 38MB
-==> Installing python-tk@3.13
-==> Pouring python-tk@3.13--3.13.1.arm64_sequoia.bottl
-🍺  /opt/homebrew/Cellar/python-tk@3.13/3.13.1: 6 files, 160.5KB
-==> Running `brew cleanup python-tk@3.13`...
-Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
-Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
-```  
+Updating dependencies
+Resolving dependencies... (0.6s)
+
+Package operations: 3 installs, 0 updates, 0 removals
+
+  - Installing darkdetect (0.8.0)
+  - Installing packaging (24.2)
+  - Installing customtkinter (5.2.2)
+
+Writing lock file
+``` 
+This is finally completion of installing. How to use this? It is explained on [the page](https://customtkinter.tomschimansky.com/tutorial/).  
+
+~~My application uses 'tkinter' library which help the project generate GUI.~~  
+
 **Move** to the directory named 'GRASP' with ```cd ``` command and **Start** the application with the command:  
 ```  
 poetry run python __main__.py
@@ -131,18 +125,33 @@ But you might receieve error. If so, the cause should be 'The ```shell``` comman
 You can install poetry with *pip* to solve this error, you should not use pip though according to the course page.
 > Varoitus: pip
 Olet saattanut asentaa Pythonin tarvitsemia riippuvuuksia pip-komennolla. Älä käytä pipiä tällä kurssilla sillä jos teet niin, teet 99.9% todennäköisyydellä jotain väärin.  
-#### How to visit my Instruction Video  
-Use the command to move to an appropriate directory:  
-```  
-cd ./Documentation
-```  
-Then, use ```open``` command to open HTML file and visit instruction video page. The commands vary, depending of intended webbrowser.
+#### How to use 'tkinter' which is a former GUI library for my project.  
+My application used to import 'tkinter' library which help the project **generate GUI**. So execute the command below to use my project:
 ```
-open -a Safari Instruction.html
+brew install python-tk
 ```
-or  
+You will get the answer like the following one: 
 ```
-open -a "Google Chrome" Instruction.html
+==> Auto-updating Homebrew...
+Adjust how often this is run with HOMEBREW_AUTO_UPDATE_SECS or disable with
+HOMEBREW_NO_AUTO_UPDATE. Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+==> Auto-updated Homebrew!
+Updated 2 taps (homebrew/core and homebrew/cask).
+==> New Formulae
+acme.sh                     sdl3
+.
+.
+.
+==> Downloading https://ghcr.io/v2/homebrew/core/tcl-t
+Already downloaded: /Users/takumi/Library/Caches/Homebrew/downloads/be646597f3d79273593a6a054e9ad1fcc722de45fe4be5464b2a5275f8b7303b--tcl-tk-9.0.1-1.bottle_manifest.json
+==> Pouring tcl-tk--9.0.1.arm64_sequoia.bottle.1.tar.g
+🍺  /opt/homebrew/Cellar/tcl-tk/9.0.1: 3,150 files, 38MB
+==> Installing python-tk@3.13
+==> Pouring python-tk@3.13--3.13.1.arm64_sequoia.bottl
+🍺  /opt/homebrew/Cellar/python-tk@3.13/3.13.1: 6 files, 160.5KB
+==> Running `brew cleanup python-tk@3.13`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
 ```  
 ~~**Where and What is the function named "connectiontest"?**  
 It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".~~  
