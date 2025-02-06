@@ -20,4 +20,5 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.group.dev.dependencies]
 coverage = "^7.6.10"
 customtkinter = "^5.2.2"
+graphviz = "^0.20.3"
 
