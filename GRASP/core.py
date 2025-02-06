@@ -210,7 +210,7 @@ def extract_identifiers(code):
     """
     return set(re.findall(r'\b[A-Za-z_][A-Za-z0-9_]*\b', code))
 
-def get_closest_word(word, vocabulary, threshold = 5):
+def get_closest_word(word, vocabulary):
     """ Return the closest word in str-form
 
     This function uses unlimited_damerau_levenshtein_distance.  
@@ -218,23 +218,35 @@ def get_closest_word(word, vocabulary, threshold = 5):
     Keyword Arguments:
         word: candidate word to check how / if the word matches
         vocabulary: in other words, dictionary which has correctly-spelled words.
-        threshold: distance threshold, which makes the program not consider a word misspelled 
+        length_threshold: distance threshold, which makes the program not consider a word misspelled 
                     if it exceeds the threshold
         
     Returns:
         closest_word: the str-form closest word
     """
+    import jellyfish
+    if not vocabulary:
+        return None
+    
+    length_threshold = max(2, len(word) // 2)
+
     min_distance = float('inf')
     closest_word = None
     
-    for vocab_word in vocabulary:
-        distance = unrestricted_damerau_levenshtein_distance(word, vocab_word)
-        if distance < min_distance:
+    for dict_word in vocabulary:
+        distance = jellyfish.damerau_levenshtein_distance(word, dict_word)
+
+        adaptive_threshold = length_threshold
+
+        if any(char.isdigit() or not char.isalnum() for char in word):
+            adaptive_threshold += 1
+
+        if distance <= adaptive_threshold and distance < min_distance:
             min_distance = distance
-            closest_word = vocab_word
+            closest_word = dict_word
     
     # Here, exclude a word which exceeds threshold.
-    if min_distance >= threshold:
+    if min_distance >= length_threshold:
         return 'UNIQUE expression'
     
     return closest_word
