@@ -88,7 +88,7 @@ The new window (my project's App) appears.
 
 ---
 
-### Import graphviz and jellyfish  
+### Import *graphviz* and *jellyfish*  
 If you have not installed them, use the commands:  
 ```
 brew install graphviz
@@ -110,7 +110,7 @@ and jellyfish as well to find matched strings
 poetry add --dev jellyfish
 ```  
 
-### How to implement coverage
+### How to implement *coverage*
 To update (generate lock file):  
 ```  
 poetry add requests
