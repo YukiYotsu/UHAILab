@@ -175,7 +175,7 @@ def spell_check_ui(dictionary):
     open_button = customtkinter.CTkButton(button_frame, text="📂 Open File", command=lambda: open_file(text_area))
     open_button.grid(row=0, column=0, padx=5)
 
-    check_button = customtkinter.CTkButton(button_frame, text="✅ Check Spelling", command=lambda: check_spelling(text_area, result_box, unique_box, dictionary))
+    check_button = customtkinter.CTkButton(button_frame, text="✅ Check Spelling", command=lambda: append_tag(text_area, result_box, unique_box, dictionary))
     check_button.grid(row=0, column=1, padx=5)
 
     flowchart_button = customtkinter.CTkButton(button_frame, text="📊 Generate Flowchart", command=lambda: generate_flowchart(text_area))
@@ -208,8 +208,8 @@ def open_file(text_area):
             text_area.delete("1.0", customtkinter.END)
             text_area.insert(customtkinter.END, file.read())
 
-def check_spelling(text_area, result_box, unique_box, dictionary):
-    """ Do spell-check and Show the results
+def append_tag(text_area, result_box, unique_box, dictionary):
+    """ Do spell-check and Append tags
 
     Keyword Arguments:
         Nothing
