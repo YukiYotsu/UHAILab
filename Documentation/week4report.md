@@ -27,3 +27,4 @@ Approximately 30 hours required to proceed the project this week.
 - Do you know the way to get specific CSV file (or TXT file) which has vocabulary (espacially related to programming terms, for example 'inf', 'class', and 'return')?  
 
 ## Prospect -- what's next  
+I would like to improve my test's coverage rate. Test code is needed along my projects which core functions developed.  
