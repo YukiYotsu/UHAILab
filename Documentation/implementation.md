@@ -28,7 +28,7 @@ UHAILab/
 &emsp;&emsp;&emsp;┣━━━━ week5report.md  
 &emsp;&emsp;&emsp;┗━━━━ week6report.md   
 
-The application is a spell-checker that takes keyboard input and a file as input. Using Damerau-Levenshtein distance, the application judges how far different input words are from certain dictionary where correctly-spelled words are stored. Importantly, it considers keyboard adjacency, for example, the word 'apple' can be much more possibly misspelled 'applr' than 'applt' or 'applg', given that 'e' has 'w', 's', 'd', and 'r' as adjacent keys. When 
+The application is a spell-checker that takes keyboard input and a file as input. Using Damerau-Levenshtein distance, the application judges how far different input words are from certain dictionary where correctly-spelled words are stored. Importantly, it considers keyboard adjacency, for example, the word 'apple' can be much more possibly misspelled 'applr' than 'applt' or 'applg', given that 'e' has 'w', 's', 'd', and 'r' as adjacent keys. When searching a word, Trie tree has been applied to this application, which makes it easier to search things far faster, for instance, binary search tree.
 
 ## Improvements
 These are improvement for the future. I think these can be the theme to do experiment. 
@@ -47,7 +47,7 @@ def get_closest_word(word, vocabulary):
     return closest_word if min_distance < adaptive_threshold else "❓UNIQUE"
 ```  
 2. The influence of ```get_keyboard_distance``` should be tuned to more appropriate value. There're some ways: to multiply the application by a small factor, e.g. 0.1, to adjust for the impact of get_keyboard_distance and to relax the conditions for application based on the score of damerau_levenshtein_distance.  
-3. The new function to choose more frequently-used word
+3. The new function to choose more frequently-used word. This feature can be realized with appending word frequency data to dictionary ```.csv``` file. And given some other kinds of Trie data structure, there are other technique called `*bit slicing*` and `*Radix tree*`.  
 
 ## Use of LLMs
 I used LLMs for these following reasons.
