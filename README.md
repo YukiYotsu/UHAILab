@@ -6,7 +6,7 @@ I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the Uni
 ## List of used main technique   
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
 
-and https://www.wordfrequency.info/ as the dictionary file.  
+and https://www.wordfrequency.info/ as the dictionary file [5].  
 
 ## How to start my App  
 ### How to do setting  
