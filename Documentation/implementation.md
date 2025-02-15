@@ -1,7 +1,7 @@
 # The Implementation document
-Last modified: *15.02.2025*
+Last modified: *16.02.2025*
 
-## Directory structure  
+## Program structure  
 All the documents are stored in the same directory named "Documentation".  
 All the files should not be changed for stable implementing.
 
@@ -26,10 +26,36 @@ UHAILab/
 &emsp;&emsp;&emsp;┣━━━━ week3report.md  
 &emsp;&emsp;&emsp;┣━━━━ week4report.md  
 &emsp;&emsp;&emsp;┣━━━━ week5report.md  
-&emsp;&emsp;&emsp;┗━━━━ week6report.md 
+&emsp;&emsp;&emsp;┗━━━━ week6report.md   
+
+The application is a spell-checker that takes keyboard input and a file as input. Using Damerau-Levenshtein distance, the application judges how far different input words are from certain dictionary where correctly-spelled words are stored. Importantly, it considers keyboard adjacency, for example, the word 'apple' can be much more possibly misspelled 'applr' than 'applt' or 'applg', given that 'e' has 'w', 's', 'd', and 'r' as adjacent keys. When 
+
+## Improvements
+These are improvement for the future. I think these can be the theme to do experiment. 
+1. The value of *adaptive_threshold* is defined by my sense for this time. 
+```
+def get_closest_word(word, vocabulary):
+    .
+    .
+    .
+        adaptive_threshold = max(3, len(word) // 2 + 1)
+
+        if distance < min_distance:
+            min_distance = distance
+            closest_word = dict_word
+    
+    return closest_word if min_distance < adaptive_threshold else "❓UNIQUE"
+```  
+2. The influence of ```get_keyboard_distance``` should be tuned to more appropriate value. There're some ways: to multiply the application by a small factor, e.g. 0.1, to adjust for the impact of get_keyboard_distance and to relax the conditions for application based on the score of damerau_levenshtein_distance.  
+3. The new function to choose more frequently-used word
 
 ## Use of LLMs
 I used LLMs for these following reasons.
 - To check my mistakes in English grammar and to improve it.  
 - To find reliable reference to reinforce my opinion and explanation in specification documents.  
 - To translate the results and outputs which are responded by terminal into Japanese.  
+
+## References
+[1] https://github.com/sari-bee/tieteellinen_laskin?tab=readme-ov-file  
+[2] https://python-poetry.org/docs/cli/#script-project  
+[3] https://www.wordfrequency.info/  
