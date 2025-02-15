@@ -21,6 +21,7 @@ The coverage rate on core functions got higher, which was quite good news for me
 
 ## Unclear or problematic things  
 - Do I have to change (re-write) my specification document because the core functions of my projects have been changed?  
+- Haven't demo sessions started yet, right? I would like to be sure that.  
 
 ## Prospect -- what's next  
 I would like to improve my test's coverage rate to 80% on average and finish to write some documents properly. And some functions have missed docstring. I think docstring is needed for people who check my code.  
