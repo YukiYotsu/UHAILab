@@ -96,3 +96,13 @@ def append_tag(text_area, result_box, dictionary):
     result_box.delete("1.0", customtkinter.END)
     result_box.insert(customtkinter.END, result_text if result_text else "✅ No spelling errors found.")
     result_box.configure(state="disabled")
+
+def get_user_input():
+    """ Check user input
+    """
+    return input()
+
+def display_output(output):
+    """ Check UI's output
+    """
+    print(output)

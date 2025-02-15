@@ -90,23 +90,12 @@ The new window (my project's App) appears.
 
 ---
 
-### Import *graphviz* and *jellyfish*  
-If you have not installed them, use the commands:  
-```
-brew install graphviz
-```
-and 
+### Import *jellyfish*  
+If you have not installed it, use the commands:  
 ```
 brew install jellyfish
 ```
-After that, in Poetry environment,
-```  
-poetry add --dev graphviz
-```  
-if something go wrong, refer to my Issue page.  
-https://github.com/YukiYotsu/UHAILab/issues/6#issuecomment-2638284882  
-
-and jellyfish as well to find matched strings  
+After that, in Poetry environment, 
 > jellyfish is a library for approximate & phonetic matching of strings.  
 ```
 poetry add --dev jellyfish
