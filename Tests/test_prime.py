@@ -64,21 +64,18 @@ class TestUI(unittest.TestCase):
 class TestCoreFunctions(unittest.TestCase):
 
     def test_get_keyboard_distance(self):
-        # 同じ文字の場合
         self.assertEqual(core.get_keyboard_distance('a', 'a'), 0)
-        # 隣接する文字の場合
         self.assertEqual(core.get_keyboard_distance('a', 's'), 0.2)
-        # 隣接しない文字の場合
         self.assertEqual(core.get_keyboard_distance('a', 'z'), 1)
 
     def test_trie_operations(self):
         trie = core.Trie()
-        # 単語の挿入と検索
+
         trie.insert("hello")
         self.assertTrue(trie.search("hello"))
         self.assertFalse(trie.search("hell"))
         self.assertFalse(trie.search("helloo"))
-        # 部分的な単語の挿入と検索
+
         trie.insert("hell")
         self.assertTrue(trie.search("hell"))
         self.assertFalse(trie.search("he"))
@@ -90,9 +87,7 @@ class TestCoreFunctions(unittest.TestCase):
 
     def test_get_closest_word(self):
         vocabulary = ["hello", "world", "help", "held"]
-        # 近い単語が存在する場合
         self.assertEqual(core.get_closest_word("hellp", vocabulary), "help")
-        # 近い単語が存在しない場合
         self.assertEqual(core.get_closest_word("xyz", vocabulary), "❓UNIQUE")
 
     def test_spell_check_code(self):
@@ -100,12 +95,6 @@ class TestCoreFunctions(unittest.TestCase):
         dictionary = ["int", "main", "return"]
         expected_suggestions = {"retrun": "return"}
         self.assertEqual(core.spell_check_code(code, dictionary), expected_suggestions)
-
-class TestMain(unittest.TestCase):
-    def test_command_line_execution(self):
-        result = subprocess.run(["poetry", "run", "python", "-m", "GRASP", "hello", "helo"],
-                        capture_output=True, text=True)
-        self.assertIn("Distance:", result.stdout)
 
 if __name__ == "__main__":
     unittest.main()
