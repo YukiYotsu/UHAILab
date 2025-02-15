@@ -30,6 +30,30 @@ UHAILab/
 
 The application is a spell-checker that takes keyboard input and a file as input. Using Damerau-Levenshtein distance, the application judges how far different input words are from certain dictionary where correctly-spelled words are stored. Importantly, it considers keyboard adjacency, for example, the word 'apple' can be much more possibly misspelled 'applr' than 'applt' or 'applg', given that 'e' has 'w', 's', 'd', and 'r' as adjacent keys. When searching a word, Trie tree has been applied to this application, which makes it easier to search things far faster, for instance, binary search tree. You scarcely remove words from dictionary, so I have not implemented removing function from data structure.  
 
+## The time and space complexities achieved
+### spell_check_code
+```spell_check_code```'s pseudocode:  
+```
+function spell_check_code(code, dictionary):
+    identifiers = extract_identifiers(code) O(N)
+    initialize Trie
+    insert all dictionary words into Trie O(W*L)
+    initialize suggestions dictionary
+    for each identifier:
+        if identifier is not in Trie:
+            compute closest word O(N * L * M)
+            add suggestion to dictionary
+    return suggestions
+```  
+Time Complexity: O(W*L + N + N * L * M), where W is the number of words in the dictionary, L is the average length of words, N is the number of identifiers in the code, and M is the average word length in vocabulary.  
+Space Complexity: O(W*L) for Trie + O(N) for identifiers.  
+### unrestricted_damerau_levenshtein_distance
+Time Complexity: O(M*N), where M and N are the lengths of the input strings.  
+Space Complexity: O(M*N) for the 2D matrix.  
+### get_closest_word
+Time Complexity: O(N * L * M), where: N is the vocabulary size, L is the length of word, M is the average length of words in the vocabulary.  
+Space Complexity: O(1) (stores only a few variables).  
+
 ## Improvements
 These are improvement for the future. I think these can be the theme to do experiment. 
 1. The value of *adaptive_threshold* is defined by my sense for this time. 
