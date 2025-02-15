@@ -1,8 +1,34 @@
-import subprocess
 import os
 from pathlib import Path
 import re
 import collections
+
+# this stores which are adjacent keys on a keyboard
+KEYBOARD_ADJACENCY = {
+    'q': {'w', 'a'}, 'w': {'q', 'e', 's'}, 'e': {'w', 'r', 'd'}, 'r': {'e', 't', 'f'}, 't': {'r', 'y', 'g'},
+    'y': {'t', 'u', 'h'}, 'u': {'y', 'i', 'j'}, 'i': {'u', 'o', 'k'}, 'o': {'i', 'p', 'l'}, 'p': {'o', ';'},
+    'a': {'q', 's', 'z'}, 's': {'a', 'w', 'd', 'x'}, 'd': {'s', 'e', 'f', 'c'}, 'f': {'d', 'r', 'g', 'v'},
+    'g': {'f', 't', 'h', 'b'}, 'h': {'g', 'y', 'j', 'n'}, 'j': {'h', 'u', 'k', 'm'}, 'k': {'j', 'i', 'l'},
+    'l': {'k', 'o', ';'}, 'z': {'a', 'x'}, 'x': {'z', 's', 'c'}, 'c': {'x', 'd', 'v'}, 'v': {'c', 'f', 'b'},
+    'b': {'v', 'g', 'n'}, 'n': {'b', 'h', 'm'}, 'm': {'n', 'j'},
+}
+
+def get_keyboard_distance(char1, char2):
+    """ Returns the cost, given the keys' adhacency.
+
+    Keyword Arguments:
+        char1, char2: these are a character to check if they are adjacent
+
+    Returns:
+        0: those characters are the same.
+        0.2: those characters are not the same but adjacent.
+        1: those characters are not adjacent and different.
+    """
+    if char1 == char2:
+        return 0
+    elif char1 in KEYBOARD_ADJACENCY and char2 in KEYBOARD_ADJACENCY[char1]:
+        return 0.2
+    return 1
 
 class TrieNode:
     """ Represents nodes of Trie
@@ -10,9 +36,10 @@ class TrieNode:
     Each of nodes has 'children' and 'is_end_of_word'
     Keyword Arguments:
         children: storing children nodes
+        char: a character to be stored in each
         is_end_of_word: a flag which shows us if it is the end of word
     """
-    def __init__(self):
+    def __init__(self, char=None):
         """ A constructer of class TrieNode
         
         Args:
@@ -21,6 +48,7 @@ class TrieNode:
         Returns:
             Nothing
         """
+        self.char = char
         self.children = collections.defaultdict(TrieNode)
         self.is_end_of_word = False
 
@@ -53,6 +81,9 @@ class Trie:
         """
         node = self.root
         for char in word:
+            # create a new node for the character if it doesn't exist
+            if char not in node.children:
+                node.children[char] = TrieNode(char)
             node = node.children[char]
         node.is_end_of_word = True
     
@@ -132,7 +163,7 @@ def unrestricted_damerau_levenshtein_distance(s1, s2):
             d[i + 1][j + 1] = min(
                 d[i][j + 1] + 1,  # deletion/削除
                 d[i + 1][j] + 1,  # insertion/挿入
-                d[i][j] + cost    # substitution/置換
+                d[i][j] + cost   # substitution/置換
             )
             # transportation/転置
             last_matching_row = last_row.get(s2[j - 1], 0)
@@ -224,32 +255,28 @@ def get_closest_word(word, vocabulary):
     Returns:
         closest_word: the str-form closest word
     """
-    import jellyfish
     if not vocabulary:
         return None
     
     length_threshold = max(2, len(word) // 2)
-
     min_distance = float('inf')
     closest_word = None
     
     for dict_word in vocabulary:
-        distance = jellyfish.damerau_levenshtein_distance(word, dict_word)
+        distance = unrestricted_damerau_levenshtein_distance(word, dict_word)
 
-        adaptive_threshold = length_threshold
+        for i in range(min(len(word), len(dict_word))):
+            if word[i] != dict_word[i]:
+                distance += get_keyboard_distance(word[i], dict_word[i])
 
-        if any(char.isdigit() or not char.isalnum() for char in word):
-            adaptive_threshold += 1
-
+        adaptive_threshold = length_threshold + (1 if any(not char.isalnum() for char in word) else 0)
+        
         if distance <= adaptive_threshold and distance < min_distance:
             min_distance = distance
             closest_word = dict_word
     
-    # Here, exclude a word which exceeds threshold.
-    if min_distance >= length_threshold:
-        return 'UNIQUE expression'
-    
-    return closest_word
+    return closest_word if min_distance < length_threshold else "❓UNIQUE"
+
 
 def spell_check_code(code, dictionary):
     """ Check the code is correctly spelled or not
@@ -260,8 +287,6 @@ def spell_check_code(code, dictionary):
 
     Returns:
         suggestions (dict) : suggestions for correrctly-spelled words after checked
-        unique_expressions (list) :
-            this stores expressions regarded a unique word
     """
     identifiers = extract_identifiers(code)
     trie = Trie()
@@ -269,14 +294,9 @@ def spell_check_code(code, dictionary):
         trie.insert(word)
     
     suggestions = {}
-    unique_expressions = []
-
     for identifier in identifiers:
         if not trie.search(identifier):
             suggestion = get_closest_word(identifier, dictionary)
-            if suggestion == 'UNIQUE expression':
-                unique_expressions.append(identifier)
-            else:
-                suggestions[identifier] = suggestion
+            suggestions[identifier] = suggestion
     
-    return suggestions, unique_expressions
+    return suggestions
