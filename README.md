@@ -6,6 +6,8 @@ I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the Uni
 ## List of used main technique   
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
 
+and https://www.wordfrequency.info/ as the dictionary file.  
+
 ## How to start my App  
 ### How to do setting  
 The newer Poetry should be maintained by Homebrew. So you cannot use:
@@ -187,7 +189,11 @@ It is used only for confirming the stable connection between files placed at som
 ## Reference
 When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
 And I think of the structure of this project, I refer to sari-bee's repository[3] which seems to have been made in the same course.  
+I have changed the vocabulary file into *Word frequency Top 5000*'s file to check if words are correctly-spelled. You can get access with the link [5].    
+
 [1] https://qiita.com/shun198/items/c983c713452c041ef787  
 [2] https://github.com/shun198  
 [3] https://github.com/sari-bee/tieteellinen_laskin?tab=readme-ov-file  
 [4] https://python-poetry.org/docs/cli/#script-project  
+[5] https://www.wordfrequency.info/  
+
