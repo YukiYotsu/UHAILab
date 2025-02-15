@@ -14,6 +14,7 @@ test_prime.py                                                 74      1    99%
 ------------------------------------------------------------------------------
 TOTAL                                                        258     83    68%
 
+The coverage rate on core functions got higher, which was quite good news for me, on the other hand, it was **difficult** to implement test on UI. I think this is because inputs and outputs are not representational and difficult to extract them and see on the test code.  
 
 ## Unclear or problematic things  
 - Do I have to change (re-write) my specification document because the core functions of my projects have been changed?  
