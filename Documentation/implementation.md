@@ -48,7 +48,7 @@ function spell_check_code(code, dictionary):
 Time Complexity: O(W✖️L + N + N ✖️ L ✖️ M), where W is the number of words in the dictionary, L is the average length of words, N is the number of identifiers in the code, and M is the average word length in vocabulary.  
 Space Complexity: O(W✖️L) for Trie + O(N) for identifiers.  
 ### unrestricted_damerau_levenshtein_distance
-Referring to the ideas of Lowrance and Wagner, although the straightforward implementation of this idea gives an algorithm of cubic complexity, explicitly incorporating the ‘exchange of adjacent characters’ into the Damelau-Levenstein distance yields the following computational quantities.  
+Referring to the ideas of Lowrance and Wagner [4], although the straightforward implementation of this idea gives an algorithm of cubic complexity, explicitly incorporating the ‘exchange of adjacent characters’ into the Damelau-Levenstein distance yields the following computational quantities.  
 Time Complexity: O(M✖️N), where M and N are the lengths of the input strings.  
 Space Complexity: O(M✖️N)  
 
