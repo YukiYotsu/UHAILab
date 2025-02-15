@@ -146,7 +146,7 @@ All the files should not be changed for stable implementing.
 
 UHAILab/  
 &emsp;┣━━━━ README.md (this file)  
-&emsp;┣━━━━ ver1.Programming_vocabulary.csv  
+&emsp;┣━━━━ ver2_vocabulary.csv  
 &emsp;┣━┳━━ GRASP/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┣━━━━ core.py  
