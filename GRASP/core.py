@@ -5,12 +5,12 @@ import collections
 
 # this stores which are adjacent keys on a keyboard
 KEYBOARD_ADJACENCY = {
-    'q': {'w', 'a'}, 'w': {'q', 'e', 's'}, 'e': {'w', 'r', 'd'}, 'r': {'e', 't', 'f'}, 't': {'r', 'y', 'g'},
-    'y': {'t', 'u', 'h'}, 'u': {'y', 'i', 'j'}, 'i': {'u', 'o', 'k'}, 'o': {'i', 'p', 'l'}, 'p': {'o', ';'},
-    'a': {'q', 's', 'z'}, 's': {'a', 'w', 'd', 'x'}, 'd': {'s', 'e', 'f', 'c'}, 'f': {'d', 'r', 'g', 'v'},
-    'g': {'f', 't', 'h', 'b'}, 'h': {'g', 'y', 'j', 'n'}, 'j': {'h', 'u', 'k', 'm'}, 'k': {'j', 'i', 'l'},
+    'q': {'w', 'a'}, 'w': {'q', 'e', 's', 'a'}, 'e': {'w', 'r', 'd', 's'}, 'r': {'e', 't', 'f', 'd'}, 't': {'r', 'y', 'g', 'f'},
+    'y': {'t', 'u', 'h', 'g'}, 'u': {'y', 'i', 'j', 'h'}, 'i': {'u', 'o', 'k', 'j'}, 'o': {'i', 'p', 'l', 'k'}, 'p': {'o', 'l'},
+    'a': {'q', 's', 'z'}, 's': {'a', 'w', 'd', 'x', 'e', 'z'}, 'd': {'s', 'e', 'f', 'c','r','x'}, 'f': {'d', 'r', 'g', 'v', 't', 'c'},
+    'g': {'f', 't', 'h', 'b', 'v', 'y'}, 'h': {'g', 'y', 'j', 'n', 'b', 'u'}, 'j': {'h', 'u', 'k', 'm', 'i', 'n'}, 'k': {'j', 'i', 'l','o','m'},
     'l': {'k', 'o', ';'}, 'z': {'a', 'x'}, 'x': {'z', 's', 'c'}, 'c': {'x', 'd', 'v'}, 'v': {'c', 'f', 'b'},
-    'b': {'v', 'g', 'n'}, 'n': {'b', 'h', 'm'}, 'm': {'n', 'j'},
+    'b': {'v', 'g', 'n','h'}, 'n': {'b', 'h', 'm', 'j'}, 'm': {'n', 'j', 'k'},
 }
 
 def get_keyboard_distance(char1, char2):
@@ -179,57 +179,6 @@ def unrestricted_damerau_levenshtein_distance(s1, s2):
     
     return d[len_s1 + 1][len_s2 + 1]
 
-def compute_lps(pattern):
-    """ Calculate LPS (Longest proper Prefix Suffix)
-
-    Keyword Arguments:
-        pattern: specific strings which are tested to see whether they matches
-
-    Returns:
-        lps: array which represents a match between prefix and suffix
-    """
-    lps = [0] * len(pattern)
-    length = 0
-    i = 1
-    while i < len(pattern):
-        if pattern[i] == pattern[length]:
-            length += 1
-            lps[i] = length
-            i += 1
-        else:
-            if length != 0:
-                length = lps[length -1]
-            else:
-                lps[i] = 0
-                i += 1
-    return lps
-
-def kmp_search(pattern, text):
-    """ Search a string in given texts with KMP algorithm
-
-    Keyword Arguments:
-        pattern: specific strings which are tested to see whether they matches
-        text: strings (words) to search in
-    
-    Returns:
-        matches: certain position where pattern is found
-    """
-    lps = compute_lps(pattern)
-    i, j = 0, 0
-    matches = []
-    
-    while i < len(text):
-        if pattern[j] == text[i]:
-            i += 1
-            j += 1
-        if j == len(pattern):
-            matches.append(i - j)
-            j = lps[j - 1]
-        elif i < len(text) and pattern[j] != text[i]:
-            j = lps[j - 1] if j != 0 else 0
-            i += 1 if j == 0 else 0
-    return matches
-
 def extract_identifiers(code):
     """ Extract specific expressions and return
 
@@ -258,7 +207,6 @@ def get_closest_word(word, vocabulary):
     if not vocabulary:
         return None
     
-    length_threshold = max(2, len(word) // 2)
     min_distance = float('inf')
     closest_word = None
     
@@ -268,14 +216,15 @@ def get_closest_word(word, vocabulary):
         for i in range(min(len(word), len(dict_word))):
             if word[i] != dict_word[i]:
                 distance += get_keyboard_distance(word[i], dict_word[i])
-
-        adaptive_threshold = length_threshold + (1 if any(not char.isalnum() for char in word) else 0)
         
-        if distance <= adaptive_threshold and distance < min_distance:
+        adaptive_threshold = max(3, len(word) // 2 + 1)
+
+        if distance < min_distance:
             min_distance = distance
             closest_word = dict_word
     
-    return closest_word if min_distance < length_threshold else "❓UNIQUE"
+    return closest_word if min_distance < adaptive_threshold else "❓UNIQUE"
+
 
 
 def spell_check_code(code, dictionary):
