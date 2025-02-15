@@ -2,6 +2,7 @@ import os
 from pathlib import Path
 import re
 import collections
+import time
 
 # this stores which are adjacent keys on a keyboard
 KEYBOARD_ADJACENCY = {
@@ -234,7 +235,14 @@ def spell_check_code(code, dictionary):
 
     Returns:
         suggestions (dict) : suggestions for correrctly-spelled words after checked
+    
+    Features for Devs:
+        In this method, return the executing time and the number of characters 
+        to grasp this application performance.
     """
+    start_time = time.time() # to get working time
+    char_count = len(code) # to get the number of character
+
     identifiers = extract_identifiers(code)
     trie = Trie()
     for word in dictionary:
@@ -246,4 +254,9 @@ def spell_check_code(code, dictionary):
             suggestion = get_closest_word(identifier, dictionary)
             suggestions[identifier] = suggestion
     
+    execution_time = time.time() - start_time
+    print("⏳Execution time is:")
+    print(execution_time)
+    print("📝The number of character: ")
+    print(char_count)
     return suggestions
