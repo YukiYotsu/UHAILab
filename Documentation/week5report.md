@@ -21,6 +21,7 @@ The coverage rate on core functions got higher, which was quite good news for me
 
 ## Unclear or problematic things  
 - Do I have to change (re-write) my specification document because the core functions of my projects have been changed?  
+- When it comes to make testing document, am I applicable to make the presentation of the empirical testing result of the program function in a graphical form? This is because what I will be able to do for this is making the chart of the coverage rate along days.  
 - Haven't demo sessions started yet, right? I would like to be sure that.  
 
 ## Prospect -- what's next  
