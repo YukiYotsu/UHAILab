@@ -1,12 +1,13 @@
 # 👋 Moi!
 I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the University of Helsinki 🇫🇮 in 2025.
 
-*Last modified: 05.02.2025*
+*Last modified: 06.02.2025*
 
 ## List of used main technique   
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
 
 ## How to start my App  
+### How to do setting  
 The newer Poetry should be maintained by Homebrew. So you cannot use:
 ```
 poetry shell
@@ -29,11 +30,33 @@ This is because Poetry is also trying to install (some) existing projects here. 
 ```  
 poetry install --no-root
 ```  
-My application uses 'tkinter' library which help the project **generate GUI**. So execute the command below to use my project:  
-```  
+
+---
+
+### How to install *customtkinter* in Poetry?  
+My App uses 'CustomTkinter' library which is made based on UI-library 'Tkinter', which helps the project **generate UI**. So execute the command below to use my project (after moving to the root directory):  
+`poetry add --dev customtkinter` 
+
+And you will get the notification:
+```
+Updating dependencies
+Resolving dependencies... (0.6s)
+
+Package operations: 3 installs, 0 updates, 0 removals
+
+  - Installing darkdetect (0.8.0)
+  - Installing packaging (24.2)
+  - Installing customtkinter (5.2.2)
+
+Writing lock file
+``` 
+This is finally completion of installing. How to use this? It is explained on [the page](https://customtkinter.tomschimansky.com/tutorial/).  
+### How to use '*tkinter*' which is a GUI library for my project.  
+My application uses 'tkinter' library which help the project generate GUI. So execute the command below to use my project:  
+```
 brew install python-tk
-```  
-You will get the answer like the following one:  
+```
+You will get the answer like the following one: 
 ```
 ==> Auto-updating Homebrew...
 Adjust how often this is run with HOMEBREW_AUTO_UPDATE_SECS or disable with
@@ -56,12 +79,38 @@ Already downloaded: /Users/takumi/Library/Caches/Homebrew/downloads/be646597f3d7
 Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
 Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
 ```  
+
 **Move** to the directory named 'GRASP' with ```cd ``` command and **Start** the application with the command:  
 ```  
 poetry run python __main__.py
 ```  
 The new window (my project's App) appears.  
-### How to implement coverage
+
+---
+
+### Import *graphviz* and *jellyfish*  
+If you have not installed them, use the commands:  
+```
+brew install graphviz
+```
+and 
+```
+brew install jellyfish
+```
+After that, in Poetry environment,
+```  
+poetry add --dev graphviz
+```  
+if something go wrong, refer to my Issue page.  
+https://github.com/YukiYotsu/UHAILab/issues/6#issuecomment-2638284882  
+
+and jellyfish as well to find matched strings  
+> jellyfish is a library for approximate & phonetic matching of strings.  
+```
+poetry add --dev jellyfish
+```  
+
+### How to implement *coverage*
 To update (generate lock file):  
 ```  
 poetry add requests
@@ -121,6 +170,7 @@ UHAILab/
 ## Trouble Shooting
 #### What is 'Programming_vocabulary.csv'?  
 It is used as the sample vocabulary to compare target words with rightly-spelled words.  
+The ver.1 one is made by myself, referring to the official terms page of Python.  
 #### In the case where you want to use shell **mandatorily**.  
 I have not tried this, but just in case.  
 First, install plugin:  
@@ -131,19 +181,7 @@ But you might receieve error. If so, the cause should be 'The ```shell``` comman
 You can install poetry with *pip* to solve this error, you should not use pip though according to the course page.
 > Varoitus: pip
 Olet saattanut asentaa Pythonin tarvitsemia riippuvuuksia pip-komennolla. Älä käytä pipiä tällä kurssilla sillä jos teet niin, teet 99.9% todennäköisyydellä jotain väärin.  
-#### How to visit my Instruction Video  
-Use the command to move to an appropriate directory:  
-```  
-cd ./Documentation
-```  
-Then, use ```open``` command to open HTML file and visit instruction video page. The commands vary, depending of intended webbrowser.
-```
-open -a Safari Instruction.html
-```
-or  
-```
-open -a "Google Chrome" Instruction.html
-```  
+
 ~~**Where and What is the function named "connectiontest"?**  
 It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".~~  
 
