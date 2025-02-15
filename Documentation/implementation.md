@@ -48,8 +48,10 @@ function spell_check_code(code, dictionary):
 Time Complexity: O(W✖️L + N + N ✖️ L ✖️ M), where W is the number of words in the dictionary, L is the average length of words, N is the number of identifiers in the code, and M is the average word length in vocabulary.  
 Space Complexity: O(W✖️L) for Trie + O(N) for identifiers.  
 ### unrestricted_damerau_levenshtein_distance
+Referring to the ideas of Lowrance and Wagner, although the straightforward implementation of this idea gives an algorithm of cubic complexity, explicitly incorporating the ‘exchange of adjacent characters’ into the Damelau-Levenstein distance yields the following computational quantities.  
 Time Complexity: O(M✖️N), where M and N are the lengths of the input strings.  
-Space Complexity: O(M✖️N)
+Space Complexity: O(M✖️N)  
+
 ### get_closest_word
 Time Complexity: O(N ✖️ L ✖️ M), where: N is the vocabulary size, L is the length of word, M is the average length of words in the vocabulary.  
 Space Complexity: O(1) (stores only a few variables).  
@@ -71,7 +73,7 @@ def get_closest_word(word, vocabulary):
     return closest_word if min_distance < adaptive_threshold else "❓UNIQUE"
 ```  
 2. The influence of ```get_keyboard_distance``` should be tuned to more appropriate value. There're some ways: to multiply the application by a small factor, e.g. 0.1, to adjust for the impact of get_keyboard_distance and to relax the conditions for application based on the score of damerau_levenshtein_distance.  
-3. The new function to choose more frequently-used word. This feature can be realized with appending word frequency data to dictionary ```.csv``` file. And given some other kinds of Trie data structure, there are other technique called `*bit slicing*` and `*Radix tree*`.  
+3. The new function to choose more frequently-used word. This feature can be realized with appending word frequency data to dictionary ```.csv``` file. And given some other kinds of Trie data structure, there are other technique called `bit slicing` and `Radix tree`.  
 
 ## Use of LLMs
 I used LLMs for these following reasons.
@@ -83,3 +85,4 @@ I used LLMs for these following reasons.
 [1] https://github.com/sari-bee/tieteellinen_laskin?tab=readme-ov-file  
 [2] https://python-poetry.org/docs/cli/#script-project  
 [3] https://www.wordfrequency.info/  
+[4] https://dl.acm.org/doi/10.1145/321879.321880  
