@@ -45,13 +45,13 @@ function spell_check_code(code, dictionary):
             add suggestion to dictionary
     return suggestions
 ```  
-Time Complexity: O(W*L + N + N * L * M), where W is the number of words in the dictionary, L is the average length of words, N is the number of identifiers in the code, and M is the average word length in vocabulary.  
-Space Complexity: O(W*L) for Trie + O(N) for identifiers.  
+Time Complexity: O(W✖️L + N + N ✖️ L ✖️ M), where W is the number of words in the dictionary, L is the average length of words, N is the number of identifiers in the code, and M is the average word length in vocabulary.  
+Space Complexity: O(W✖️L) for Trie + O(N) for identifiers.  
 ### unrestricted_damerau_levenshtein_distance
-Time Complexity: O(M*N), where M and N are the lengths of the input strings.  
-Space Complexity: O(M*N) for the 2D matrix.  
+Time Complexity: O(M✖️N), where M and N are the lengths of the input strings.  
+Space Complexity: O(M✖️N)
 ### get_closest_word
-Time Complexity: O(N * L * M), where: N is the vocabulary size, L is the length of word, M is the average length of words in the vocabulary.  
+Time Complexity: O(N ✖️ L ✖️ M), where: N is the vocabulary size, L is the length of word, M is the average length of words in the vocabulary.  
 Space Complexity: O(1) (stores only a few variables).  
 
 ## Improvements
