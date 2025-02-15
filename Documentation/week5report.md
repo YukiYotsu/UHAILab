@@ -19,4 +19,4 @@ TOTAL                                                        258     83    68%
 - Do I have to change (re-write) my specification document because the core functions of my projects have been changed?  
 
 ## Prospect -- what's next  
-I would like to improve my test's coverage rate to 80% on average and finish to write some documents properly. 
+I would like to improve my test's coverage rate to 80% on average and finish to write some documents properly. And some functions have missed docstring. I think docstring is needed for people who check my code.  
