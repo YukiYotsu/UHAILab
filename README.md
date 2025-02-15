@@ -120,15 +120,15 @@ poetry run coverage report
 ```  
 For example;  
 ```  
-takumi@takuminoMacBook-Pro Tests % poetry run coverage
- report
+takumi@takuminoMacBook-Pro tests % poetry run coverage report
 Name                                                       Stmts   Miss  Cover
 ------------------------------------------------------------------------------
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/__init__.py       0      0   100%
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         110     67    39%
-test_prime.py                                                 24      0   100%
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py          96      9    91%
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/ui.py            58     46    21%
+test_prime.py                                                 78      0   100%
 ------------------------------------------------------------------------------
-TOTAL                                                        134     67    50%
+TOTAL                                                        232     55    76%
 ```  
 
 ## Directory structure  
