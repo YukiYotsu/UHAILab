@@ -1,0 +1,4 @@
+In computer sciense, algorithims are used to process data. 
+However, sometimes errors occure due to incorrect implementation.
+Common errrors include off-by-one eror, null pointer excepion, and buffer overlfow.
+This file aims to test the spell checker’s ability to handle technicl terms and detect typos.
