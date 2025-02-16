@@ -1,0 +1,5 @@
+This is an example of a large text file that contains common misspelling errors. 
+The intention is to test the spell checker for various types of misspelt words.
+Some of the errors are unintentional, while others are placed deliberately.
+We also want to test sentence structure and grammar mistakes.
+This text is repeated to create a sufficiently large file.

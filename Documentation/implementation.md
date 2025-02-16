@@ -15,6 +15,7 @@ UHAILab/
 &emsp;┃&emsp;┗━━━━ ```__main__.py```  
 &emsp;┣━┳━━ Data/  
 &emsp;┃&emsp;┣━━━━ text_general.txt  
+&emsp;┃&emsp;┣━━━━ correctly_general.txt  
 &emsp;┃&emsp;┣━━━━ text_technical.txt  
 &emsp;┃&emsp;┣━━━━ text_slang.txt  
 &emsp;┃&emsp;┗━━━━ text_noise.txt  

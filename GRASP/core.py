@@ -245,10 +245,10 @@ def spell_check_code(code, dictionary):
     start_time = time.time() # to get working time
     char_count = len(code) # to get the number of character
 
-    identifiers = {word.lower() for word in extract_identifiers(code)} # convert to lowercase
+    identifiers = {word.lower() for word in extract_identifiers(code)}
     trie = Trie()
     for word in dictionary:
-        trie.insert(word.lower()) # for sure, convert to lowercase
+        trie.insert(word.lower())
     
     suggestions = {}
     for identifier in identifiers:

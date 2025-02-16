@@ -90,13 +90,13 @@ The new window (my project's App) appears.
 
 ---
 
-### Import *jellyfish*  
-If you have not installed it, use the commands:  
+### Import *jellyfish*
+If you have not installed *jellyfish*, use the commands:  
 ```
 brew install jellyfish
 ```
 After that, in Poetry environment, 
-> jellyfish is a library for approximate & phonetic matching of strings.  
+> jellyfish is a library for approximate & phonetic matching of strings.    
 ```
 poetry add --dev jellyfish
 ```  
@@ -145,6 +145,7 @@ UHAILab/
 &emsp;┃&emsp;┗━━━━ ```__main__.py```  
 &emsp;┣━┳━━ Data/  
 &emsp;┃&emsp;┣━━━━ text_general.txt  
+&emsp;┃&emsp;┣━━━━ correctly_general.txt  
 &emsp;┃&emsp;┣━━━━ text_technical.txt  
 &emsp;┃&emsp;┣━━━━ text_slang.txt  
 &emsp;┃&emsp;┗━━━━ text_noise.txt  
