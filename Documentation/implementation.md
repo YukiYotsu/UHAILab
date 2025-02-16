@@ -36,6 +36,9 @@ UHAILab/
 
 The application is a spell-checker that takes keyboard input and a file as input. Using Damerau-Levenshtein distance, the application judges how far different input words are from certain dictionary where correctly-spelled words are stored. Importantly, it considers keyboard adjacency, for example, the word 'apple' can be much more possibly misspelled 'applr' than 'applt' or 'applg', given that 'e' has 'w', 's', 'd', and 'r' as adjacent keys. When searching a word, Trie tree has been applied to this application, which makes it easier to search things far faster, for instance, binary search tree. You scarcely remove words from dictionary, so I have not implemented removing function from data structure.  
 
+In addition, I have implemented a new feature which converts words into lemma in ```lemmatize``` function.　Improvements were observed in the detection rate of spelling errors in all sample texts.　　
+![Image](https://github.com/user-attachments/assets/85adbb85-5437-458b-9fca-08010956fcbf)
+
 ## The time and space complexities achieved
 ### spell_check_code
 ```spell_check_code```'s pseudocode:  
@@ -86,6 +89,7 @@ I used LLMs for these following reasons.
 - To check my mistakes in English grammar and to improve it.  
 - To find reliable reference to reinforce my opinion and explanation in specification documents.  
 - To translate the results and outputs which are responded by terminal into Japanese.  
+- To generate sample ```.txt``` file written in slang and text which has noise.  
 
 ## References
 [1] https://github.com/sari-bee/tieteellinen_laskin?tab=readme-ov-file  
