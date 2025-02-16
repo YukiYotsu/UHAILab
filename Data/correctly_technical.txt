@@ -1,0 +1,1 @@
+In computer science, algorithms are used to process data. However, sometimes errors occur due to incorrect implementation. Common errors include off-by-one error, null pointer exception, and buffer overflow. This file aims to test the spell checker’s ability to handle technical terms and detect typos.

@@ -1,24 +1,3 @@
-# 各ファイルのテキストデータを作成
-
-# 1. 一般的な英語テキスト（スペルミス含む）
-text_general = """
-This is an exmple of a large text file that contains common mispelling errors. 
-The intention is to test the spel checker for various types of misspelt words.
-Some of the erors are unintentional, while others are placed deliberately.
-We also want to test sentense structure and grammer mistakes.
-This text is repeated to create a sufficiently large file.
-""" * 2000  # 約100,000文字
-
-# 2. 技術文書（スペルミス含む）
-text_technical = """
-In computer sciense, algorithims are used to process data. 
-However, sometimes errors occure due to incorrect implementation.
-Common errrors include off-by-one eror, null pointer excepion, and buffer overlfow.
-This file aims to test the spell checker’s ability to handle technicl terms and detect typos.
-""" * 3000  # 約150,000文字
-
-# 3. ノイズを含むテキスト
-text_noise = """
 Th!s t3xt c0nta1ns rand0m char@cters and symb#ls t0 s!mulate n0!sy env1ronments.
 Misstake$ are d3l!berate!y !ntroduced to test the r0bustness of the spel chekker.
 S@metimes sentnces are wrtten wth r@ndom lettrs inserted.
