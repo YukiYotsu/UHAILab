@@ -10,12 +10,6 @@ and https://www.wordfrequency.info/ as the dictionary file [5].
 
 ## How to start my App  
 ### How to do setting  
-The newer Poetry should be maintained by Homebrew. So you cannot use:
-```
-poetry shell
-
-The command "shell" does not exist.
-```  
 After **cloning** my repository on your machine, **launch** Poetry at the root directory of the installed project.
 To implement this, you have to install Poetry in advance.
 Finish the initialization of the project by running the command:  
@@ -169,7 +163,14 @@ UHAILab/
 
 ## Trouble Shooting
 #### What is 'ver2_vocabulary.csv'?  
-It is used as the vocabulary to compare target words with rightly-spelled words.    
+It is used as the vocabulary to compare target words with rightly-spelled words.  
+#### Cannot use shell?   
+The newer Poetry should be maintained by Homebrew. So you cannot use:
+```
+poetry shell
+
+The command "shell" does not exist.
+```  
 #### In the case where you want to use shell **mandatorily**.  
 I have not tried this, but just in case.  
 First, install plugin:  
