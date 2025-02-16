@@ -27,7 +27,7 @@ IRREGULAR_WORDS = {
 }
 
 def lemmatize(word):
-    """
+    """ Lemmatize word (convert words into lemma)
     """
     # check if a word is in irregular words
     word_lower = word.lower()
