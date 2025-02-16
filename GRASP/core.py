@@ -273,6 +273,7 @@ def get_closest_word(word, vocabulary):
     
     return closest_word if min_distance < adaptive_threshold else "❓UNIQUE"
 
+
 def spell_check_code(code, dictionary):
     """ Check the code is correctly spelled or not
 
