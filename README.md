@@ -1,39 +1,37 @@
-# 👋 Moi!
-I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the University of Helsinki 🇫🇮 in 2025.
+# 👋 こんにちは！
+私は四元　祐貴です。ヘルシンキ大学🇫🇮の「アルゴリズムとAI研究」のプロジェクト講義で課題となるアプリケーションのマークダウンを示していきます。
 
-*Last modified: 16.02.2025*
+*最終更新日: 2025年2月16日*
 
-## List of used main technique   
+## 使用技術 
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
 
-and https://www.wordfrequency.info/ as the dictionary file [5].  
+そして辞書ファイルとして次のサイト[5]からファイルを提供していただいています。https://www.wordfrequency.info/  
 
-## How to start my App  
-### How to do setting  
-After **cloning** my repository on your machine, **launch** Poetry at the root directory of the installed project.
-To implement this, you have to install Poetry in advance.
-Finish the initialization of the project by running the command:  
+## アプリの立ち上げ方
+### 設定の仕方
+**クローン**するかもしくは**zipファイルを入手**した後、**Poetryを起動**してください。このために、Poetryを持っていない人はVisual Studio Codeのターミナルを開くなどして（普通のターミナル上でも可能です）Poetryを前もって入手しておく必要があります。
+Poetryを準備した場合、もしくはすでにもっているよという人は、次のコマンドを打ってPoetryの初期化を行ってください。
 ```
 poetry install
 ```  
-When executing the command, you might be led to the following notification:  
+コマンドを打つ際、次の注意分が出るかもしれません。
 ```  
 Installing the current project: poetry-testi (0.1.0)
 The current project could not be installed: [Errno 2] No such file or directory: '~/poetry-testi/README.md'
 If you do not want to install the current project use --no-root
 ```  
-This is because Poetry is also trying to install (some) existing projects here. When you want to install only project dependencies, use this:  
+これは、すでにPoetryで既存のプロジェクトがあった場合にそれを初期化し直そうとしていることを意味します。もしプロジェクトの依存関係のみインストールしたい場合は次のコマンドを試してください。
 ```  
 poetry install --no-root
 ```  
-
+詳しくPoetryについて知りたい場合やわからない場合は**Google上で「Poetry　始め方」や「使い方」など検索**することでわかりやすくなるはずです。
 ---
 
-### How to install *customtkinter* in Poetry?  
-My App uses 'CustomTkinter' library which is made based on UI-library 'Tkinter', which helps the project **generate UI**. So execute the command below to use my project (after moving to the root directory):  
+### Poetryに*customtkinter*をインストールするには？  
+私のアプリは*customtkinter*と呼ばれるPython上の優秀なUIライブラリを使用しています。これにより、かっこいい見た目のアプリが出来上がるわけです。プロジェクトのルートディレクトリに移動した後、次のコマンドをターミナル上で打ってください。インストールができます。
 `poetry add --dev customtkinter` 
-
-And you will get the notification:
+なお、多くのプログラマーにとって普通、コマンドはターミナル上で打ちます。すると通知文として次のような文が出てくるはずです。
 ```
 Updating dependencies
 Resolving dependencies... (0.6s)
@@ -46,13 +44,13 @@ Package operations: 3 installs, 0 updates, 0 removals
 
 Writing lock file
 ``` 
-This is finally completion of installing. How to use this? It is explained on [the page](https://customtkinter.tomschimansky.com/tutorial/).  
-### How to use '*tkinter*' which is a GUI library for my project.  
-My application uses 'tkinter' library which help the project generate GUI. So execute the command below to use my project:  
+これでインストールは完了です。どのように使うかに関しては公式HPをご覧ください。'CustomTkinter'は優秀なのでおすすめです。[the page](https://customtkinter.tomschimansky.com/tutorial/).  
+### そもそも*tkinter*を持っていない方へ
+私のUIには最も一般的なUIライブラリと言える*tkinter*を使っています。次のコマンドを打つことでインストールが可能です。
 ```
 brew install python-tk
 ```
-You will get the answer like the following one: 
+次のような答えが得られるはずです。通知文の一部は：
 ```
 ==> Auto-updating Homebrew...
 Adjust how often this is run with HOMEBREW_AUTO_UPDATE_SECS or disable with
@@ -76,20 +74,20 @@ Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
 Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
 ```  
 
-**Move** to the directory named 'GRASP' with ```cd ``` command and **Start** the application with the command:  
+私のプロジェクトなのであれば、'GRASP'と名付けられたディレクトリまで```cd```コマンドを使って**移動**し、次のコマンドでアプリを**起動**しましょう！ 
 ```  
 poetry run python __main__.py
 ```  
-The new window (my project's App) appears.  
+アプリが新しく立ち上がるはずです。
 
 ---
 
-### Import *jellyfish*
-If you have not installed *jellyfish*, use the commands:  
+### *jellyfish*をインポートする
+*jellyfish*をスペルチェック時使っています。持っていなければ追加で必要です。  
 ```
 brew install jellyfish
 ```
-After that, in Poetry environment, 
+その後、先述と同じように下のコマンドを打つことでPoetry仮想環境上でもインストールが可能です。
 > jellyfish is a library for approximate & phonetic matching of strings.    
 ```
 poetry add --dev jellyfish
@@ -126,8 +124,8 @@ TOTAL                                                        232     55    76%
 ```  
 
 ## Directory structure  
-All the documents are stored in the same directory named "Documentation".  
-All the files should not be changed for stable implementing.
+全てのドキュメントは'Documentation'ディレクトリ内に整理してあります。これらは講義を進めていく都合上必要な書類にすぎませんが、私のアプリの仕組みを暴くには最適な選択肢でしょう。😱
+なお、全てのディレクトリ構造は下のようにしておかなければなりません。**何もいじらなければ下のままになっているはずです**。
 
 UHAILab/  
 &emsp;┣━━━━ README.md (this file)  
@@ -161,34 +159,24 @@ UHAILab/
 &emsp;&emsp;&emsp;┣━━━━ week5report.md  
 &emsp;&emsp;&emsp;┗━━━━ week6report.md 
 
-## Trouble Shooting
-#### What is 'ver2_vocabulary.csv'?  
-It is used as the vocabulary to compare target words with rightly-spelled words.  
-#### Cannot use shell?   
-The newer Poetry should be maintained by Homebrew. So you cannot use:
+## トラブルシューティング
+#### 'ver2_vocabulary.csv'とは？
+正しくスペルが綴られた語を並べてあるcsvファイルです。
+#### shellコマンドは使えませんか？  
+新型のPoetryはshellを使わなくなりました（かつて使っていたみたいです）なので使用不可です。
 ```
 poetry shell
 
 The command "shell" does not exist.
 ```  
-#### In the case where you want to use shell **mandatorily**.  
-I have not tried this, but just in case.  
-First, install plugin:  
-```
-poetry self add poetry-plugin-shell
-```
-But you might receieve error. If so, the cause should be 'The ```shell``` command was moved to a plugin: ```poetry-plugin-shell```, Poetry official page said [4].  
-You can install poetry with *pip* to solve this error, you should not use pip though according to the course page.
+#### ‼️PIPは使わないでください
+Poetry仮想環境とpipは相性が悪いようです。少なくとも、私のアプリもヘルシンキ大学の講義の教えに倣っておかなければ安定した動作が保証できません。なので、pipは使わないでください。
 > Varoitus: pip
-Olet saattanut asentaa Pythonin tarvitsemia riippuvuuksia pip-komennolla. Älä käytä pipiä tällä kurssilla sillä jos teet niin, teet 99.9% todennäköisyydellä jotain väärin.  
+Olet saattanut asentaa Pythonin tarvitsemia riippuvuuksia pip-komennolla. Älä käytä pipiä tällä kurssilla sillä jos teet niin, teet 99.9% todennäköisyydellä jotain väärin.   
 
-~~**Where and What is the function named "connectiontest"?**  
-It is used only for confirming the stable connection between files placed at some different folders. "connectiontest" is (or used to be) set in "```__main__.py```".~~  
-
-## Reference
-When I make this README file, I refer to shun198's article. Thanks to shun198 [1] [2].  
-And I think of the structure of this project, I refer to sari-bee's repository[3] which seems to have been made in the same course.  
-I have changed the vocabulary file into *Word frequency Top 5000*'s file to check if words are correctly-spelled. You can get access with the link [5].    
+## 参考文献
+READMEマークダウンファイルを設計する際、shun198さんのGitHub[1]　[2]を参考にしました。ありがとうございます。 
+本プロジェクトのディレクトリ構成とプロジェクト設計をする際、sari-beeさんのGitHub[3]を参考にしました。   
 
 [1] https://qiita.com/shun198/items/c983c713452c041ef787  
 [2] https://github.com/shun198  
