@@ -143,6 +143,11 @@ UHAILab/
 &emsp;┃&emsp;┣━━━━ core.py  
 &emsp;┃&emsp;┣━━━━ ui.py  
 &emsp;┃&emsp;┗━━━━ ```__main__.py```  
+&emsp;┣━┳━━ Data/  
+&emsp;┃&emsp;┣━━━━ text_general.txt  
+&emsp;┃&emsp;┣━━━━ text_technical.txt  
+&emsp;┃&emsp;┣━━━━ text_slang.txt  
+&emsp;┃&emsp;┗━━━━ text_noise.txt  
 &emsp;┣━┳━━ Tests/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┗━━━━ test_prime.py    
