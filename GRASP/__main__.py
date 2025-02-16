@@ -32,6 +32,7 @@ def read_file_as_list(filePath = None):
             for row in csv_reader:
                 if len(row) > 1:
                     vocabulary.append(row[1].strip())
+            vocabulary.append('penguin') # append the word of 'penguin'
             return vocabulary # Extract only 'lemma' column
     else:
         return None
