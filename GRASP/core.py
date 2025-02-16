@@ -14,6 +14,50 @@ KEYBOARD_ADJACENCY = {
     'b': {'v', 'g', 'n','h'}, 'n': {'b', 'h', 'm', 'j'}, 'm': {'n', 'j', 'k'},
 }
 
+# this stores words which have irregular variation
+IRREGULAR_WORDS = {
+    "went": "go", "gone": "go",
+    "better": "good", "best": "good",
+    "children": "child", "men": "man", "women": "woman",
+    "mice": "mouse", "geese": "goose",
+    "ran": "run", "saw": "see", "seen": "see",
+    "did": "do", "done": "do",
+    "had": "have", "has": "have",
+    "was": "be", "were": "be", "am": "be", "is": "be", "are": "be",
+}
+
+def lemmatize(word):
+    """
+    """
+    # check if a word is in irregular words
+    word_lower = word.lower()
+    if word_lower in IRREGULAR_WORDS:
+        return IRREGULAR_WORDS[word_lower]
+    
+    # multiple expressions
+    if re.match(r".+ies$", word):
+        return word[:-3] + "y"
+    if re.match(r".+ves$", word):
+        return word[:-3] + "f"
+    if re.match(r".+oes$", word) or re.match(r".+ses$", word):
+        return word[:-2]
+    if re.match(r".+s$", word) and not re.match(r".+ss$", word):
+        return word[:-1]
+    
+    # past expressions
+    if re.match(r".+ed$", word):
+        if re.match(r".+ied$", word):
+            return word[:-3] + "y"
+        return word[:-2]
+    
+    # -ing expressions
+    if re.match(r".+ing$", word):
+        if re.match(r".+ying$", word):
+            return word[:-3] + "ie"
+        return word[:-3]
+    
+    return word # if no grammar rule cannot apply
+
 def get_keyboard_distance(char1, char2):
     """ Returns the cost, given the keys' adhacency.
 
@@ -212,15 +256,16 @@ def get_closest_word(word, vocabulary):
     
     min_distance = float('inf')
     closest_word = None
+    lemma_word = lemmatize(word)
     
     for dict_word in vocabulary:
-        distance = unrestricted_damerau_levenshtein_distance(word, dict_word)
+        distance = unrestricted_damerau_levenshtein_distance(lemma_word, dict_word)
 
-        for i in range(min(len(word), len(dict_word))):
-            if word[i] != dict_word[i]:
-                distance += get_keyboard_distance(word[i], dict_word[i])
+        for i in range(min(len(lemma_word), len(dict_word))):
+            if lemma_word[i] != dict_word[i]:
+                distance += get_keyboard_distance(lemma_word[i], dict_word[i])
         
-        adaptive_threshold = max(3, len(word) // 2 + 1)
+        adaptive_threshold = max(3, len(lemma_word) // 2 + 1)
 
         if distance < min_distance:
             min_distance = distance
@@ -248,12 +293,13 @@ def spell_check_code(code, dictionary):
     identifiers = {word.lower() for word in extract_identifiers(code)}
     trie = Trie()
     for word in dictionary:
-        trie.insert(word.lower())
+        trie.insert(lemmatize(word.lower()))
     
     suggestions = {}
     for identifier in identifiers:
-        if not trie.search(identifier):
-            suggestion = get_closest_word(identifier, dictionary)
+        lemma_identifier = lemmatize(identifier)
+        if not trie.search(lemma_identifier):
+            suggestion = get_closest_word(lemma_identifier, dictionary)
             suggestions[identifier] = suggestion
     
     execution_time = time.time() - start_time
