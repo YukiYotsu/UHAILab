@@ -72,7 +72,7 @@ class Trie:
         self.root = TrieNode()
     
     def insert(self, word):
-        """ Insert a word into Trie
+        """ Insert a word into Trie (ALWAYS conver to lowercase)
 
         Keyword Arguments:
             word: a word to be inserted
@@ -80,6 +80,7 @@ class Trie:
         Returns:
             Nothing
         """
+        word = word.lower() # convert to lowercase
         node = self.root
         for char in word:
             # create a new node for the character if it doesn't exist
@@ -89,7 +90,7 @@ class Trie:
         node.is_end_of_word = True
     
     def search(self, word):
-        """ Search a word and see whether the specific word exists or not
+        """ Search a word and see whether the specific word exists or not (ALWAYS conver to lowercase)
 
         Keyword Arguments:
             word: a word to be searched
@@ -98,6 +99,7 @@ class Trie:
             node.is_end_of_word: bool type;
                 return 'True' if the word exists.
         """
+        word = word.lower() # convert to lowercase
         node = self.root
         for char in word:
             if char not in node.children:
@@ -243,10 +245,10 @@ def spell_check_code(code, dictionary):
     start_time = time.time() # to get working time
     char_count = len(code) # to get the number of character
 
-    identifiers = extract_identifiers(code)
+    identifiers = {word.lower() for word in extract_identifiers(code)} # convert to lowercase
     trie = Trie()
     for word in dictionary:
-        trie.insert(word)
+        trie.insert(word.lower()) # for sure, convert to lowercase
     
     suggestions = {}
     for identifier in identifiers:
