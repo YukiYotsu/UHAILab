@@ -1,8 +1,9 @@
 import customtkinter
 import tkinter as tk
-from tkinter import filedialog
 import os
-from GRASP.core import spell_check_code
+from tkinter import filedialog, simpledialog, messagebox
+from GRASP.core import spell_check_code, save_user_defined_correction
+from config import USER_DEFINED_CORRECTIONS_FILE_Path
 
 def spell_check_ui(dictionary):
     """ Set the GUI of spell-checker
@@ -41,6 +42,9 @@ def spell_check_ui(dictionary):
     check_button = customtkinter.CTkButton(button_frame, text="✅ Check Spelling", command=lambda: append_tag(text_area, result_box, dictionary))
     check_button.grid(row=0, column=1, padx=5)
 
+    define_button = customtkinter.CTkButton(button_frame,text="📕 Define", command=lambda: define_correction(text_area))
+    define_button.grid(row=0, column=2, padx=5)
+
     # area for candidates of correctly-spelled
     customtkinter.CTkLabel(root, text="🔍 Spelling Suggestions:", anchor="w").pack(pady=(10, 0))
     result_box = customtkinter.CTkTextbox(root, height=100, width=480, wrap="word", state="disabled")
@@ -63,6 +67,13 @@ def open_file(text_area):
         with open(file_path, "r", encoding="utf-8") as file:
             text_area.delete("1.0", customtkinter.END)
             text_area.insert(customtkinter.END, file.read())
+
+def recommend_correction(misspelled_word):
+    """ Ask the user for a correction and save it
+    """
+    correct_word = simpledialog.askstring("Correction", f"Enter the correct spelling for '{misspelled_word}':")
+    if correct_word:
+        save_user_defined_correction(misspelled_word, correct_word)
 
 def append_tag(text_area, result_box, dictionary):
     """ Do spell-check and Append tags
@@ -91,11 +102,33 @@ def append_tag(text_area, result_box, dictionary):
     text_area.tag_config("misspelled", underline=True, foreground="red")
 
     # show misspelled candidates
-    result_text = "\n".join(f"'{word}' → '{suggestion}'" for word, suggestion in suggestions.items())
     result_box.configure(state="normal")
     result_box.delete("1.0", customtkinter.END)
-    result_box.insert(customtkinter.END, result_text if result_text else "✅ No spelling errors found.")
+
+    for word, suggestion in suggestions.items():
+        result_box.insert(customtkinter.END, f"'{word}' → '{suggestion}'\n")
+        if suggestion == "❓UNIQUE":
+            recommend_correction(word)
+
     result_box.configure(state="disabled")
+
+def define_correction(text_area):
+    """ Allow user to define a correction for selected text
+    """
+    try:
+        selected_text = text_area.get(tk.SEL_FIRST, tk.SEL_LAST).strip()
+    except tk.TclError:
+        messagebox.showwarning("No Selection", "Please select a misspelled word first.")
+        return
+
+    if not selected_text:
+        messagebox.showwarning("No Selection", "Please select a misspelled word first.")
+        return
+
+    correct_word = simpledialog.askstring("Define Correction", f"Enter the correct spelling for '{selected_text}':")
+    if correct_word:
+        save_user_defined_correction(selected_text, correct_word)
+        messagebox.showinfo("Correction Saved", f"Correction for '{selected_text}' saved as '{correct_word}'.")
 
 def get_user_input():
     """ Check user input

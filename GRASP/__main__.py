@@ -2,6 +2,7 @@ import sys
 import os
 from pathlib import Path
 import csv
+from config import USER_DEFINED_CORRECTIONS_FILE_Path
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 from GRASP import core # retrieve the path of the target for the test
@@ -36,7 +37,19 @@ def read_file_as_list(filePath = None):
             return vocabulary # Extract only 'lemma' column
     else:
         return None
-    
+
+def merge_dictionaries(base_dict, user_dict):
+    """Merge base dictionary and user-defined corrections.
+
+    Args:
+        base_dict (list): List of correctly spelled words from the base dictionary.
+        user_dict (list): Dictionary of user-defined corrections.
+
+    Returns:
+        list: Merged dictionary list.
+    """
+    return base_dict + user_dict
+
 def main():
     """ Set dictionary and execute UI setting
 
@@ -47,6 +60,10 @@ def main():
         Nothing
     """
     dictionary = read_file_as_list(VOCABULARY_FILE_Path)
+    user_defined_corrections = core.load_user_defined_corrections(USER_DEFINED_CORRECTIONS_FILE_Path)
+    
+    # renew the dictionary
+    dictionary = merge_dictionaries(dictionary, user_defined_corrections)
 
     ui.spell_check_ui(dictionary)
 

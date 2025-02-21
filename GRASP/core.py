@@ -1,8 +1,10 @@
-import os
 from pathlib import Path
 import re
+import os
 import collections
 import time
+import csv
+from config import USER_DEFINED_CORRECTIONS_FILE_Path
 
 # this stores which are adjacent keys on a keyboard
 KEYBOARD_ADJACENCY = {
@@ -44,11 +46,11 @@ def lemmatize(word):
     if re.match(r".+s$", word) and not re.match(r".+ss$", word):
         return word[:-1]
     
-    # past expressions
-    if re.match(r".+ed$", word):
-        if re.match(r".+ied$", word):
-            return word[:-3] + "y"
-        return word[:-2]
+    # # past expressions
+    # if re.match(r".+ed$", word):
+    #     if re.match(r".+ied$", word):
+    #         return word[:-3] + "y"
+    #     return word[:-2]
     
     # -ing expressions
     if re.match(r".+ing$", word):
@@ -258,19 +260,23 @@ def get_closest_word(word, vocabulary):
     closest_word = None
     lemma_word = lemmatize(word)
     
+    print(f"Checking word: {word} (Lemma: {lemma_word})")
+
     for dict_word in vocabulary:
         distance = unrestricted_damerau_levenshtein_distance(lemma_word, dict_word)
 
         for i in range(min(len(lemma_word), len(dict_word))):
             if lemma_word[i] != dict_word[i]:
                 distance += get_keyboard_distance(lemma_word[i], dict_word[i])
-        
+
         adaptive_threshold = max(3, len(lemma_word) // 2 + 1)
 
         if distance < min_distance:
             min_distance = distance
             closest_word = dict_word
+            print(f"Comparing with: {dict_word}, Distance: {distance}")
     
+    print(f"Final closest word: {closest_word}")
     return closest_word if min_distance < adaptive_threshold else "❓UNIQUE"
 
 
@@ -301,6 +307,7 @@ def spell_check_code(code, dictionary):
         lemma_identifier = lemmatize(identifier)
         if not trie.search(lemma_identifier):
             suggestion = get_closest_word(lemma_identifier, dictionary)
+    
             suggestions[identifier] = suggestion
     
     execution_time = time.time() - start_time
@@ -309,3 +316,30 @@ def spell_check_code(code, dictionary):
     print("📝The number of character: ")
     print(char_count)
     return suggestions
+
+def load_user_defined_corrections(file_path):
+    """Load user-defined spelling corrections from a CSV file.
+
+    Args:
+        file_path (str): Path to the user-defined corrections CSV file.
+
+    Returns:
+        dict: A dictionary mapping misspelled words to their correct forms.
+    """
+    try:
+        corrections =[]
+        with open(file_path, 'r', encoding='utf-8') as f:
+            csv_reader = csv.reader(f)
+            for row in csv_reader:
+                if len(row) == 2:
+                    corrections.append(row[1].strip())
+    except FileNotFoundError:
+        print(f"‼️ User-defined corrections file not found: {file_path}")
+    return corrections
+
+def save_user_defined_correction(misspelled, correct):
+    """ Save a user-defined spelling correction to CSV
+    """
+    with open(USER_DEFINED_CORRECTIONS_FILE_Path, "a", encoding="utf-8", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow([misspelled, correct])

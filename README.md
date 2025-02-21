@@ -1,7 +1,7 @@
 # 👋 Moi!
 I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the University of Helsinki 🇫🇮 in 2025.
 
-*Last modified: 16.02.2025*
+*Last modified: 22.02.2025*
 
 ## List of used main technique   
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
@@ -132,6 +132,7 @@ All the files should not be changed for stable implementing.
 UHAILab/  
 &emsp;┣━━━━ README.md (this file)  
 &emsp;┣━━━━ ver2_vocabulary.csv  
+&emsp;┣━━━━ user_defined.csv  
 &emsp;┣━┳━━ GRASP/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┣━━━━ core.py  
