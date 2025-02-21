@@ -1,11 +1,13 @@
 import unittest
-import subprocess
 import os
 import sys
+import csv
 from pathlib import Path
 from unittest.mock import patch
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+sys.path.append(str(Path(__file__).resolve().parent.parent / "GRASP"))
+from config import USER_DEFINED_CORRECTIONS_FILE_Path
 from GRASP import core, ui
 
 class TestDamerauLevenshtein(unittest.TestCase):
@@ -73,6 +75,40 @@ class TestCoreFunctions(unittest.TestCase):
     Keyword Arguments:
         unittest.TestCase: All classes extending unittest.TestCase are recognized as test case.
     """
+    sys.path.append(str(Path(__file__).resolve().parent.parent))
+    sys.path.append(str(Path(__file__).resolve().parent.parent / "Tests"))
+    test_file = "test_user_corrections.csv"
+    sample_vocabulary = ["hello", "world", "help", "held", "spell"]
+    original_user_defined_file = USER_DEFINED_CORRECTIONS_FILE_Path
+
+    def testcsv_Setup(self):
+        with open(self.test_file, "w", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(["mispell", "misspell"])
+            writer.writerow(["teh", "the"])
+
+    def testcsv_Clean(self):
+        if os.path.exists(self.test_file):
+            os.remove(self.test_file)
+        
+        temp_lines = []
+        with open(self.original_user_defined_file, "r", encoding="utf-8") as f:
+            csv_reader = csv.reader(f)
+            for row in csv_reader:
+                if row != ["wrng", "wrong"]:
+                    temp_lines.append(row)
+
+        with open(self.original_user_defined_file, "w", newline="", encoding="utf-8") as f:
+            csv_writer = csv.writer(f)
+            csv_writer.writerows(temp_lines)
+
+    def test_lemmatize(self):
+        self.assertEqual(core.lemmatize("children"), "child")
+        self.assertEqual(core.lemmatize("eating"), "eat")
+        self.assertEqual(core.lemmatize("running"), "run")
+        self.assertEqual(core.lemmatize("better"), "good")
+        self.assertEqual(core.lemmatize("plays"), "play")
+
     def test_get_keyboard_distance(self):
         self.assertEqual(core.get_keyboard_distance('a', 'a'), 0)
         self.assertEqual(core.get_keyboard_distance('a', 's'), 0.2)
@@ -105,6 +141,16 @@ class TestCoreFunctions(unittest.TestCase):
         dictionary = ["int", "main", "return"]
         expected_suggestions = {"retrun": "return"}
         self.assertEqual(core.spell_check_code(code, dictionary), expected_suggestions)
+
+    def test_load_user_defined_corrections(self):
+            corrections = core.load_user_defined_corrections(self.test_file)
+            expected_corrections = ["misspell", "the"]
+            self.assertEqual(corrections, expected_corrections)
+
+    def test_save_user_defined_correction(self):
+            core.save_user_defined_correction("wrng", "wrong")
+            corrections = core.load_user_defined_corrections(USER_DEFINED_CORRECTIONS_FILE_Path)
+            self.assertIn("wrong", corrections)
 
     def test_get_keyboard_distance_edge_cases(self):
         self.assertEqual(core.get_keyboard_distance('', 'a'), 1)  # case: empty character

@@ -54,8 +54,8 @@ def lemmatize(word):
     
     # -ing expressions
     if re.match(r".+ing$", word):
-        if re.match(r".+ying$", word):
-            return word[:-3] + "ie"
+        if re.match(r".+[^aeiou][^aeiou]ing$", word):
+            return word[:-4]
         return word[:-3]
     
     return word # if no grammar rule cannot apply

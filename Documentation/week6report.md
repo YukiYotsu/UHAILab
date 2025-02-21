@@ -3,7 +3,7 @@ I'm Yuki Yotsumoto. This is the 6th weekly report.
 
 ## Weekly outcome and advancements
  
-Approximately  hours required to proceed the project this week.  
+Approximately 15 hours required to proceed the project this week.  
 
 ## Unclear or problematic things  
 -   
