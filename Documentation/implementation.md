@@ -1,5 +1,5 @@
 # The Implementation document
-Last modified: *16.02.2025*
+Last modified: *22.02.2025*
 
 ## Program structure  
 All the documents are stored in the same directory named "Documentation".  
@@ -8,6 +8,7 @@ All the files should not be changed for stable implementing.
 UHAILab/  
 &emsp;┣━━━━ README.md (this file)  
 &emsp;┣━━━━ ver2_vocabulary.csv  
+&emsp;┣━━━━ user_defined.csv  
 &emsp;┣━┳━━ GRASP/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┣━━━━ core.py  
