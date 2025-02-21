@@ -1,5 +1,5 @@
 # The Project Specification
-Last modified: *14.01.2025*
+Last modified: *22.02.2025*
 
 My name is Yuki Yotsumoto. I belong to **Bachelor of Science in Computer Science** (CS) as an exchange student from Japan. All the project's documentation are written in **English markdown** (.md) language.
 
@@ -11,41 +11,30 @@ I would like to code with **Python** language in this project this time because 
 I would like to mention other language which I am good at to the extent that I can peer review projects. In addition to Python, I can do in **C** as well.
 
 ## What problem am I solving?
-I focus on program analysis problem to help programmers study a structure of program and clarify errors in code. In short, this project is on code analysis tool and spell checker (when there is mistake on spell of program).
+I focus on program analysis problem to help programmers study a structure of program and clarify errors in code. At first, I will make **spell checker**.  
 
 I would like to name this project **GRASP**, meaning to permit users to grasp what program does.
 I define GRASP as the term standing for 
-**G**raphically **R**ecognizable **A**nalysis **S**ystem for **P**rogramming.
+**G**raphically **R**ecognizable **A**nalysis **S**ystem for **P**rogramming. **But in this course, I will only implement spell check function.** 
 
-In computer science, in general, a growing use of program analysis is in the verification of properties of software used in safety-critical computer systems and locating potentially vulnerable code [2]. But GRASP is *for beginners, rather than for security reasons*.
+In general, spell checker is installed in many text editor software. Spell checker improved quality of documents and help users write correctly. With spell checker, you can do:
+- write text correctly in important situation
+- find possible misspelled phrases
+- define user's own expressions (if they do not want to regard as misspelled words)
 
-If the code you have written does not produce expected results, you need to grasp what is wrong.  
-For example,  
-- how in order program works
-- what kind of number each of variables has
-- which route is selected in conditioal branching.
+Especially, the 3rd function is original one in GRASP application. This allows a user to ignore his/her own original phrases, which makes checking documents faster.
 
-Therefore, I focus on the fact that it's difficult for programming beginner to clarify the cause of some errors in program. 
+Therefore, I would like to make spell-checker.** This can be my practice to code needed fuction.  
 
 ## What algorithms and data structures am I implementing?
-I would like to apply several techniques to main two purposes: code analysis tool and spell checker.  
-
----
-#### **Code analysis tool**
-I will make both the process logic and the class structure of the target program visible with flowchart.
-
-I will apply **Knuth-Morris-Pratt algorithm** (KMP) [3] to find specific string in whole text.  
-
+I would like to apply several technique to spell check function.  
 ---
 
 #### **Spell checker**
 As mentioned in the course page of ideas for project topics, 
 > A spell checker can be implemented by comparing the distance from an input string that is NOT in a dictionary to others that are.  
 
-I will apply **Damerau-Levensthein distance** to compare the distance. The vocabulary can be stored in a **Trie** (prefix tree) data structure.
-
----
-Preferably, I will visualize the flow of variables and which route is selected in conditioal branching.
+I will apply **Damerau-Levensthein distance** to compare the distance. The vocabulary can be stored in a **Trie** (prefix tree) data structure. And my spell check will consider **keyboard adjacency**, which will improve the quality of correctly-spelled phrases.  
 
 ## What inputs does my program take, and how are they used?
 My program takes user's program to analyze. And also, it accepts input from the mouse and keyboard, and these operations are used to select applications for the target program, operate the program itself, and view analysis results.
@@ -53,5 +42,3 @@ My program takes user's program to analyze. And also, it accepts input from the 
 ## References
 [1] Python Software Foundation, https://docs.python.org/3/reference/grammar.html  
 [2] Benjamin Livshits section 7.3 "Static Techniques for Security," Stanford doctoral thesis, 2006., https://dl.acm.org/doi/10.5555/1269235  
-[3] Knuth, Donald; Morris, James H.; Pratt, Vaughan (1977). "Fast pattern matching in strings".
-https://doi.org/10.1137/0206024
