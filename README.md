@@ -148,8 +148,9 @@ UHAILab/
 &emsp;┃&emsp;┣━━━━ correctly_slang.txt  
 &emsp;┃&emsp;┗━━━━ correctly_noise.txt  
 &emsp;┣━┳━━ Tests/  
-&emsp;┃&emsp;┣━━━━ ```__init__.py```  
-&emsp;┃&emsp;┗━━━━ test_prime.py    
+&emsp;┃&emsp;┣━━━━ ```__init__.py``` 
+&emsp;┃&emsp;┣━━━━ test_prime.py   
+&emsp;┃&emsp;┗━━━━ test_user_corrections.csv  
 &emsp;┗━┳━━ Documentation/  
 &emsp;&emsp;&emsp;┣━━━━ implementation.md  
 &emsp;&emsp;&emsp;┣━━━━ specification.md  
