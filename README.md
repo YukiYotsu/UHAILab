@@ -142,13 +142,13 @@ UHAILab/
 &emsp;┃&emsp;┣━━━━ text_general.txt   
 &emsp;┃&emsp;┣━━━━ text_technical.txt  
 &emsp;┃&emsp;┣━━━━ text_slang.txt  
-&emsp;┃&emsp;┣━━━━ text_noise.txt 
+&emsp;┃&emsp;┣━━━━ text_noise.txt  
 &emsp;┃&emsp;┣━━━━ correctly_general.txt  
 &emsp;┃&emsp;┣━━━━ correctly_technical.txt  
 &emsp;┃&emsp;┣━━━━ correctly_slang.txt  
 &emsp;┃&emsp;┗━━━━ correctly_noise.txt  
 &emsp;┣━┳━━ Tests/  
-&emsp;┃&emsp;┣━━━━ ```__init__.py``` 
+&emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┣━━━━ test_prime.py   
 &emsp;┃&emsp;┗━━━━ test_user_corrections.csv  
 &emsp;┗━┳━━ Documentation/  
