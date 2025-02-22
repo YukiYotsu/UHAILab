@@ -339,7 +339,7 @@ def spell_check_code(code, dictionary):
     real_words = split_code(code)
 
     # update dictionary, merging it with words defined by a user
-    # dictionary = merge_dictionaries(dictionary, corrections)
+    dictionary = merge_dictionaries(dictionary, corrections)
     suggestions = {}
 
     for real_word in real_words:
