@@ -65,7 +65,7 @@ If you want to try this application, it is the easiest way to open some file in 
 ### Check result
 - **Check** result: **misspelled words are highlighted with red lines**. If there is highlighted words, I recommend you to **look at 'Spelling Suggestions' box** below the 'Input Text' box. GRASP will suggest phrases which are corrected along dictionary file and user-defined CSV file there.
 ### Define whatever you like
-- **Define** whatever you like: there might be some mistakes in spelling suggestions. In this case, you can correct by yourself. **After select any word in 'Input Text' box (in usual way: you can select a word with dragging), press 'Define' button**. You will be asked what you want to define as.  
+- **Define** whatever you like: there might be some mistakes in spelling suggestions. In this case, you can correct by yourself. **After select any word in 'Input Text' box (in usual way: you can select a word with dragging), press 'Define' button**. You will be asked what you want to define as. The defined words are stored at `user_defined.csv` so that you will be no longer notified with those words.  
 
 ## How to implement *coverage* test
 To update (generate lock file):  
