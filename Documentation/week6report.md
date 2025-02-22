@@ -2,7 +2,7 @@
 I'm Yuki Yotsumoto. This is the 6th weekly report.  
 
 ## Weekly outcome and advancements  
-Approximately 15 hours required to proceed the project this week. I have newly made user-definition feature; a user can define a word correctly-spelled OR he/she wants to do however it spells. Those words defined by users are recorded in csv file (cf. `user-defined.csv`) In addition, I have combined this csv with `ver2_vocabulary.csv` so that once a user defines new word (do correction at spelling), they will no longer be judged as misspelled words.  
+Approximately 25 hours required to proceed the project this week. I have newly made user-definition feature; a user can define a word correctly-spelled OR he/she wants to do however it spells. Those words defined by users are recorded in csv file (cf. `user-defined.csv`) In addition, I have combined this csv with `ver2_vocabulary.csv` so that once a user defines new word (do correction at spelling), they will no longer be judged as misspelled words.  
 
 I have been able to **improve coverage rate*:.  
 ```
@@ -27,4 +27,4 @@ TOTAL                                                        348     79    77%
 -   
 
 ## Prospect -- what's next  
-There are some improvements to check correct spell; I have disabled -ing from lemmatization because it needs to register -ing dictionary. And it is difficult to do coverage test in UI. I think this is because there are parts of the UI that cannot be checked for correct implementation without our human eyes, which means that there are only a limited number of areas that can be checked by code alone.  
+There are some improvements to check correct spell; I have disabled past form lemmatization because it needs to register past expressions dictionary. And it is difficult to do coverage test in UI. I think this is because there are parts of the UI that cannot be checked for correct implementation without our human eyes, which means that there are only a limited number of areas that can be checked by code alone.  

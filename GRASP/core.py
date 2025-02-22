@@ -69,13 +69,13 @@ def get_keyboard_distance(char1, char2):
     Returns:
         0: those characters are the same.
         0.2: those characters are not the same but adjacent.
-        1: those characters are not adjacent and different.
+        0.45: those characters are not adjacent and different.
     """
     if char1 == char2:
         return 0
     elif char1 in KEYBOARD_ADJACENCY and char2 in KEYBOARD_ADJACENCY[char1]:
         return 0.2
-    return 1
+    return 0.45
 
 class TrieNode:
     """ Represents nodes of Trie
@@ -228,16 +228,24 @@ def unrestricted_damerau_levenshtein_distance(s1, s2):
     
     return d[len_s1 + 1][len_s2 + 1]
 
-def extract_identifiers(code):
-    """ Extract specific expressions and return
-
-    Keyword Arguments:
-        code: specific expressions / phrases to search
-    
-    Returns:
-        phrases found in text, code, or sentence
+def split_code(code):
+    """ Split the input code into tokens, excluding possessive forms like "Mike's" and "dogs'".
     """
-    return set(re.findall(r'\b[A-Za-z_][A-Za-z0-9_]*\b', code))
+    # remove ’ and '
+    code = re.sub(r"(?<=\w)[’']s\b", "", code)
+    tokens = re.split(r'[\s\.\:\;\,\-\'\"\$\%\/\(\)]+', code)
+    return [token for token in tokens if token]
+
+# def extract_identifiers(code):
+#     """ Extract specific expressions and return
+
+#     Keyword Arguments:
+#         code: specific expressions / phrases to search
+    
+#     Returns:
+#         phrases found in text, code, or sentence
+#     """
+#     return set(re.findall(r'\b[A-Za-z_][A-Za-z0-9_]*\b', code))
 
 def get_closest_word(word, vocabulary):
     """ Return the closest word in str-form
@@ -247,7 +255,7 @@ def get_closest_word(word, vocabulary):
     Keyword Arguments:
         word: candidate word to check how / if the word matches
         vocabulary: in other words, dictionary which has correctly-spelled words.
-        length_threshold: distance threshold, which makes the program not consider a word misspelled 
+        adaptive_threshold: distance threshold, which makes the program not consider a word misspelled 
                     if it exceeds the threshold
         
     Returns:
@@ -260,15 +268,16 @@ def get_closest_word(word, vocabulary):
     closest_word = None
     lemma_word = lemmatize(word)
     
-    print(f"Checking word: {word} (Lemma: {lemma_word})")
+    print(f"Checking word: {word}")
 
     for dict_word in vocabulary:
-        distance = unrestricted_damerau_levenshtein_distance(lemma_word, dict_word)
-
-        for i in range(min(len(lemma_word), len(dict_word))):
-            if lemma_word[i] != dict_word[i]:
-                distance += get_keyboard_distance(lemma_word[i], dict_word[i])
-
+        distance = unrestricted_damerau_levenshtein_distance(word, dict_word)
+        
+        if len(word) == len(dict_word):
+            for i in range(min(len(word), len(dict_word))):
+                if word[i] != dict_word[i]:
+                    distance += get_keyboard_distance(word[i], dict_word[i])
+        
         adaptive_threshold = max(3, len(lemma_word) // 2 + 1)
 
         if distance < min_distance:
@@ -279,6 +288,17 @@ def get_closest_word(word, vocabulary):
     print(f"Final closest word: {closest_word}")
     return closest_word if min_distance < adaptive_threshold else "❓UNIQUE"
 
+def merge_dictionaries(base_dict, user_dict):
+    """Merge base dictionary and user-defined corrections.
+
+    Args:
+        base_dict (list): List of correctly spelled words from the base dictionary.
+        user_dict (list): Dictionary of user-defined corrections.
+
+    Returns:
+        list: Merged dictionary list.
+    """
+    return base_dict + user_dict
 
 def spell_check_code(code, dictionary):
     """ Check the code is correctly spelled or not
@@ -297,18 +317,35 @@ def spell_check_code(code, dictionary):
     start_time = time.time() # to get working time
     char_count = len(code) # to get the number of character
 
-    identifiers = {word.lower() for word in extract_identifiers(code)}
     trie = Trie()
     for word in dictionary:
-        trie.insert(lemmatize(word.lower()))
+        trie.insert(word)
     
+    for word in IRREGULAR_WORDS:
+        trie.insert(IRREGULAR_WORDS[word])
+        trie.insert(word)
+
+    corrections = load_user_defined_corrections(USER_DEFINED_CORRECTIONS_FILE_Path)
+    for word in corrections:
+        trie.insert(word)
+    
+    real_words = split_code(code)
+
+    # update dictionary, merging it with words defined by a user
+    dictionary = merge_dictionaries(dictionary, corrections)
     suggestions = {}
-    for identifier in identifiers:
-        lemma_identifier = lemmatize(identifier)
-        if not trie.search(lemma_identifier):
-            suggestion = get_closest_word(lemma_identifier, dictionary)
-    
-            suggestions[identifier] = suggestion
+
+    for real_word in real_words:
+        # in the case the lemmatized word is NOT in dictionary
+        if not trie.search(lemmatize(real_word)):
+            # but in the case the word is in dictionary
+            if trie.search(real_word):
+                continue
+
+            # in the case the real word is not in dictionary
+            suggestion = get_closest_word(real_word, dictionary)
+
+            suggestions[real_word] = suggestion
     
     execution_time = time.time() - start_time
     print("⏳Execution time is:")
@@ -333,6 +370,7 @@ def load_user_defined_corrections(file_path):
             for row in csv_reader:
                 if len(row) == 2:
                     corrections.append(row[1].strip())
+
     except FileNotFoundError:
         print(f"‼️ User-defined corrections file not found: {file_path}")
     return corrections
