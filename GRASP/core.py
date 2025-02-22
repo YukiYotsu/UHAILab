@@ -162,31 +162,8 @@ class Trie:
             node = node.children[char]
         return node.is_end_of_word
 
-def damerau_levenshtein_distance(s1, s2):
-    """ Compute restricted Damerau Levenshtein distance
-
-    Keyword Arguments:
-        s1, s2: strings where the distance is computed
-    
-    Returns:
-        d: array which distances' data has put 
-    """
-    d = [[i+j if i * j == 0 else 0 for j in range(len(s2) + 1)] for i in range(len(s1) + 1)]
-    
-    for i in range(1, len(s1) + 1):
-        for j in range(1, len(s2) + 1):
-            cost = 0 if s1[i-1] == s2[j-1] else 1
-            d[i][j] = min(
-                d[i-1][j] + 1,    # deletion/削除
-                d[i][j-1] + 1,    # insertion/挿入
-                d[i-1][j-1] + cost  # substitution/置換
-            )
-            
-            if i > 1 and j > 1 and s1[i-1] == s2[j-2] and s1[i-2] == s2[j-1]:
-                d[i][j] = min(d[i][j], d[i - 2][j - 2] + 1)  # transposition/隣り合う文字の交換
-    
-    return d[len(s1)][len(s2)]
-
+# this is now unused but left in case.
+# the method below is distance calculation in Python.
 def unrestricted_damerau_levenshtein_distance(s1, s2):
     """ Compute unrestricted Damerau Levenshtein distance
 
