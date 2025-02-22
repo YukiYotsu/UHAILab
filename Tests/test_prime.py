@@ -3,12 +3,18 @@ import os
 import sys
 import csv
 from pathlib import Path
+import ctypes
 from unittest.mock import patch
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 sys.path.append(str(Path(__file__).resolve().parent.parent / "GRASP"))
+
 from config import USER_DEFINED_CORRECTIONS_FILE_Path
 from GRASP import core, ui
+
+lib = ctypes.CDLL("libunrestricted.dylib")
+lib.unrestricted_damerau_levenshtein_distance.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
+lib.unrestricted_damerau_levenshtein_distance.restype = ctypes.c_int
 
 class TestDamerauLevenshtein(unittest.TestCase):
     """ Implement test Damerau-Levenshtein distance.
