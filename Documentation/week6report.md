@@ -21,7 +21,8 @@ Name                                                       Stmts   Miss  Cover
 test_prime.py                                                123      0   100%
 ------------------------------------------------------------------------------
 TOTAL                                                        376     81    78%
-```
+```  
+And I have written each of needed documents. I have attached many photos to userguide.mb so that a user can get easily familiar with how to use my application. And the performance of correction against misspelled words has been drastically improved, especially after releasing the function which allows a user to define whatever he/she likes.  
 
 ## Unclear or problematic things  
 -   
