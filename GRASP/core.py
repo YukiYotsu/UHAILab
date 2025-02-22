@@ -60,6 +60,13 @@ def lemmatize(word):
     
     return word # if no grammar rule cannot apply
 
+def remove_ly_suffix(word):
+    """ Remove '-ly' suffix
+    """
+    if word.endswith('ly'):
+        return word[:-2]
+    return word
+
 def get_keyboard_distance(char1, char2):
     """ Returns the cost, given the keys' adhacency.
 
@@ -332,7 +339,7 @@ def spell_check_code(code, dictionary):
     real_words = split_code(code)
 
     # update dictionary, merging it with words defined by a user
-    dictionary = merge_dictionaries(dictionary, corrections)
+    # dictionary = merge_dictionaries(dictionary, corrections)
     suggestions = {}
 
     for real_word in real_words:
@@ -340,6 +347,10 @@ def spell_check_code(code, dictionary):
         if not trie.search(lemmatize(real_word)):
             # but in the case the word is in dictionary
             if trie.search(real_word):
+                continue
+            
+            # if there is a word when "ly" part of the word (-ly ending) is removed
+            elif trie.search(remove_ly_suffix(real_word)):
                 continue
 
             # in the case the real word is not in dictionary
