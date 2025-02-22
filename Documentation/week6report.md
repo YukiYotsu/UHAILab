@@ -23,6 +23,7 @@ test_prime.py                                                123      0   100%
 TOTAL                                                        376     81    78%
 ```  
 And I have written each of needed documents. I have attached many photos to userguide.mb so that a user can get easily familiar with how to use my application. And the performance of correction against misspelled words has been drastically improved, especially after releasing the function which allows a user to define whatever he/she likes.  
+<img width="710" alt="スクリーンショット 2025-02-22 7 16 07" src="https://github.com/user-attachments/assets/2758b939-b4ab-449d-934c-0bfc398e012f" />  
 
 ## Unclear or problematic things  
 -   
