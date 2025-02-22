@@ -243,17 +243,6 @@ def split_code(code):
     tokens = re.split(r'[\s\.\:\;\,\-\'\"\$\%\/\(\)]+', code)
     return [token for token in tokens if token]
 
-# def extract_identifiers(code):
-#     """ Extract specific expressions and return
-
-#     Keyword Arguments:
-#         code: specific expressions / phrases to search
-    
-#     Returns:
-#         phrases found in text, code, or sentence
-#     """
-#     return set(re.findall(r'\b[A-Za-z_][A-Za-z0-9_]*\b', code))
-
 def get_closest_word(word, vocabulary):
     """ Return the closest word in str-form
 
