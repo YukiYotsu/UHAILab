@@ -45,29 +45,7 @@ My application uses 'tkinter' library which help the project generate GUI. So ex
 ```
 brew install python-tk
 ```
-You will get the answer like the following one: 
-```
-==> Auto-updating Homebrew...
-Adjust how often this is run with HOMEBREW_AUTO_UPDATE_SECS or disable with
-HOMEBREW_NO_AUTO_UPDATE. Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
-==> Auto-updated Homebrew!
-Updated 2 taps (homebrew/core and homebrew/cask).
-==> New Formulae
-acme.sh                     sdl3
-.
-.
-.
-==> Downloading https://ghcr.io/v2/homebrew/core/tcl-t
-Already downloaded: /Users/takumi/Library/Caches/Homebrew/downloads/be646597f3d79273593a6a054e9ad1fcc722de45fe4be5464b2a5275f8b7303b--tcl-tk-9.0.1-1.bottle_manifest.json
-==> Pouring tcl-tk--9.0.1.arm64_sequoia.bottle.1.tar.g
-🍺  /opt/homebrew/Cellar/tcl-tk/9.0.1: 3,150 files, 38MB
-==> Installing python-tk@3.13
-==> Pouring python-tk@3.13--3.13.1.arm64_sequoia.bottl
-🍺  /opt/homebrew/Cellar/python-tk@3.13/3.13.1: 6 files, 160.5KB
-==> Running `brew cleanup python-tk@3.13`...
-Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
-Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
-```  
+You will get a notification and preparation will complete.  
 
 **Move** to the directory named 'GRASP' with ```cd ``` command and **Start** the application with the command:  
 ```  
@@ -77,7 +55,19 @@ The new window (my project's App) appears.
 
 ---
 
-### How to implement *coverage*
+## How to use GRASP spell-checker
+This application uses excellent UI generated with *customtkinter* so you will be able to know how to use this. 
+### Input 
+- **Input**: you can **type** yourself in the white box or **open file**. The suitable file extension is `.txt` but **you can open any file**, and there is **no limitation** for the length of the text file and its size.
+If you want to try this application, it is the easiest way to open some file in `Data` directory.  
+### Spell-check
+- **Spell-check**: after input, you can check misspelled words or undefined words with the **'Check Spelling' button**. As soon as pressed, spell-check will be done and this execution time depends on the size of the file. Please wait a second.  
+### Check result
+- **Check** result: **misspelled words are highlighted with red lines**. If there is highlighted words, I recommend you to **look at 'Spelling Suggestions' box** below the 'Input Text' box. GRASP will suggest phrases which are corrected along dictionary file and user-defined CSV file there.
+### Define whatever you like
+- **Define** whatever you like: there might be some mistakes in spelling suggestions. In this case, you can correct by yourself. **After select any word in 'Input Text' box (in usual way: you can select a word with dragging), press 'Define' button**. You will be asked what you want to define as.  
+
+## How to implement *coverage* test
 To update (generate lock file):  
 ```  
 poetry add requests
@@ -105,11 +95,4 @@ Name                                                       Stmts   Miss  Cover
 test_prime.py                                                 78      0   100%
 ------------------------------------------------------------------------------
 TOTAL                                                        232     55    76%
-```  
-#### Cannot use shell?   
-The newer Poetry should be maintained by Homebrew. So you cannot use:
-```
-poetry shell
-
-The command "shell" does not exist.
 ```  
