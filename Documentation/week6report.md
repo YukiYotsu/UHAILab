@@ -6,21 +6,21 @@ Approximately 25 hours required to proceed the project this week. I have newly m
 
 I have been able to **improve coverage rate*:.  
 ```
-..................
+...................
 ----------------------------------------------------------------------
-Ran 26 tests in 0.006s
+Ran 27 tests in 0.008s
 
 OK
-takumi@takuminoMacBook-Pro tests % poetry run coverage report           
+takumi@takuminoMacBook-Pro tests % poetry run coverage report
 Name                                                       Stmts   Miss  Cover
 ------------------------------------------------------------------------------
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/__init__.py       0      0   100%
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/config.py         6      0   100%
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         146     14    90%
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         167     16    90%
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/ui.py            80     65    19%
-test_prime.py                                                116      0   100%
+test_prime.py                                                123      0   100%
 ------------------------------------------------------------------------------
-TOTAL                                                        348     79    77%
+TOTAL                                                        376     81    78%
 ```
 
 ## Unclear or problematic things  

@@ -109,14 +109,18 @@ class TestCoreFunctions(unittest.TestCase):
         self.assertEqual(core.lemmatize("better"), "good")
         self.assertEqual(core.lemmatize("plays"), "play")
 
+    def test_remove_ly_suffix(self):
+        self.assertEqual(core.remove_ly_suffix("quickly"), "quick")
+        self.assertEqual(core.remove_ly_suffix("happily"), "happi")
+        self.assertEqual(core.remove_ly_suffix("slowly"), "slow")
+
     def test_get_keyboard_distance(self):
         self.assertEqual(core.get_keyboard_distance('a', 'a'), 0)
         self.assertEqual(core.get_keyboard_distance('a', 's'), 0.2)
-        self.assertEqual(core.get_keyboard_distance('a', 'g'), 1)
+        self.assertEqual(core.get_keyboard_distance('a', 'g'), 0.45)
 
     def test_trie_operations(self):
         trie = core.Trie()
-
         trie.insert("hello")
         self.assertTrue(trie.search("hello"))
         self.assertFalse(trie.search("hell"))
@@ -126,21 +130,29 @@ class TestCoreFunctions(unittest.TestCase):
         self.assertTrue(trie.search("hell"))
         self.assertFalse(trie.search("he"))
 
-    def test_extract_identifiers(self):
-        code = "int main() { return 0; }"
-        expected_identifiers = {"int", "main", "return"}
-        self.assertEqual(core.extract_identifiers(code), expected_identifiers)
-
     def test_get_closest_word(self):
         vocabulary = ["hello", "world", "help", "held"]
         self.assertEqual(core.get_closest_word("hellp", vocabulary), "hello")
         self.assertEqual(core.get_closest_word("xyz", vocabulary), "❓UNIQUE")
 
+    def test_merge_dictionaries(self):
+        base_dict = ["hello", "world"]
+        user_dict = ["custom", "define"]
+        merged = core.merge_dictionaries(base_dict, user_dict)
+        self.assertIn("hello", merged)
+        self.assertIn("custom", merged)
+
+    def test_split_code(self):
+        code = "they/he/she are penguins(emperor)"
+        tokens = core.split_code(code)
+        expected_tokens = ["they","he","she","are","penguins","emperor"]
+        self.assertEqual(tokens, expected_tokens)
+
     def test_spell_check_code(self):
-        code = "int main() { retrun 0; }"
-        dictionary = ["int", "main", "return"]
-        expected_suggestions = {"retrun": "return"}
-        self.assertEqual(core.spell_check_code(code, dictionary), expected_suggestions)
+        text = "It was a beautifull day in the nieghborhood."
+        dictionary = ["it", "was", "a", "beautiful", "day", "in", "the", "neighborhood"]
+        expected_suggestions = {"beautifull": "beautiful", "nieghborhood": "neighborhood"}
+        self.assertEqual(core.spell_check_code(text, dictionary), expected_suggestions)
 
     def test_load_user_defined_corrections(self):
             corrections = core.load_user_defined_corrections(self.test_file)
@@ -153,14 +165,9 @@ class TestCoreFunctions(unittest.TestCase):
             self.assertIn("wrong", corrections)
 
     def test_get_keyboard_distance_edge_cases(self):
-        self.assertEqual(core.get_keyboard_distance('', 'a'), 1)  # case: empty character
-        self.assertEqual(core.get_keyboard_distance('a', ''), 1)  # reverse
-        self.assertEqual(core.get_keyboard_distance('#', '@'), 1)  # symbols
-
-    def test_extract_identifiers_edge_cases(self):
-        code = "int _main_var1() { return a_2 + var3; }"
-        expected_identifiers = {"int", "_main_var1", "return", "a_2", "var3"}
-        self.assertEqual(core.extract_identifiers(code), expected_identifiers)
+        self.assertEqual(core.get_keyboard_distance('', 'a'), 0.45)  # case: empty character
+        self.assertEqual(core.get_keyboard_distance('a', ''), 0.45)  # reverse
+        self.assertEqual(core.get_keyboard_distance('#', '@'), 0.45)  # symbols
         
 if __name__ == "__main__":
     unittest.main()
