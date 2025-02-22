@@ -75,6 +75,7 @@ If you want to try this application, it is the easiest way to open some file in 
 ### Define whatever you like
 - **Define** whatever you like: there might be some mistakes in spelling suggestions. In this case, you can correct by yourself. **After select any word in 'Input Text' box (in usual way: you can select a word with dragging), press 'Define' button**. You will be asked what you want to define as. The defined words are stored at `user_defined.csv` so that you will be no longer notified with those words.
 <img width="703" alt="スクリーンショット 2025-02-22 22 43 54" src="https://github.com/user-attachments/assets/e03ed38f-c7d5-4af5-ab21-6c64445257b0" />  
+
 #### you can do dragging
 <img width="701" alt="スクリーンショット 2025-02-22 22 44 13" src="https://github.com/user-attachments/assets/e61d6f72-a156-43fd-9fe6-17eeee676bc7" />  
 
