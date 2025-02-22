@@ -1,3 +1,4 @@
+# this test Python file has not completed
 import unittest
 import os
 import sys
@@ -12,6 +13,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent / "GRASP"))
 from config import USER_DEFINED_CORRECTIONS_FILE_Path
 from GRASP import core, ui
 
+# this test Python file has not completed
 lib = ctypes.CDLL("libunrestricted.dylib")
 lib.unrestricted_damerau_levenshtein_distance.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
 lib.unrestricted_damerau_levenshtein_distance.restype = ctypes.c_int
