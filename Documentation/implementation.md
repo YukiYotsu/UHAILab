@@ -88,6 +88,19 @@ def get_closest_word(word, vocabulary):
 ```  
 2. The influence of ```get_keyboard_distance``` should be tuned to more appropriate value. There're some ways: to multiply the application by a small factor, e.g. 0.1, to adjust for the impact of get_keyboard_distance and to relax the conditions for application based on the score of damerau_levenshtein_distance.  
 3. The new function to choose more frequently-used word. This feature can be realized with appending word frequency data to dictionary ```.csv``` file. And given some other kinds of Trie data structure, there are other technique called `bit slicing` and `Radix tree`.  
+4. Speed-up processing Damerau-Levenshtein distance with *C* language. Surprisingly, the performance (in terms of time) is improved around **1000%**.  
+
+#### Python language
+```
+⏳Execution time is:
+0.53684401512146
+```
+#### C language
+```
+⏳Execution time is:
+0.054605960845947266
+``` 
+I have not switched distance calculation into *C* language one because it is difficult to test them (*C* method) with Python. But it should be possible.  
 
 ## Use of LLMs
 I used LLMs for these following reasons.
