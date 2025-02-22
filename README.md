@@ -82,18 +82,7 @@ poetry run python __main__.py
 ```  
 The new window (my project's App) appears.  
 
----
-
-### Import *jellyfish*
-If you have not installed *jellyfish*, use the commands:  
-```
-brew install jellyfish
-```
-After that, in Poetry environment, 
-> jellyfish is a library for approximate & phonetic matching of strings.    
-```
-poetry add --dev jellyfish
-```  
+--- 
 
 ### How to implement *coverage*
 To update (generate lock file):  
