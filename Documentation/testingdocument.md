@@ -77,4 +77,8 @@ Other methods for word normalisation (lemmatize) and lly form transformations ar
 ## Execution time
 I have measured execution time. This is done to ensure that the long text spell-checking works as expected. To check efficiency by graphing the processing speed, the text of `text_general.txt` was repeated in input box (increasing exponentially by a factor of 10 from 1). The text has 354 characters.   
 
-1: 0.5363881587982178
+x1: 0.5363881587982178 sec
+x10: 2.547447919845581 sec
+x100: 33.829548835754395 sec
+x1000: 507.8054449558258 sec
+x10000: 5137.369160890579 sec
