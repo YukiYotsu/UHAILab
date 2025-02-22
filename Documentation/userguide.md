@@ -64,7 +64,7 @@ If you want to try this application, it is the easiest way to open some file in 
 <img width="703" alt="スクリーンショット 2025-02-22 22 42 17" src="https://github.com/user-attachments/assets/4b93115a-ff37-47c3-922b-6b172502aae1" />  
  
 ### Spell-check
-- **Spell-check**: after input, you can check misspelled words or undefined words with the **'Check Spelling' button**. As soon as pressed, spell-check will be done and this execution time depends on the size of the file. Please wait a second.
+- **Spell-check**: after input, you can check misspelled words or undefined words with the **'Check Spelling' button**. As soon as pressed, spell-check will be done and this execution time depends on the size of the file. Please wait a second. **Misspelled words are highlighted with red lines**.  
 <img width="1063" alt="スクリーンショット 2025-02-22 22 42 37" src="https://github.com/user-attachments/assets/8e214c94-df17-4220-8d2d-81df82bae212" />  
 
 ### Check result
