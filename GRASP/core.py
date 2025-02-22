@@ -5,7 +5,9 @@ import collections
 import time
 import csv
 from config import USER_DEFINED_CORRECTIONS_FILE_Path
+import ctypes
 
+libc = ctypes.cdll.LoadLibrary("./libunrestricted.dylib")
 # this stores which are adjacent keys on a keyboard
 KEYBOARD_ADJACENCY = {
     'q': {'w', 'a'}, 'w': {'q', 'e', 's', 'a'}, 'e': {'w', 'r', 'd', 's'}, 'r': {'e', 't', 'f', 'd'}, 't': {'r', 'y', 'g', 'f'},
@@ -267,7 +269,8 @@ def get_closest_word(word, vocabulary):
     print(f"Checking word: {word}")
 
     for dict_word in vocabulary:
-        distance = unrestricted_damerau_levenshtein_distance(word, dict_word)
+        # use C code for processing speed-up
+        distance = libc.unrestricted_damerau_levenshtein(word, dict_word)
         
         if len(word) == len(dict_word):
             for i in range(min(len(word), len(dict_word))):
