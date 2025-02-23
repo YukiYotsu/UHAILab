@@ -5,9 +5,7 @@ import collections
 import time
 import csv
 from config import USER_DEFINED_CORRECTIONS_FILE_Path
-import ctypes
 
-libc = ctypes.cdll.LoadLibrary("./libunrestricted.dylib")
 # this stores which are adjacent keys on a keyboard
 KEYBOARD_ADJACENCY = {
     'q': {'w', 'a'}, 'w': {'q', 'e', 's', 'a'}, 'e': {'w', 'r', 'd', 's'}, 'r': {'e', 't', 'f', 'd'}, 't': {'r', 'y', 'g', 'f'},
@@ -162,8 +160,31 @@ class Trie:
             node = node.children[char]
         return node.is_end_of_word
 
-# this is now unused but left in case.
-# the method below is distance calculation in Python.
+def damerau_levenshtein_distance(s1, s2):
+    """ Compute restricted Damerau Levenshtein distance
+
+    Keyword Arguments:
+        s1, s2: strings where the distance is computed
+    
+    Returns:
+        d: array which distances' data has put 
+    """
+    d = [[i+j if i * j == 0 else 0 for j in range(len(s2) + 1)] for i in range(len(s1) + 1)]
+    
+    for i in range(1, len(s1) + 1):
+        for j in range(1, len(s2) + 1):
+            cost = 0 if s1[i-1] == s2[j-1] else 1
+            d[i][j] = min(
+                d[i-1][j] + 1,    # deletion/削除
+                d[i][j-1] + 1,    # insertion/挿入
+                d[i-1][j-1] + cost  # substitution/置換
+            )
+            
+            if i > 1 and j > 1 and s1[i-1] == s2[j-2] and s1[i-2] == s2[j-1]:
+                d[i][j] = min(d[i][j], d[i - 2][j - 2] + 1)  # transposition/隣り合う文字の交換
+    
+    return d[len(s1)][len(s2)]
+
 def unrestricted_damerau_levenshtein_distance(s1, s2):
     """ Compute unrestricted Damerau Levenshtein distance
 
@@ -246,14 +267,17 @@ def get_closest_word(word, vocabulary):
     print(f"Checking word: {word}")
 
     for dict_word in vocabulary:
-        # use C code for processing speed-up
-        distance = libc.unrestricted_damerau_levenshtein(word, dict_word)
+        distance = unrestricted_damerau_levenshtein_distance(word, dict_word)
         
         if len(word) == len(dict_word):
             for i in range(min(len(word), len(dict_word))):
                 if word[i] != dict_word[i]:
                     distance += get_keyboard_distance(word[i], dict_word[i])
-        
+        # if the lengths are not matched
+        else:
+            length_difference_penalty = abs(len(word) - len(dict_word)) * 0.5
+            distance += length_difference_penalty
+
         adaptive_threshold = max(3, len(lemma_word) // 2 + 1)
 
         if distance < min_distance:
