@@ -92,6 +92,8 @@ x100: 3.0657098293304443 sec
 x1000: 30.738240003585815 sec  
 x10000: 283.49342799186707 sec  
 
+![Comparison among Execution Time of GRASP Application ](https://github.com/user-attachments/assets/6e2e8b19-e8e1-4364-9ce1-10ba6928e5bb)  
+
 *This test was done on 23 Feb.*  
 
 ## Spell check accuracy
