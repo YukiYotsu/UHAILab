@@ -118,11 +118,14 @@ class TestCoreFunctions(unittest.TestCase):
         self.assertEqual(core.lemmatize("running"), "run")
         self.assertEqual(core.lemmatize("better"), "good")
         self.assertEqual(core.lemmatize("plays"), "play")
+        self.assertEqual(core.lemmatize("dictionaries"),"dictionary")
+        self.assertEqual(core.lemmatize("wolves"),"wolf")
+        self.assertEqual(core.lemmatize("heroes"),"hero")
 
     def test_remove_ly_suffix(self):
+        self.assertEqual(core.remove_ly_suffix("table"),"table")
         self.assertEqual(core.remove_ly_suffix("quickly"), "quick")
         self.assertEqual(core.remove_ly_suffix("happily"), "happi")
-        self.assertEqual(core.remove_ly_suffix("slowly"), "slow")
 
     def test_get_keyboard_distance(self):
         self.assertEqual(core.get_keyboard_distance('a', 'a'), 0)
@@ -135,13 +138,14 @@ class TestCoreFunctions(unittest.TestCase):
         self.assertTrue(trie.search("hello"))
         self.assertFalse(trie.search("hell"))
         self.assertFalse(trie.search("helloo"))
-
         trie.insert("hell")
         self.assertTrue(trie.search("hell"))
         self.assertFalse(trie.search("he"))
 
     def test_get_closest_word(self):
         vocabulary = ["hello", "world", "help", "held"]
+        dummy_dictionary={}
+        self.assertEqual(core.get_closest_word("hellp", dummy_dictionary), None)
         self.assertEqual(core.get_closest_word("hellp", vocabulary), "hello")
         self.assertEqual(core.get_closest_word("xyz", vocabulary), "❓UNIQUE")
 
@@ -164,10 +168,35 @@ class TestCoreFunctions(unittest.TestCase):
         expected_suggestions = {"beautifull": "beautiful", "nieghborhood": "neighborhood"}
         self.assertEqual(core.spell_check_code(text, dictionary), expected_suggestions)
 
+    def test_spell_check_code_empty_string(self):
+        dictionary = ["hello", "world"]
+        expected_suggestions = {}
+        self.assertEqual(core.spell_check_code("", dictionary), expected_suggestions)
+
     def test_load_user_defined_corrections(self):
-            corrections = core.load_user_defined_corrections(self.test_file)
-            expected_corrections = ["misspell", "the"]
-            self.assertEqual(corrections, expected_corrections)
+        corrections = core.load_user_defined_corrections(self.test_file)
+        expected_corrections = ["misspell", "the"]
+        self.assertEqual(corrections, expected_corrections)
+
+    def test_merge_dictionaries_with_empty_user_dict(self):
+        base_dict = ["hello", "world"]
+        user_dict = []
+        merged = core.merge_dictionaries(base_dict, user_dict)
+        self.assertEqual(merged, base_dict)
+
+    def test_get_closest_word_with_print(self):
+        vocabulary = ["hello", "world", "help", "held"]
+        with patch('builtins.print') as mocked_print:
+            self.assertEqual(core.get_closest_word("hellp", vocabulary), "hello")
+            mocked_print.assert_any_call("Checking word: hellp")
+            mocked_print.assert_any_call("Final closest word: hello")
+
+    def test_load_user_defined_corrections_file_not_found(self):
+        non_existent_file = "non_existent.csv"
+        with patch("builtins.print") as mocked_print:
+            corrections = core.load_user_defined_corrections(non_existent_file)
+            self.assertEqual(corrections, [])
+            mocked_print.assert_called_with(f"‼️ User-defined corrections file not found: {non_existent_file}")
 
     def test_save_user_defined_correction(self):
             core.save_user_defined_correction("wrng", "wrong")

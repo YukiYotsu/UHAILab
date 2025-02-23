@@ -164,55 +164,6 @@ class Trie:
             node = node.children[char]
         return node.is_end_of_word
 
-def unrestricted_damerau_levenshtein_distance(s1, s2):
-    """ Compute unrestricted Damerau Levenshtein distance
-
-    This is treated as a true distance in general.
-    Keyword Arguments:
-        s1, s2: strings where the distance is computed
-    
-    Returns:
-        d: array which distances' data has put 
-    """
-    len_s1, len_s2 = len(s1), len(s2)
-    INF = len_s1 + len_s2 # large number instead of infinity
-    
-    d = [[0] * (len_s2 + 2) for _ in range(len_s1 + 2)]
-    last_row = {}
-    
-    for char in set(s1 + s2):
-        last_row[char] = 0
-    
-    for i in range(len_s1 + 1):
-        d[i + 1][0] = INF
-        d[i + 1][1] = i
-    
-    for j in range(len_s2 + 1):
-        d[0][j + 1] = INF
-        d[1][j + 1] = j
-    
-    for i in range(1, len_s1 + 1):
-        last_match_column = 0
-        for j in range(1, len_s2 + 1):
-            cost = 0 if s1[i - 1] == s2[j - 1] else 1
-            d[i + 1][j + 1] = min(
-                d[i][j + 1] + 1,  # deletion/削除
-                d[i + 1][j] + 1,  # insertion/挿入
-                d[i][j] + cost   # substitution/置換
-            )
-            # transportation/転置
-            last_matching_row = last_row.get(s2[j - 1], 0)
-            last_matching_col = last_match_column
-            if last_matching_row > 0 and last_matching_col > 0:
-                d[i + 1][j + 1] = min(
-                    d[i + 1][j + 1], d[last_matching_row][last_matching_col] + (i - last_matching_row - 1) + 1 + (j - last_matching_col - 1)
-                )
-            if cost == 0:
-                last_match_column = j
-        
-        last_row[s1[i - 1]] = i
-    
-    return d[len_s1 + 1][len_s2 + 1]
 
 def split_code(code):
     """ Split the input code into tokens, excluding possessive forms like "Mike's" and "dogs'".

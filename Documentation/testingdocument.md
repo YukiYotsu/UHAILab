@@ -5,19 +5,18 @@ Last modified: *22.02.2025*
 The unittest has used ```unittest``` Python library in ```test_prime.py``` in Tests directory. Basically, all the test methods is designed in this Python file, but this directory is for test-only. Instead, programs which actually control GRASP application are written on Python files in GRASP directory.
 
 ```
-takumi@takuminoMacBook-Pro tests % poetry run coverage report
-Name                                                       Stmts   Miss  Cover
-------------------------------------------------------------------------------
+Name                                                       Stmts   Miss  Cover   Missing
+----------------------------------------------------------------------------------------
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/__init__.py       0      0   100%
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/config.py         6      0   100%
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         167     16    90%
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/ui.py            80     65    19%
-test_prime.py                                                123      0   100%
-------------------------------------------------------------------------------
-TOTAL                                                        376     81    78%
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         134      2    99%   274, 278
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/ui.py            80     65    19%   17-53, 65-69, 74-76, 87-113, 118-131
+test_prime.py                                                155      0   100%
+----------------------------------------------------------------------------------------
+TOTAL                                                        375     67    82%
 ``` 
 
-*Test was done on 22 Feb.*
+*Test was done on 23 Feb.*
 
 ## Structure of test code
 Basically, ```test_prime.py``` is composed of three classes: `class TestDamerauLevenshtein`, `class TestUI`,and `class TestCoreFunctions`. This GRASP is also suitable for checking the spelling of longer texts. In the application, `split_code` method has the role to split sentences into words to simplify the calculation of Damerau-Levenshtein distance.  
@@ -94,3 +93,5 @@ x1000: 30.738240003585815 sec
 x10000: 283.49342799186707 sec  
 
 *This test was done on 23 Feb.*  
+
+## Spell check accuracy
