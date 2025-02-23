@@ -1,7 +1,7 @@
 # 👋 Moi!
 I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the University of Helsinki 🇫🇮 in 2025.
 
-*Last modified: 22.02.2025*
+*Last modified: 23.02.2025*
 
 ## List of used main technique   
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
@@ -124,8 +124,11 @@ UHAILab/
 &emsp;┣━━━━ user_defined.csv  
 &emsp;┣━┳━━ GRASP/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
+&emsp;┃&emsp;┣━━━━ config.py  
 &emsp;┃&emsp;┣━━━━ core.py  
 &emsp;┃&emsp;┣━━━━ ui.py  
+&emsp;┃&emsp;┣━━━━ unrestricted_damerau_levenshtein.c  
+&emsp;┃&emsp;┣━━━━ libunrestricted.dylib  
 &emsp;┃&emsp;┗━━━━ ```__main__.py```  
 &emsp;┣━┳━━ Data/  
 &emsp;┃&emsp;┣━━━━ text_general.txt   
@@ -139,6 +142,7 @@ UHAILab/
 &emsp;┣━┳━━ Tests/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┣━━━━ test_prime.py   
+&emsp;┃&emsp;┣━━━━ libunrestricted.dylib   
 &emsp;┃&emsp;┗━━━━ test_user_corrections.csv  
 &emsp;┗━┳━━ Documentation/  
 &emsp;&emsp;&emsp;┣━━━━ implementation.md  
@@ -150,7 +154,7 @@ UHAILab/
 &emsp;&emsp;&emsp;┣━━━━ week3report.md  
 &emsp;&emsp;&emsp;┣━━━━ week4report.md  
 &emsp;&emsp;&emsp;┣━━━━ week5report.md  
-&emsp;&emsp;&emsp;┗━━━━ week6report.md 
+&emsp;&emsp;&emsp;┗━━━━ week6report.md  
 
 ## Trouble Shooting
 #### What is 'ver2_vocabulary.csv'?  

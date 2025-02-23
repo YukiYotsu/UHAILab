@@ -247,7 +247,7 @@ def get_closest_word(word, vocabulary):
 
     for dict_word in vocabulary:
         # use C code for processing speed-up
-        distance = libc.unrestricted_damerau_levenshtein(word, dict_word)
+        distance = libc.unrestricted_damerau_levenshtein(word.encode('utf-8'), dict_word.encode('utf-8'))
 
         if len(word) == len(dict_word):
             for i in range(min(len(word), len(dict_word))):
@@ -255,10 +255,10 @@ def get_closest_word(word, vocabulary):
                     distance += get_keyboard_distance(word[i], dict_word[i])
         # if the lengths are not matched
         else:
-            length_difference_penalty = abs(len(word) - len(dict_word)) * 0.5
+            length_difference_penalty = abs(len(word) - len(dict_word)) * 0.2
             distance += length_difference_penalty
 
-        adaptive_threshold = max(3, len(lemma_word) // 2 + 1)
+        adaptive_threshold = max(2, len(lemma_word) // 3 + 1)
 
         if distance < min_distance:
             min_distance = distance

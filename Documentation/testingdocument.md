@@ -83,4 +83,14 @@ x100: 33.829548835754395 sec
 x1000: 507.8054449558258 sec  
 x10000: 5137.369160890579 sec  
 
-It has revealed it is a serious problem to use this application on extremely long text file. However, I have a solution against this problem. I implemented *C* program which calculates Damerau-Levenshtein distance. **For *C* language is compiled language, the calculation is far faster** than Python. For example, when I tested with x10000 text file, the execution time was only *283.49342799186707* sec. This means a calculation speed-up of **1800**%.  
+*This test was done on 22 Feb.*  
+
+It has revealed it is a serious problem to use this application on extremely long text file. However, I have a good solution against this problem. I implemented *C* program which calculates Damerau-Levenshtein distance. **For *C* language is compiled language, the calculation is far faster** than Python. For example, when I tested with x10000 text file, the execution time was only *283.49342799186707* sec. This means a calculation speed-up of **1800**%.  
+
+x1: 0.05860114097595215 sec
+x10: 0.3188469409942627 sec
+x100: 3.0657098293304443 sec  
+x1000: 30.738240003585815 sec  
+x10000: 283.49342799186707 sec  
+
+*This test was done on 23 Feb.*  

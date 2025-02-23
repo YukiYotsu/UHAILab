@@ -1,5 +1,5 @@
 # The Implementation document
-Last modified: *22.02.2025*
+Last modified: *23.02.2025*
 
 ## Program structure  
 All the documents are stored in the same directory named "Documentation".  
@@ -11,14 +11,17 @@ UHAILab/
 &emsp;┣━━━━ user_defined.csv  
 &emsp;┣━┳━━ GRASP/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
+&emsp;┃&emsp;┣━━━━ config.py  
 &emsp;┃&emsp;┣━━━━ core.py  
 &emsp;┃&emsp;┣━━━━ ui.py  
+&emsp;┃&emsp;┣━━━━ unrestricted_damerau_levenshtein.c  
+&emsp;┃&emsp;┣━━━━ libunrestricted.dylib  
 &emsp;┃&emsp;┗━━━━ ```__main__.py```  
 &emsp;┣━┳━━ Data/  
 &emsp;┃&emsp;┣━━━━ text_general.txt   
 &emsp;┃&emsp;┣━━━━ text_technical.txt  
 &emsp;┃&emsp;┣━━━━ text_slang.txt  
-&emsp;┃&emsp;┣━━━━ text_noise.txt   
+&emsp;┃&emsp;┣━━━━ text_noise.txt  
 &emsp;┃&emsp;┣━━━━ correctly_general.txt  
 &emsp;┃&emsp;┣━━━━ correctly_technical.txt  
 &emsp;┃&emsp;┣━━━━ correctly_slang.txt  
@@ -26,6 +29,7 @@ UHAILab/
 &emsp;┣━┳━━ Tests/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
 &emsp;┃&emsp;┣━━━━ test_prime.py   
+&emsp;┃&emsp;┣━━━━ libunrestricted.dylib   
 &emsp;┃&emsp;┗━━━━ test_user_corrections.csv  
 &emsp;┗━┳━━ Documentation/  
 &emsp;&emsp;&emsp;┣━━━━ implementation.md  
@@ -37,7 +41,7 @@ UHAILab/
 &emsp;&emsp;&emsp;┣━━━━ week3report.md  
 &emsp;&emsp;&emsp;┣━━━━ week4report.md  
 &emsp;&emsp;&emsp;┣━━━━ week5report.md  
-&emsp;&emsp;&emsp;┗━━━━ week6report.md   
+&emsp;&emsp;&emsp;┗━━━━ week6report.md  
 
 The application is a spell-checker that takes keyboard input and a file as input. Using Damerau-Levenshtein distance, the application judges how far different input words are from certain dictionary where correctly-spelled words are stored. Importantly, it considers keyboard adjacency using ```KEYBOARD_ADJACENCY``` dictionary, for example, the word 'apple' can be much more possibly misspelled 'applr' than 'applt' or 'applg', given that 'e' has 'w', 's', 'd', and 'r' as adjacent keys. When searching a word, Trie tree has been applied to this application, which makes it easier to search things far faster, for instance, binary search tree. You scarcely remove words from dictionary, so I have not implemented removing function from data structure.  
 
@@ -88,19 +92,6 @@ def get_closest_word(word, vocabulary):
 ```  
 2. The influence of ```get_keyboard_distance``` should be tuned to more appropriate value. There're some ways: to multiply the application by a small factor, e.g. 0.1, to adjust for the impact of get_keyboard_distance and to relax the conditions for application based on the score of damerau_levenshtein_distance.  
 3. The new function to choose more frequently-used word. This feature can be realized with appending word frequency data to dictionary ```.csv``` file. And given some other kinds of Trie data structure, there are other technique called `bit slicing` and `Radix tree`.  
-4. Speed-up processing Damerau-Levenshtein distance with *C* language. Surprisingly, the performance (in terms of time) is improved around **1000%**.  
-
-#### Python language
-```
-⏳Execution time is:
-0.53684401512146
-```
-#### C language
-```
-⏳Execution time is:
-0.054605960845947266
-``` 
-I have not switched distance calculation into *C* language one because it is difficult to test them (*C* method) with Python. But it should be possible.  
 
 ## Use of LLMs
 I used LLMs for these following reasons.
