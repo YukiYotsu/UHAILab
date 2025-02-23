@@ -114,3 +114,4 @@ I used LLMs for these following reasons.
 [2] https://python-poetry.org/docs/cli/#script-project  
 [3] https://www.wordfrequency.info/  
 [4] https://dl.acm.org/doi/10.1145/321879.321880  
+[5] https://qiita.com/laddge/items/fa15b180d206e4175af8   

@@ -1,27 +1,29 @@
-# Weekly Report (Week 3)  
+# Weekly Report (Week 6)  
 I'm Yuki Yotsumoto. This is the 6th weekly report.  
 
 ## Weekly outcome and advancements  
-Approximately 25 hours required to proceed the project this week. I have newly made user-definition feature; a user can define a word correctly-spelled OR he/she wants to do however it spells. Those words defined by users are recorded in csv file (cf. `user-defined.csv`) In addition, I have combined this csv with `ver2_vocabulary.csv` so that once a user defines new word (do correction at spelling), they will no longer be judged as misspelled words.  
+Approximately 30 hours required to proceed the project this week. I have newly made user-definition feature; a user can define a word correctly-spelled OR he/she wants to do however it spells. Those words defined by users are recorded in csv file (cf. `user-defined.csv`) In addition, I have combined this csv with `ver2_vocabulary.csv` so that once a user defines new word (do correction at spelling), they will no longer be judged as misspelled words.  
 
 I have been able to **improve coverage rate*:.  
 ```
-..................
+...................
 ----------------------------------------------------------------------
-Ran 26 tests in 0.006s
+Ran 27 tests in 0.008s
 
 OK
-takumi@takuminoMacBook-Pro tests % poetry run coverage report           
+takumi@takuminoMacBook-Pro tests % poetry run coverage report
 Name                                                       Stmts   Miss  Cover
 ------------------------------------------------------------------------------
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/__init__.py       0      0   100%
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/config.py         6      0   100%
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         146     14    90%
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         167     16    90%
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/ui.py            80     65    19%
-test_prime.py                                                116      0   100%
+test_prime.py                                                123      0   100%
 ------------------------------------------------------------------------------
-TOTAL                                                        348     79    77%
-```
+TOTAL                                                        376     81    78%
+```  
+And I have written each of needed documents. I have attached many photos to userguide.mb so that a user can get easily familiar with how to use my application. And the performance of correction against misspelled words has been drastically improved, especially after releasing the function which allows a user to define whatever he/she likes.  
+![percentage of exact correction v1-3](https://github.com/user-attachments/assets/83c22e01-487e-4dc5-b06f-e6c04229c8f0)  
 
 ## Unclear or problematic things  
 -   

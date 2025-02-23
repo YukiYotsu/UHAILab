@@ -119,6 +119,11 @@ class TestCoreFunctions(unittest.TestCase):
         self.assertEqual(core.lemmatize("better"), "good")
         self.assertEqual(core.lemmatize("plays"), "play")
 
+    def test_remove_ly_suffix(self):
+        self.assertEqual(core.remove_ly_suffix("quickly"), "quick")
+        self.assertEqual(core.remove_ly_suffix("happily"), "happi")
+        self.assertEqual(core.remove_ly_suffix("slowly"), "slow")
+
     def test_get_keyboard_distance(self):
         self.assertEqual(core.get_keyboard_distance('a', 'a'), 0)
         self.assertEqual(core.get_keyboard_distance('a', 's'), 0.2)
@@ -126,7 +131,6 @@ class TestCoreFunctions(unittest.TestCase):
 
     def test_trie_operations(self):
         trie = core.Trie()
-
         trie.insert("hello")
         self.assertTrue(trie.search("hello"))
         self.assertFalse(trie.search("hell"))
@@ -140,6 +144,19 @@ class TestCoreFunctions(unittest.TestCase):
         vocabulary = ["hello", "world", "help", "held"]
         self.assertEqual(core.get_closest_word("hellp", vocabulary), "hello")
         self.assertEqual(core.get_closest_word("xyz", vocabulary), "❓UNIQUE")
+
+    def test_merge_dictionaries(self):
+        base_dict = ["hello", "world"]
+        user_dict = ["custom", "define"]
+        merged = core.merge_dictionaries(base_dict, user_dict)
+        self.assertIn("hello", merged)
+        self.assertIn("custom", merged)
+
+    def test_split_code(self):
+        code = "they/he/she are penguins(emperor)"
+        tokens = core.split_code(code)
+        expected_tokens = ["they","he","she","are","penguins","emperor"]
+        self.assertEqual(tokens, expected_tokens)
 
     def test_spell_check_code(self):
         text = "It was a beautifull day in the nieghborhood."
