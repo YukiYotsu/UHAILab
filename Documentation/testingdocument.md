@@ -95,3 +95,7 @@ x10000: 283.49342799186707 sec
 *This test was done on 23 Feb.*  
 
 ## Spell check accuracy
+I calculated the accuracy (graph below) of spell-checking (**without user-defined words CSV).  
+![percentage of exact correction v1-3](https://github.com/user-attachments/assets/83c22e01-487e-4dc5-b06f-e6c04229c8f0)  
+
+Theoretically, with user-defined CSVs, spell checking becomes as close to 100% as possible.
