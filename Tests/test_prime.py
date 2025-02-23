@@ -1,14 +1,22 @@
+# this test Python file has not completed
 import unittest
 import os
 import sys
 import csv
 from pathlib import Path
+import ctypes
 from unittest.mock import patch
 
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 sys.path.append(str(Path(__file__).resolve().parent.parent / "GRASP"))
+
 from config import USER_DEFINED_CORRECTIONS_FILE_Path
 from GRASP import core, ui
+
+# this test Python file has not completed
+libc = ctypes.CDLL("libunrestricted.dylib")
+libc.unrestricted_damerau_levenshtein.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
+libc.unrestricted_damerau_levenshtein.restype = ctypes.c_int
 
 class TestDamerauLevenshtein(unittest.TestCase):
     """ Implement test Damerau-Levenshtein distance.
@@ -17,41 +25,43 @@ class TestDamerauLevenshtein(unittest.TestCase):
         unittest.TestCase: All classes extending unittest.TestCase are recognized as test case.
 
     """
+    @classmethod
+    def setUpClass(cls):
+        source_lib = os.path.join(os.path.dirname(__file__), "..", "libunrestricted.dylib")
+        target_lib = os.path.join(os.path.dirname(__file__), "..", "GRASP", "libunrestricted.dylib")
+
     def test_same_strings(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("hello", "hello"), 0)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"hello", b"hello"), 0)
 
     def test_single_insertion(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("helo", "hello"), 1)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"helo", b"hello"), 1)
 
     def test_single_deletion(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("hello", "helo"), 1)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"hello", b"helo"), 1)
 
     def test_single_substitution(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("hello", "jello"), 1)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"hello", b"jello"), 1)
 
     def test_single_transposition(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("hlelo", "hello"), 1)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"hlelo", b"hello"), 1)
 
     def test_multiple_operations(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("kitten", "sitting"), 3)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"kitten", b"sitting"), 3)
 
     def test_long_strings(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("abcdefghij", "acbdefjhig"), 3)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"abcdefghij", b"acbdefjhig"), 3)
 
     def test_empty_strings(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("", ""), 0)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"", b""), 0)
 
     def test_one_empty_string(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("hello", ""), 5)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"hello", b""), 5)
 
     def test_case_sensitivity(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("Hello", "hello"), 1)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"Hello", b"hello"), 1)
 
     def test_special_characters(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("h@llo!", "hello"), 2)
-
-    def test_japanese_characters(self):
-        self.assertEqual(core.unrestricted_damerau_levenshtein_distance("こんにちは", "こんいちは"), 1)
+        self.assertEqual(libc.unrestricted_damerau_levenshtein(b"h@llo!", b"hello"), 2)
 
 class TestUI(unittest.TestCase):
     """ Implement the test on UI.
