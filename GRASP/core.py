@@ -170,7 +170,7 @@ def split_code(code):
     """
     # remove ’ and '
     code = re.sub(r"(?<=\w)[’']s\b", "", code)
-    tokens = re.split(r'[\s\.\:\;\,\-\'\"\$\%\/\(\)]+', code)
+    tokens = re.split(r'[\s\.\:\;\,\-\'\"\$\%\/\(\)\?\!]+', code)
     return [token for token in tokens if token]
 
 def get_closest_word(word, vocabulary):
