@@ -62,7 +62,6 @@ class TestDamerauLevenshtein(unittest.TestCase):
 
     def test_special_characters(self):
         self.assertEqual(libc.unrestricted_damerau_levenshtein(b"h@llo!", b"hello"), 2)
-
 class TestUI(unittest.TestCase):
     """ Implement the test on UI.
 
