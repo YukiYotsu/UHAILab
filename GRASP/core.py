@@ -200,6 +200,14 @@ def get_closest_word(word, vocabulary):
         # use C code for processing speed-up
         distance = libc.unrestricted_damerau_levenshtein(word.encode('utf-8'), dict_word.encode('utf-8'))
 
+        # minus the distance with cost to think complete match as more important.
+        match_cost = 0
+        for i in range(min(len(word), len(dict_word))):
+            if word[i] == dict_word[i]:
+                match_cost -= 0.1
+
+        distance += match_cost
+
         if len(word) == len(dict_word):
             for i in range(min(len(word), len(dict_word))):
                 if word[i] != dict_word[i]:
