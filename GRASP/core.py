@@ -8,7 +8,15 @@ from config import USER_DEFINED_CORRECTIONS_FILE_Path
 
 import ctypes
 
-libc = ctypes.cdll.LoadLibrary("./libunrestricted.dylib")
+# 現在のスクリプトのディレクトリを取得
+base_dir = os.path.dirname(os.path.abspath(__file__))
+
+# macOS の場合は .dylib、Linux の場合は .so
+lib_path = os.path.join(base_dir, "libdistance_lib.dylib")
+lib = ctypes.CDLL(lib_path)
+
+lib.unrestricted_damerau_levenshtein.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
+lib.unrestricted_damerau_levenshtein.restype = ctypes.c_size_t
 
 # this stores which are adjacent keys on a keyboard
 KEYBOARD_ADJACENCY = {
@@ -198,7 +206,7 @@ def get_closest_word(word, vocabulary):
 
     for dict_word in vocabulary:
         # use C code for processing speed-up
-        distance = libc.unrestricted_damerau_levenshtein(word.encode('utf-8'), dict_word.encode('utf-8'))
+        distance = lib.unrestricted_damerau_levenshtein(word.encode('utf-8'), dict_word.encode('utf-8'))
 
         if len(word) == len(dict_word):
             for i in range(min(len(word), len(dict_word))):
