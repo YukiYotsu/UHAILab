@@ -1,5 +1,5 @@
 # The Project Specification
-Last modified: *22.02.2025*
+Last modified: *07.03.2025*
 
 My name is Yuki Yotsumoto. I belong to **Bachelor of Science in Computer Science** (CS) as an exchange student from Japan. All the project's documentation are written in **English markdown** (.md) language.
 
@@ -37,7 +37,7 @@ As mentioned in the course page of ideas for project topics,
 I will apply **Damerau-Levensthein distance** to compare the distance. The vocabulary can be stored in a **Trie** (prefix tree) data structure. And my spell check will consider **keyboard adjacency**, which will improve the quality of correctly-spelled phrases.  
 
 ## What inputs does my program take, and how are they used?
-My program takes user's program to analyze. And also, it accepts input from the mouse and keyboard, and these operations are used to select applications for the target program, operate the program itself, and view analysis results.
+My program takes user's text (sentences, documents, etc.) to analyze. And also, it accepts input from the mouse and keyboard, and these operations are used to select a specific word or phrases, execute spellchecking, and view analysis results.
 
 ## References
 [1] Python Software Foundation, https://docs.python.org/3/reference/grammar.html  
