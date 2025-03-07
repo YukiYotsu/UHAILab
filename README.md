@@ -1,7 +1,7 @@
 # 👋 Moi!
 I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the University of Helsinki 🇫🇮 in 2025.
 
-*Last modified: 23.02.2025*
+*Last modified: 07.03.2025*
 
 ## List of used main technique   
 <img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
@@ -107,11 +107,11 @@ takumi@takuminoMacBook-Pro tests % poetry run coverage report
 Name                                                       Stmts   Miss  Cover
 ------------------------------------------------------------------------------
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/__init__.py       0      0   100%
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py          96      9    91%
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/ui.py            58     46    21%
-test_prime.py                                                 78      0   100%
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/config.py         6      0   100%
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         139      2    99%
+test_prime.py                                                147      0   100%
 ------------------------------------------------------------------------------
-TOTAL                                                        232     55    76%
+TOTAL                                                        292      2    99%
 ```  
 
 ## Directory structure  
