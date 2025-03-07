@@ -11,7 +11,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 sys.path.append(str(Path(__file__).resolve().parent.parent / "GRASP"))
 
 from config import USER_DEFINED_CORRECTIONS_FILE_Path
-from GRASP import core, ui
+from GRASP import core
 
 # this test Python file has not completed
 libc = ctypes.CDLL("libunrestricted.dylib")
@@ -62,21 +62,6 @@ class TestDamerauLevenshtein(unittest.TestCase):
 
     def test_special_characters(self):
         self.assertEqual(libc.unrestricted_damerau_levenshtein(b"h@llo!", b"hello"), 2)
-class TestUI(unittest.TestCase):
-    """ Implement the test on UI.
-
-    These functions are made to test UI.
-    Keyword Arguments:
-        unittest.TestCase: All classes extending unittest.TestCase are recognized as test case.
-    """
-    def test_user_input(self):
-        with patch('builtins.input', return_value='hello'):
-            self.assertEqual(ui.get_user_input(), 'hello')
-
-    def test_display_output(self):
-        with patch('builtins.print') as mocked_print:
-            ui.display_output("Test Output")
-            mocked_print.assert_called_with("Test Output")
 
 class TestCoreFunctions(unittest.TestCase):
     """ Implement test on core functions beside Damarau-Levenshtein distance.

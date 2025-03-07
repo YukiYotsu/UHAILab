@@ -1,5 +1,5 @@
 # The User Guide
-Last modified: *23.02.2025*
+Last modified: *07.03.2025*
 
 ## How to start my App  
 ### How to do setting  
@@ -104,9 +104,8 @@ Name                                                       Stmts   Miss  Cover
 ------------------------------------------------------------------------------
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/__init__.py       0      0   100%
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/config.py         6      0   100%
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         134      2    99%
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/ui.py            80     65    19%
-test_prime.py                                                155      0   100%
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         139      2    99%
+test_prime.py                                                147      0   100%
 ------------------------------------------------------------------------------
-TOTAL                                                        375     67    82%
+TOTAL                                                        292      2    99%
 ```  

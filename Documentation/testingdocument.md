@@ -1,22 +1,21 @@
 # The Testing Document
-Last modified: *23.02.2025*
+Last modified: *07.03.2025*
 
 ## unittest coverage report
 The unittest has used ```unittest``` Python library in ```test_prime.py``` in Tests directory. Basically, all the test methods is designed in this Python file, but this directory is for test-only. Instead, programs which actually control GRASP application are written on Python files in GRASP directory.
 
 ```
-Name                                                       Stmts   Miss  Cover   Missing
-----------------------------------------------------------------------------------------
+Name                                                       Stmts   Miss  Cover
+------------------------------------------------------------------------------
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/__init__.py       0      0   100%
 /Users/takumi/Documents/GitHub/UHAILab/GRASP/config.py         6      0   100%
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         134      2    99%   274, 278
-/Users/takumi/Documents/GitHub/UHAILab/GRASP/ui.py            80     65    19%   17-53, 65-69, 74-76, 87-113, 118-131
-test_prime.py                                                155      0   100%
-----------------------------------------------------------------------------------------
-TOTAL                                                        375     67    82%
+/Users/takumi/Documents/GitHub/UHAILab/GRASP/core.py         139      2    99%
+test_prime.py                                                147      0   100%
+------------------------------------------------------------------------------
+TOTAL                                                        292      2    99%
 ``` 
 
-*Test was done on 23 Feb.*
+*Test was done on 7 Mar.*
 
 ## Structure of test code
 Basically, ```test_prime.py``` is composed of three classes: `class TestDamerauLevenshtein`, `class TestUI`,and `class TestCoreFunctions`. This GRASP is also suitable for checking the spelling of longer texts. In the application, `split_code` method has the role to split sentences into words to simplify the calculation of Damerau-Levenshtein distance.  

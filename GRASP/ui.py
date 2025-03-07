@@ -129,13 +129,3 @@ def define_correction(text_area):
     if correct_word:
         save_user_defined_correction(selected_text, correct_word)
         messagebox.showinfo("Correction Saved", f"Correction for '{selected_text}' saved as '{correct_word}'.")
-
-def get_user_input():
-    """ Check user input
-    """
-    return input()
-
-def display_output(output):
-    """ Check UI's output
-    """
-    print(output)
