@@ -4,7 +4,8 @@ I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the Uni
 *Last modified: 07.03.2025*
 
 ## List of used main technique   
-<img src="https://skillicons.dev/icons?theme=light&perline=6&i=python,github,vscode"/>  
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white) 
 
 and https://www.wordfrequency.info/ as the dictionary file [5].  
 
