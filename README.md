@@ -1,7 +1,7 @@
 # 👋 Moi!
 I'm Yuki Yotsumoto. This is the README markdown for the AI Lab course at the University of Helsinki 🇫🇮 in 2025.
 
-*Last modified: 07.03.2025*
+*Last modified: 27.04.2025*
 
 ## List of used main technique   
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -96,7 +96,7 @@ poetry add --dev coverage
 ```  
 **Move** to 'tests' directory and **Execute** coverage test:  
 ```  
-poetry run coverage run test_prime.py
+poetry run coverage run test_core.py
 ```  
 And then, you will get the report using:  
 ```  
@@ -142,7 +142,7 @@ UHAILab/
 &emsp;┃&emsp;┗━━━━ correctly_noise.txt  
 &emsp;┣━┳━━ Tests/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
-&emsp;┃&emsp;┣━━━━ test_prime.py   
+&emsp;┃&emsp;┣━━━━ test_core.py   
 &emsp;┃&emsp;┣━━━━ libunrestricted.dylib   
 &emsp;┃&emsp;┗━━━━ test_user_corrections.csv  
 &emsp;┗━┳━━ Documentation/  

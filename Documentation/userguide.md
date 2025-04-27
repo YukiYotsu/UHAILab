@@ -1,5 +1,5 @@
 # The User Guide
-Last modified: *07.03.2025*
+Last modified: *27.04.2025*
 
 ## How to start my App  
 ### How to do setting  
@@ -92,7 +92,7 @@ poetry add --dev coverage
 ```  
 **Move** to 'tests' directory and **Execute** coverage test:  
 ```  
-poetry run coverage run test_prime.py
+poetry run coverage run test_core.py
 ```  
 And then, you will get the report using:  
 ```  

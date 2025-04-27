@@ -1,5 +1,5 @@
 # The Implementation document
-Last modified: *23.02.2025*
+Last modified: *27.04.2025*
 
 ## Program structure  
 All the documents are stored in the same directory named "Documentation".  
@@ -28,7 +28,7 @@ UHAILab/
 &emsp;┃&emsp;┗━━━━ correctly_noise.txt  
 &emsp;┣━┳━━ Tests/  
 &emsp;┃&emsp;┣━━━━ ```__init__.py```  
-&emsp;┃&emsp;┣━━━━ test_prime.py   
+&emsp;┃&emsp;┣━━━━ test_core.py   
 &emsp;┃&emsp;┣━━━━ libunrestricted.dylib   
 &emsp;┃&emsp;┗━━━━ test_user_corrections.csv  
 &emsp;┗━┳━━ Documentation/  
