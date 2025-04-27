@@ -111,10 +111,11 @@ class TestCoreFunctions(unittest.TestCase):
         self.assertEqual(core.remove_ly_suffix("quickly"), "quick")
         self.assertEqual(core.remove_ly_suffix("happily"), "happi")
 
-    def test_get_keyboard_distance(self):
-        self.assertEqual(core.get_keyboard_distance('a', 'a'), 0)
-        self.assertEqual(core.get_keyboard_distance('a', 's'), 0.2)
-        self.assertEqual(core.get_keyboard_distance('a', 'g'), 0.45)
+    # *NOT BEING USED in the latest version*
+    # def test_get_keyboard_distance(self):
+    #     self.assertEqual(core.get_keyboard_distance('a', 'a'), 0)
+    #     self.assertEqual(core.get_keyboard_distance('a', 's'), 0.2)
+    #     self.assertEqual(core.get_keyboard_distance('a', 'g'), 0.45)
 
     def test_trie_operations(self):
         trie = core.Trie()
@@ -187,10 +188,10 @@ class TestCoreFunctions(unittest.TestCase):
             corrections = core.load_user_defined_corrections(USER_DEFINED_CORRECTIONS_FILE_Path)
             self.assertIn("wrong", corrections)
 
-    def test_get_keyboard_distance_edge_cases(self):
-        self.assertEqual(core.get_keyboard_distance('', 'a'), 0.45)  # case: empty character
-        self.assertEqual(core.get_keyboard_distance('a', ''), 0.45)  # reverse
-        self.assertEqual(core.get_keyboard_distance('#', '@'), 0.45)  # symbols
+    # def test_get_keyboard_distance_edge_cases(self):
+    #     self.assertEqual(core.get_keyboard_distance('', 'a'), 0.45)  # case: empty character
+    #     self.assertEqual(core.get_keyboard_distance('a', ''), 0.45)  # reverse
+    #     self.assertEqual(core.get_keyboard_distance('#', '@'), 0.45)  # symbols
         
 if __name__ == "__main__":
     unittest.main()

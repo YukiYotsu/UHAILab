@@ -71,8 +71,10 @@ def remove_ly_suffix(word):
         return word[:-2]
     return word
 
-def get_keyboard_distance(char1, char2):
-    """ Returns the cost, given the keys' adhacency.
+# def get_keyboard_distance(char1, char2):
+    """ *NOT BEING USED in the latest version*
+    
+    Returns the cost, given the keys' adhacency.
 
     Keyword Arguments:
         char1, char2: these are a character to check if they are adjacent
@@ -199,23 +201,23 @@ def get_closest_word(word, vocabulary):
     for dict_word in vocabulary:
         # use C code for processing speed-up
         distance = libc.unrestricted_damerau_levenshtein(word.encode('utf-8'), dict_word.encode('utf-8'))
+    
+        # # minus the distance with cost to think complete match as more important.
+        # match_cost = 0
+        # for i in range(min(len(word), len(dict_word))):
+        #     if word[i] == dict_word[i]:
+        #         match_cost -= 0.1
 
-        # minus the distance with cost to think complete match as more important.
-        match_cost = 0
-        for i in range(min(len(word), len(dict_word))):
-            if word[i] == dict_word[i]:
-                match_cost -= 0.1
+        # distance += match_cost
 
-        distance += match_cost
-
-        if len(word) == len(dict_word):
-            for i in range(min(len(word), len(dict_word))):
-                if word[i] != dict_word[i]:
-                    distance += get_keyboard_distance(word[i], dict_word[i])
-        # if the lengths are not matched
-        else:
-            length_difference_penalty = abs(len(word) - len(dict_word)) * 0.2
-            distance += length_difference_penalty
+        # if len(word) == len(dict_word):
+        #     for i in range(min(len(word), len(dict_word))):
+        #         if word[i] != dict_word[i]:
+        #             distance += get_keyboard_distance(word[i], dict_word[i])
+        # # if the lengths are not matched
+        # else:
+        #     length_difference_penalty = abs(len(word) - len(dict_word)) * 0.2
+        #     distance += length_difference_penalty
 
         adaptive_threshold = max(2, len(lemma_word) // 3 + 1)
 
@@ -260,9 +262,9 @@ def spell_check_code(code, dictionary):
     for word in dictionary:
         trie.insert(word)
     
-    for word in IRREGULAR_WORDS:
-        trie.insert(IRREGULAR_WORDS[word])
-        trie.insert(word)
+    # for word in IRREGULAR_WORDS:
+    #     trie.insert(IRREGULAR_WORDS[word])
+    #     trie.insert(word)
 
     corrections = load_user_defined_corrections(USER_DEFINED_CORRECTIONS_FILE_Path)
     for word in corrections:
@@ -281,7 +283,7 @@ def spell_check_code(code, dictionary):
             if trie.search(real_word):
                 continue
             
-            # if there is a word when "ly" part of the word (-ly ending) is removed
+            # if there is a word when "ly" part of the word (-ly ending), it is removed
             elif trie.search(remove_ly_suffix(real_word)):
                 continue
 

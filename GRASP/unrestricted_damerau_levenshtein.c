@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Damerau-Levenshtein距離を求める関数
+// Func. for calculate Damerau-Levenshtein Distance
 int damerau_levenshtein(const char *s1, const char *s2) {
     int len_s1 = strlen(s1);
     int len_s2 = strlen(s2);
     int INF = len_s1 + len_s2; // instead of infinity
 
-    // 動的配列の確保
+    // save space for data allay
     int **d = (int **)malloc((len_s1 + 2) * sizeof(int *));
     for (int i = 0; i < len_s1 + 2; i++) {
         d[i] = (int *)malloc((len_s2 + 2) * sizeof(int));
@@ -44,11 +44,11 @@ int damerau_levenshtein(const char *s1, const char *s2) {
                 d[i + 1][j + 1] = del;
             }
 
-            // ここが「隣接 transposition」のみ許す部分
-            if (i > 1 && j > 1) {
+            // transposition
+            if (i > 1 && j > 1) { // avoid the case that i-2 and j-2 are minus
                 if (s1[i - 1] == s2[j - 2] && s1[i - 2] == s2[j - 1]) {
-                    int transposition = d[i - 1][j - 1] + 1;
-                    if (transposition < d[i + 1][j + 1]) {
+                    int transposition = d[i - 1][j - 1] + 1; // plus cost +1
+                    if (transposition < d[i + 1][j + 1]) { // check if it's the smallest
                         d[i + 1][j + 1] = transposition;
                     }
                 }
